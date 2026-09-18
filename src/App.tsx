@@ -137,6 +137,16 @@ export function App() {
     setAssignments(prev => prev.filter(a => a.id !== id));
   };
 
+  const handleImportAssignments = (newEvents: Assignment[]) => {
+    const fetchedIds = new Set(newEvents.map(a => a.id));
+    const existingNonD2L = assignments.filter(a => !fetchedIds.has(a.id));
+    setAssignments([...newEvents, ...existingNonD2L]);
+    setSettings(prev => ({
+      ...prev,
+      lastSyncedAt: new Date().toISOString(),
+    }));
+  };
+
   const handleToggleReadAnnouncement = (id: string) => {
     setAnnouncements(prev =>
       prev.map(a => (a.id === id ? { ...a, isRead: !a.isRead } : a))
@@ -180,7 +190,7 @@ export function App() {
     if (!settings.d2lFeedUrl) return;
 
     setIsSyncing(true);
-    setSyncMessage('Fetching and parsing D2L calendar feed...');
+    setSyncMessage('Fetching D2L feed through CORS proxy fallback chain...');
 
     const res = await fetchD2LFeed(settings.d2lFeedUrl);
     setIsSyncing(false);
@@ -188,13 +198,7 @@ export function App() {
     if (res.error) {
       setSyncMessage(`Sync Notice: ${res.error}`);
     } else {
-      const fetchedIds = new Set(res.assignments.map(a => a.id));
-      const existingNonD2L = assignments.filter(a => !fetchedIds.has(a.id));
-      setAssignments([...res.assignments, ...existingNonD2L]);
-      setSettings(prev => ({
-        ...prev,
-        lastSyncedAt: new Date().toISOString(),
-      }));
+      handleImportAssignments(res.assignments);
       setSyncMessage(`Successfully fetched ${res.assignments.length} deadline(s) from D2L Learn feed!`);
     }
   };
@@ -302,6 +306,7 @@ export function App() {
                 settings={settings}
                 onUpdateSettings={handleUpdateSettings}
                 onSyncD2L={handleSyncD2L}
+                onImportAssignments={handleImportAssignments}
                 onResetData={handleResetData}
                 isSyncing={isSyncing}
                 syncMessage={syncMessage}

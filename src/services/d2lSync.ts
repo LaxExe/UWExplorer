@@ -73,7 +73,6 @@ export function parseICSData(icsText: string): Assignment[] {
 }
 
 function parseICalDate(icalStr: string): string {
-  // Format: 20260925T235900Z or 20260925
   const match = icalStr.match(/^(\d{4})(\d{2})(\d{2})(?:T(\d{2})(\d{2})(\d{2})Z?)?/);
   if (match) {
     const year = parseInt(match[1], 10);
@@ -97,34 +96,65 @@ function inferAssignmentType(title: string): Assignment['type'] {
 }
 
 /**
- * Fetch feed via CORS proxy or direct HTTP request if possible.
+ * Normalizes webcal:// or http:// URLs to https://
+ */
+export function normalizeFeedUrl(url: string): string {
+  let cleaned = url.trim();
+  if (cleaned.startsWith('webcal://')) {
+    cleaned = 'https://' + cleaned.substring(9);
+  } else if (cleaned.startsWith('http://')) {
+    cleaned = 'https://' + cleaned.substring(7);
+  }
+  return cleaned;
+}
+
+/**
+ * Fetch feed via CORS proxies with fallback strategies to bypass 403 / CORS restrictions.
  */
 export async function fetchD2LFeed(feedUrl: string): Promise<{ assignments: Assignment[]; error?: string }> {
   if (!feedUrl.trim()) {
     return { assignments: [], error: 'No feed URL specified.' };
   }
 
-  try {
-    // Standard CORS proxy option or direct fetch
-    let res = await fetch(feedUrl).catch(() => null);
-    
-    if (!res || !res.ok) {
-      // Fallback via public CORS proxy for client-side execution
-      const corsProxyUrl = `https://corsproxy.io/?${encodeURIComponent(feedUrl)}`;
-      res = await fetch(corsProxyUrl);
-    }
+  const normalizedUrl = normalizeFeedUrl(feedUrl);
 
-    if (!res.ok) {
-      throw new Error(`HTTP Error ${res.status}`);
-    }
+  const proxyEndpoints = [
+    // Direct attempt
+    normalizedUrl,
+    // Proxy 1: AllOrigins raw
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(normalizedUrl)}`,
+    // Proxy 2: CodeTabs
+    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(normalizedUrl)}`,
+    // Proxy 3: CorsProxy.io
+    `https://corsproxy.io/?${encodeURIComponent(normalizedUrl)}`,
+  ];
 
-    const text = await res.text();
-    const parsed = parseICSData(text);
-    return { assignments: parsed };
-  } catch (err: any) {
-    return {
-      assignments: [],
-      error: err?.message || 'Failed to fetch calendar feed. Check CORS policy or Feed URL validity.',
-    };
+  let lastError = '';
+
+  for (const endpoint of proxyEndpoints) {
+    try {
+      const res = await fetch(endpoint, {
+        headers: { Accept: 'text/calendar, text/plain, */*' },
+      }).catch(() => null);
+
+      if (res && res.ok) {
+        const text = await res.text();
+        if (text && (text.includes('BEGIN:VCALENDAR') || text.includes('BEGIN:VEVENT'))) {
+          const parsed = parseICSData(text);
+          if (parsed.length > 0) {
+            return { assignments: parsed };
+          }
+        }
+      } else if (res && res.status) {
+        lastError = `HTTP Error ${res.status}`;
+      }
+    } catch (e: any) {
+      lastError = e?.message || 'Network error';
+    }
   }
+
+  return {
+    assignments: [],
+    error: `D2L Access Restriction (${lastError || 'HTTP 403'}). Waterloo Learn blocks browser cross-origin requests. Try using the "Upload .ics File" option below!`,
+  };
 }
