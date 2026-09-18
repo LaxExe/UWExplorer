@@ -88,23 +88,19 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
         </div>
 
-        {/* Card 3: Today's Schedule Card */}
-        <div
-          onClick={() => onNavigate('schedule')}
-          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all bg-[var(--c1)]/30"
-        >
+        {/* Card 3: Today's Schedule Card (Display card only, no hyperlink) */}
+        <div className="uw-card flex flex-col justify-between">
           <div className="flex justify-between items-start">
             <span className="mono-label font-bold text-[var(--c5)]">today's schedule</span>
-            <CalendarDays className="w-4 h-4 text-[var(--c5)]" />
+            <CalendarDays className="w-4 h-4 text-[var(--c3)]" />
           </div>
-          <div className="mt-3 flex items-center justify-between">
-            <div>
-              <span className="text-3xl font-bold font-sans text-[var(--c5)]">
-                {todayClasses.length}
-              </span>
-              <span className="font-mono text-xs text-[var(--c3)] ml-2">classes today</span>
-            </div>
-            <span className="mono-label text-[0.68rem] text-[var(--c5)] hover:underline">view schedule →</span>
+          <div className="mt-3">
+            <span className="text-3xl font-bold font-sans text-[var(--c5)]">
+              {todayClasses.length}
+            </span>
+            <span className="font-mono text-xs text-[var(--c3)] ml-2">
+              {todayClasses.length === 1 ? 'class left today' : 'classes left today'}
+            </span>
           </div>
         </div>
       </div>
