@@ -4,67 +4,78 @@
 
 ---
 
-## Features
+## ⚙️ Configuration File Setup (`data/config.json`)
 
-- 💼 **WaterlooWorks & Campus Shortcuts**: Direct access to WaterlooWorks (co-op portal), LEARN (D2L), Quest, Outlook Mail, UW Portal, Crowdmark, Piazza, WatIAM, Workday, WUSA, and UW Library.
-- 📢 **D2L Announcements Feed**: Streamlined course updates with course tag filtering and keyword search.
-- 📋 **Assignments & Deadlines Tracker**: Interactive checklist sorted by due dates with status filters (Pending, Completed, Overdue).
-- 📅 **Semester Calendar Grid**: Minimalist visual monthly view of upcoming quizzes, midterms, and project deliverables.
-- 🔄 **Zero-Auth D2L Calendar Sync**: Client-side iCal (`.ics`) feed parser that syncs deadlines from Waterloo Learn without requiring user credentials or login tokens.
-- 🎨 **Minimalist Design System**: Built with restraint using **Sora** display font, **DM Mono** UI typography, custom 5-token light & dark color palette, sharp 0px card borders, and responsive micro-interactions.
+UWexplorer includes a central configuration file located at **`data/config.json`** to manage your feed URLs, theme preferences, course colors, and sidebar order.
+
+### `data/config.json` Schema
+```json
+{
+  "d2lFeedUrl": "https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?...",
+  "theme": "light",
+  "autoSyncIntervalMinutes": 15,
+  "courseColors": {
+    "CS 135": "#3b82f61a",
+    "MATH 135": "#10b9811a",
+    "MATH 137": "#8b5cf61a",
+    "ENGL 109": "#f59e0b1a",
+    "PHYS 121": "#ef44441a",
+    "LEARN": "#64748b1a"
+  },
+  "sidebarOrder": [
+    "dashboard",
+    "schedule",
+    "links",
+    "announcements",
+    "assignments",
+    "calendar",
+    "settings"
+  ]
+}
+```
 
 ---
 
-## Design System Specifications
+## 🚀 Quick Start & Setup Guide
 
-UWexplorer enforces strict visual restraint:
-- **Fonts**: `Sora` (sans-serif) for headlines & body, `DM Mono` (monospace) for labels, code, and UI controls.
-- **Palette**:
-  - **Light Theme**: Background (`#ffffff`), Surface (`#f0f0f0`), Text (`#000000`, `#2c2c2c`), Border (`#c8c8c8`).
-  - **Dark Theme**: Background (`#000000`), Surface (`#141414`), Text (`#ffffff`, `#cecece`), Border (`#303030`).
-- **Borders & Radii**: Sharp 0px card radiuses, 1px solid borders, hover slide fills (`translateX(-100%)` to `translateX(0)`), 2px card lifts (`translateY(-2px)`).
-
----
-
-## Quick Start & Local Setup
-
-### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn
-
-### Installation
+### 1. Clone & Install
 ```bash
-# 1. Clone the repository
 git clone https://github.com/LaxExe/UWExplorer.git
 cd UWExplorer
-
-# 2. Install dependencies
 npm install
+```
 
-# 3. Start development server
+### 2. Configure Your D2L Calendar Feed
+1. Log in to **[learn.uwaterloo.ca](https://learn.uwaterloo.ca/)** &rarr; **Calendar** &rarr; **Subscribe**.
+2. Copy your unique **Calendar Feed URL** (`.ics` / webcal link).
+3. Paste it into `data/config.json` under `"d2lFeedUrl"` (or via the in-app Settings UI).
+
+*(Recommended for zero 403 errors: Subscribe to your D2L calendar link inside **UWaterloo Outlook Calendar** (`outlook.office.com`) &rarr; Publish calendar &rarr; paste the Outlook `.ics` link into `data/config.json`!)*
+
+### 3. Start the Web App & Auto-Sync Server
+```bash
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser to launch the dashboard.
+Open `http://localhost:5173` in your browser.
+
+### 4. Background Downloader Engine (CLI)
+To manually pull down the latest `.ics` file directly to your disk at any time:
+```bash
+node scripts/sync-d2l.js
+```
 
 ---
 
-## How to Sync Your D2L Calendar Feed
+## 🗄️ On-Disk File Storage System
 
-You can automatically import your real Waterloo Learn deadlines into UWexplorer without sharing password details:
-
-1. Log in to **[learn.uwaterloo.ca](https://learn.uwaterloo.ca/)**.
-2. Navigate to **Calendar** from the top menu bar.
-3. Click the **Subscribe** button.
-4. Copy your unique **Calendar Feed URL** (`.ics` / webcal link).
-5. Open UWexplorer -> **Settings** -> Paste your feed URL and click **Save & Sync**.
-
-All your course deadlines will be parsed locally and cached in your browser (`localStorage`).
+All your data lives locally on your computer in `/Users/lakshman/Small Projects/UWexplorer/data/`:
+- **`data/d2l_calendar.ics`**: Saved raw `.ics` feed downloaded from D2L/Outlook.
+- **`data/uwexplorer_db.json`**: Saved student metadata (read/unread status, task completion, course colors, schedule, custom deadlines).
+- **`data/config.json`**: Saved configuration settings.
 
 ---
 
-## Contributing & License
-
-Contributions are welcome! Feel free to open issues or submit pull requests to add new Waterloo service integrations or features.
+## License
 
 MIT License © 2026 LaxExe

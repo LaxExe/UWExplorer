@@ -1,0 +1,22 @@
+{
+  "d2lFeedUrl": "https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?...",
+  "theme": "light",
+  "autoSyncIntervalMinutes": 15,
+  "courseColors": {
+    "CS 135": "#3b82f61a",
+    "MATH 135": "#10b9811a",
+    "MATH 137": "#8b5cf61a",
+    "ENGL 109": "#f59e0b1a",
+    "PHYS 121": "#ef44441a",
+    "LEARN": "#64748b1a"
+  },
+  "sidebarOrder": [
+    "dashboard",
+    "schedule",
+    "links",
+    "announcements",
+    "assignments",
+    "calendar",
+    "settings"
+  ]
+}
