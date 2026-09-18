@@ -1,0 +1,1678 @@
+{
+  "assignments": [
+    {
+      "id": "6606-113825@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Test",
+      "type": "quiz",
+      "dueDate": "2012-04-09T14:00:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782094@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Course Drop\\, Penalty 1 Period ends: WD assigned Mar. 20 (T)",
+      "type": "assignment",
+      "dueDate": "2018-03-21T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782270@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Course Drop\\, Penalty 1 Period ends: WD assigned Mar. 20 (T)",
+      "type": "assignment",
+      "dueDate": "2018-03-21T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782382@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Course Drop\\, Penalty 1 Period ends: WD assigned Mar. 20 (T)",
+      "type": "assignment",
+      "dueDate": "2018-03-21T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782101@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Good Friday holiday: Mar. 30 (F)",
+      "type": "assignment",
+      "dueDate": "2018-03-31T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782277@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Good Friday holiday: Mar. 30 (F)",
+      "type": "assignment",
+      "dueDate": "2018-03-31T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782389@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Good Friday holiday: Mar. 30 (F)",
+      "type": "assignment",
+      "dueDate": "2018-03-31T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782095@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Lectures or classes end Apr. 4 (W)",
+      "type": "assignment",
+      "dueDate": "2018-04-05T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782271@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Lectures or classes end Apr. 4 (W)",
+      "type": "assignment",
+      "dueDate": "2018-04-05T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782383@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Lectures or classes end Apr. 4 (W)",
+      "type": "assignment",
+      "dueDate": "2018-04-05T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782096@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "On-campus examinations begin Apr. 9 (M)",
+      "type": "exam",
+      "dueDate": "2018-04-10T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782272@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "On-campus examinations begin Apr. 9 (M)",
+      "type": "exam",
+      "dueDate": "2018-04-10T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782384@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "On-campus examinations begin Apr. 9 (M)",
+      "type": "exam",
+      "dueDate": "2018-04-10T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782097@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "On-campus examinations end Apr. 24 (T)",
+      "type": "exam",
+      "dueDate": "2018-04-25T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782273@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "On-campus examinations end Apr. 24 (T)",
+      "type": "exam",
+      "dueDate": "2018-04-25T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782385@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "On-campus examinations end Apr. 24 (T)",
+      "type": "exam",
+      "dueDate": "2018-04-25T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782098@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Unofficial grades begin to appear in Quest Apr. 25 (W)",
+      "type": "assignment",
+      "dueDate": "2018-04-26T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782274@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Unofficial grades begin to appear in Quest Apr. 25 (W)",
+      "type": "assignment",
+      "dueDate": "2018-04-26T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782386@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Unofficial grades begin to appear in Quest Apr. 25 (W)",
+      "type": "assignment",
+      "dueDate": "2018-04-26T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782100@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Lectures begin May 1 (T)",
+      "type": "assignment",
+      "dueDate": "2018-05-02T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782276@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Lectures begin May 1 (T)",
+      "type": "assignment",
+      "dueDate": "2018-05-02T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782388@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Lectures begin May 1 (T)",
+      "type": "assignment",
+      "dueDate": "2018-05-02T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782099@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Standings and official grades are available in Quest May 18 (F)",
+      "type": "lab",
+      "dueDate": "2018-05-19T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782275@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Standings and official grades are available in Quest May 18 (F)",
+      "type": "lab",
+      "dueDate": "2018-05-19T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3782387@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Standings and official grades are available in Quest May 18 (F)",
+      "type": "lab",
+      "dueDate": "2018-05-19T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848205@learn.uwaterloo.ca",
+      "courseCode": "FALL 202",
+      "courseName": "FALL 202 Course Task",
+      "title": "Fall 2020 Work Term Ends",
+      "type": "assignment",
+      "dueDate": "2020-12-24T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848206@learn.uwaterloo.ca",
+      "courseCode": "WINTER 202",
+      "courseName": "WINTER 202 Course Task",
+      "title": "Winter 2021 Work Term Starts",
+      "type": "assignment",
+      "dueDate": "2021-01-05T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848207@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #1 Posting #1 Applications",
+      "type": "assignment",
+      "dueDate": "2021-01-19T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Applications allowed for this period - 50 apps\\nTotal applicati",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848208@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #1 Posting #1 All Postings Open",
+      "type": "assignment",
+      "dueDate": "2021-01-16T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848209@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #1 Posting #2 Applications",
+      "type": "assignment",
+      "dueDate": "2021-01-26T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Total applications allowed to date - 100 apps",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848210@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Deadline to request removal from cycle #1 interview/match process",
+      "type": "assignment",
+      "dueDate": "2021-01-21T17:00:00.000Z",
+      "isCompleted": false,
+      "notes": "See https://uwaterloo.ca/co-operative-education/find-your-co-op",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848211@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #1 Posting #2 All Postings open",
+      "type": "assignment",
+      "dueDate": "2021-01-23T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848212@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #1 Remote Interview Period",
+      "type": "assignment",
+      "dueDate": "2021-02-11T04:30:00.000Z",
+      "isCompleted": false,
+      "notes": "https://uwaterloo.ca/co-operative-education/find-your-co-op-job",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848213@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #1 Rankings",
+      "type": "assignment",
+      "dueDate": "2021-02-12T19:00:00.000Z",
+      "isCompleted": false,
+      "notes": "https://uwaterloo.ca/co-operative-education/find-your-co-op-job",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848214@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #1 Student rankings consults",
+      "type": "assignment",
+      "dueDate": "2021-02-12T18:00:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848215@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #2 Posting #1 Applications",
+      "type": "assignment",
+      "dueDate": "2021-02-23T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Total applications allowed to date - 150 apps",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848217@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #2 Posting #1 All postings open",
+      "type": "assignment",
+      "dueDate": "2021-02-20T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848216@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #2 Posting #2",
+      "type": "assignment",
+      "dueDate": "2021-03-02T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Total applications allowed to date - 200 apps",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848218@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Deadline to request removal from Cycle #2 interview/match process",
+      "type": "assignment",
+      "dueDate": "2021-02-25T17:00:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848219@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #2 Posting #2 All postings open",
+      "type": "assignment",
+      "dueDate": "2021-02-27T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848220@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #2 Remote Interviews",
+      "type": "assignment",
+      "dueDate": "2021-03-11T04:30:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848221@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Deadline to submit an Arrange Own Job form to include an external o",
+      "type": "assignment",
+      "dueDate": "2021-03-06T23:59:00.000Z",
+      "isCompleted": false,
+      "notes": "https://uwaterloo.ca/co-operative-education/find-your-co-op-job",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848222@learn.uwaterloo.ca",
+      "courseCode": "WINTER 202",
+      "courseName": "WINTER 202 Course Task",
+      "title": "Last day to start work to receive credit for a Winter 2021 work ter",
+      "type": "assignment",
+      "dueDate": "2021-03-09T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848223@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycle #2 Rankings",
+      "type": "assignment",
+      "dueDate": "2021-03-12T19:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Match results available at end of day on the 12th",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848224@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Student rankings consult",
+      "type": "assignment",
+      "dueDate": "2021-03-12T18:00:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848225@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Cycles #3-6 Open",
+      "type": "assignment",
+      "dueDate": "2021-03-17T23:59:00.000Z",
+      "isCompleted": false,
+      "notes": "New jobs posted daily (open for 2 business days and close at 9a",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848226@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Remote Interviews",
+      "type": "assignment",
+      "dueDate": "2021-03-26T00:00:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848227@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Student Rankings",
+      "type": "assignment",
+      "dueDate": "2021-03-26T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Available EOD on 26th",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848228@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Remote Interviews",
+      "type": "assignment",
+      "dueDate": "2021-04-01T00:00:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848229@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Student Rankings Open",
+      "type": "assignment",
+      "dueDate": "2021-04-01T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Match results available EOD",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848230@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Remote Interviews",
+      "type": "assignment",
+      "dueDate": "2021-04-08T20:00:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848232@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Student Rankings Open",
+      "type": "assignment",
+      "dueDate": "2021-04-09T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Match results available EOD",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848233@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Student Rankings Open",
+      "type": "assignment",
+      "dueDate": "2021-04-16T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Match results available EOD",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848234@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Direct Offers Start",
+      "type": "assignment",
+      "dueDate": "2021-04-20T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-2848235@learn.uwaterloo.ca",
+      "courseCode": "WINTER 202",
+      "courseName": "WINTER 202 Course Task",
+      "title": "Winter 2021 work term ends",
+      "type": "assignment",
+      "dueDate": "2021-04-24T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3819868@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Dropbox for Outline for Practice Presentation #1  - Due",
+      "type": "assignment",
+      "dueDate": "2025-09-22T17:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nDropbox for Outline for Practice Presentation #1  - h",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3819864@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Dropbox for Outline to Mini Speech #2  - Due",
+      "type": "assignment",
+      "dueDate": "2025-10-02T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nDropbox for Outline to Mini Speech #2  - https://lear",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3819869@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Dropbox for Progress Report and Annotated Bibliography  - Due",
+      "type": "assignment",
+      "dueDate": "2025-11-03T04:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nDropbox for Progress Report and Annotated Bibliograph",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3819870@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Homework November 3 - Due",
+      "type": "assignment",
+      "dueDate": "2025-11-03T21:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nHomework November 3 - https://learn.uwaterloo.ca/d2l/",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3819865@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Report Drafts\\, Due December 1 - Due",
+      "type": "assignment",
+      "dueDate": "2025-12-01T18:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nReport Drafts\\, Due December 1 - https://learn.uwater",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3819867@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Final Recommendation Report - Due",
+      "type": "exam",
+      "dueDate": "2025-12-06T04:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nFinal Recommendation Report - https://learn.uwaterloo",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3819866@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Dropbox for Mediated Reflection  - Due",
+      "type": "assignment",
+      "dueDate": "2025-12-16T04:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nDropbox for Mediated Reflection  - https://learn.uwat",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3747432@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "View your course schedule on Quest - Due",
+      "type": "assignment",
+      "dueDate": "2026-07-22T16:00:00.000Z",
+      "isCompleted": false,
+      "notes": "On July 22\\, you'll be able to view your class schedule in Ques",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3778069@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Engineering Ready Knowledge Check - Due",
+      "type": "assignment",
+      "dueDate": "2026-09-05T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "\\nTest your understanding of Waterloo Ready with this short 4-q",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3820640@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "WHMIS Completion - Due",
+      "type": "assignment",
+      "dueDate": "2026-09-14T12:30:00.000Z",
+      "isCompleted": false,
+      "notes": "You must upload a screenshot of the final quiz grade to verify",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805610@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Tutorial 2 - Available",
+      "type": "lab",
+      "dueDate": "2026-09-14T13:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nTutorial 2 - https://learn.uwaterloo.ca/d2l/le/conten",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800462@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "4 Stream AE\\, GEOE\\, ENVE\\, CHE - Mandatory Résumé Review Event",
+      "type": "assignment",
+      "dueDate": "2026-09-14T22:30:00.000Z",
+      "isCompleted": false,
+      "notes": "\\n\\n\\nWhat: A 15-minute résumé review with a first year tutor o",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800466@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "4 Stream ELE\\, CE - Mandatory Résumé Review Event",
+      "type": "assignment",
+      "dueDate": "2026-09-15T22:30:00.000Z",
+      "isCompleted": false,
+      "notes": "\\n\\n\\nWhat: A 15-minute résumé review with a first year tutor o",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800467@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "4 Stream MECH\\, TRON - Mandatory Résumé Review Event",
+      "type": "assignment",
+      "dueDate": "2026-09-16T22:30:00.000Z",
+      "isCompleted": false,
+      "notes": "\\n\\n\\nWhat: A 15-minute résumé review with a first year tutor o",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800471@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "8 Stream MGTE\\, TRON - Mandatory Résumé Review Event",
+      "type": "assignment",
+      "dueDate": "2026-09-17T22:30:00.000Z",
+      "isCompleted": false,
+      "notes": "\\n\\n\\nWhat: A 15-minute résumé review with a first year tutor o",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3818542@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Prework 1 Quiz - Due",
+      "type": "quiz",
+      "dueDate": "2026-09-18T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Workshop 1 Prequiz\\n\\n\\nQuizzes:\\nPrework 1 Quiz - https://lear",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3828654@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #1",
+      "type": "quiz",
+      "dueDate": "2026-09-19T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829455@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #1 due",
+      "type": "assignment",
+      "dueDate": "2026-09-21T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3787337@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Short Video submission (for grading) [all students] - Due",
+      "type": "assignment",
+      "dueDate": "2026-09-21T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Remember to submit your video in two dropboxes.\\n\\n\\nDropbox:\\n",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3787367@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Short Video submission (for group viewing) [Sec 002 Groups 1-40] -",
+      "type": "assignment",
+      "dueDate": "2026-09-21T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Remember to submit your video in two dropboxes.\\n\\n\\nDropbox:\\n",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805611@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Tutorial 3 - Available",
+      "type": "lab",
+      "dueDate": "2026-09-21T13:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nTutorial 3\\n\\n\\nView event - https://learn.uwaterloo.",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800473@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "8 Stream BME\\, CE - Mandatory Résumé Review Event",
+      "type": "assignment",
+      "dueDate": "2026-09-21T22:30:00.000Z",
+      "isCompleted": false,
+      "notes": "\\n\\n\\nWhat: A 15-minute résumé review with a first year tutor o",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800475@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "8 Stream MECH\\, SE - Mandatory Résumé Review Event",
+      "type": "assignment",
+      "dueDate": "2026-09-22T22:30:00.000Z",
+      "isCompleted": false,
+      "notes": "\\n\\n\\nWhat: A 15-minute résumé review with a first year tutor o",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829963@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Project Team Contract - Available",
+      "type": "lab",
+      "dueDate": "2026-09-23T16:30:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nProject Team Contract\\n\\n\\nView event - https://learn",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800476@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "8 Stream CIVE\\, SYDE - Mandatory Résumé Review Event",
+      "type": "assignment",
+      "dueDate": "2026-09-23T22:30:00.000Z",
+      "isCompleted": false,
+      "notes": "\\n\\n\\nWhat: A 15-minute résumé review with a first year tutor o",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800480@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "8 Stream CHE\\, NANO - Mandatory Résumé Review Event",
+      "type": "assignment",
+      "dueDate": "2026-09-24T22:30:00.000Z",
+      "isCompleted": false,
+      "notes": "\\n\\n\\nWhat: A 15-minute résumé review with a first year tutor o",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800340@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Résumé Quiz - 15 minutes - Due",
+      "type": "quiz",
+      "dueDate": "2026-09-25T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Résumé Quiz\\nThis quiz will open a week before its due date. Pl",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3818544@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Prework 2 Quiz - Due",
+      "type": "quiz",
+      "dueDate": "2026-09-25T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Quizzes:\\nPrework 2 Quiz - https://learn.uwaterloo.ca/d2l/lms/q",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3818547@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Workshop 2 Learn Submissions - Due",
+      "type": "assignment",
+      "dueDate": "2026-09-25T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nWorkshop 2 Learn Submissions\\n\\n\\nView event - https:",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3828655@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #2",
+      "type": "quiz",
+      "dueDate": "2026-09-26T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829456@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #2 due",
+      "type": "assignment",
+      "dueDate": "2026-09-28T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3787385@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Agreement Form submission [Sec 002 Groups 1-40] - Due",
+      "type": "assignment",
+      "dueDate": "2026-09-28T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Agreement Form submission [Sec 002 Groups 1-40]",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805613@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Tutorial 4 - Available",
+      "type": "lab",
+      "dueDate": "2026-09-28T13:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nTutorial 4\\n\\n\\nView event - https://learn.uwaterloo.",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3827956@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Project 1 - Grade calculator - Due",
+      "type": "project",
+      "dueDate": "2026-09-30T02:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nProject 1 - Grade calculator - https://learn.uwaterlo",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829957@learn.uwaterloo.ca",
+      "courseCode": "ECE198",
+      "courseName": "ECE198 Course Task",
+      "title": "ECE198_GenAI_Workshop - Available",
+      "type": "lab",
+      "dueDate": "2026-09-30T16:30:00.000Z",
+      "isCompleted": false,
+      "notes": "Materials:\\nECE198_GenAI_Workshop\\n\\n\\nView event - https://lea",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829958@learn.uwaterloo.ca",
+      "courseCode": "ECE198",
+      "courseName": "ECE198 Course Task",
+      "title": "ECE198_GenAI_Workshop - Available",
+      "type": "lab",
+      "dueDate": "2026-09-30T16:30:00.000Z",
+      "isCompleted": false,
+      "notes": "Materials:\\nECE198_GenAI_Workshop\\n\\n\\nView event - https://lea",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800344@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "InStage Interview (Credit for Completion) Due",
+      "type": "assignment",
+      "dueDate": "2026-10-02T03:59:00.000Z",
+      "isCompleted": false,
+      "notes": "Materials:\\nObject Not Found\\n\\n\\nView event - https://learn.uw",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800339@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Interview Skills Quiz - 15 minutes - Due",
+      "type": "quiz",
+      "dueDate": "2026-10-02T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Interview Skills Quiz\\nThis quiz will open a week before its du",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3818545@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Prework 3 Quiz - Due",
+      "type": "quiz",
+      "dueDate": "2026-10-02T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Please complete the following brief survey. The results will be",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3818548@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Workshop 3 AI-Supported Design Submission - Due",
+      "type": "assignment",
+      "dueDate": "2026-10-02T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nWorkshop 3 AI-Supported Design Submission\\n\\n\\nView e",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3828656@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #3",
+      "type": "quiz",
+      "dueDate": "2026-10-03T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3820660@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Team Contract - Due",
+      "type": "assignment",
+      "dueDate": "2026-10-03T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Please submit one Team Contract per group using the Team Contra",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829457@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #3 due",
+      "type": "assignment",
+      "dueDate": "2026-10-05T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805612@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Remaining Pre-MT Practice - Available",
+      "type": "lab",
+      "dueDate": "2026-10-05T13:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nRemaining Pre-MT Practice\\n\\n\\nView event - https://l",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3787404@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Deliverable 1 (Part 1) submission [Sec 002 Groups 1-20] - Due",
+      "type": "assignment",
+      "dueDate": "2026-10-07T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Deliverable 1 (Part 1) submission [Sec 002 Grou",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3787405@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Deliverable 1 (Part 1) submission [Sec 002 Groups 21-40] - Du",
+      "type": "assignment",
+      "dueDate": "2026-10-08T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Deliverable 1 (Part 1) submission [Sec 002 Grou",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800341@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "CFE Check-in Survey - 10 minutes - Due",
+      "type": "assignment",
+      "dueDate": "2026-10-09T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "The CFE Check-In Survey can be found at the following link\\, an",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800342@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "CFE Knowledge Quiz - 20 minutes - Due",
+      "type": "quiz",
+      "dueDate": "2026-10-09T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "CFE Knowledge Quiz\\n\\nThis quiz will open a week before its due",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3818543@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Prework 4 Quiz - Due",
+      "type": "quiz",
+      "dueDate": "2026-10-09T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Quizzes:\\nPrework 4 Quiz - https://learn.uwaterloo.ca/d2l/lms/q",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3818546@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Workshop 4 Learn Submissions - Due",
+      "type": "assignment",
+      "dueDate": "2026-10-09T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nWorkshop 4 Learn Submissions\\n\\n\\nView event - https:",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829445@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #4",
+      "type": "quiz",
+      "dueDate": "2026-10-10T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829458@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #4 due",
+      "type": "assignment",
+      "dueDate": "2026-10-10T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3793064@learn.uwaterloo.ca",
+      "courseCode": "ECE190",
+      "courseName": "ECE190 Course Task",
+      "title": "ECE190 midterm test",
+      "type": "quiz",
+      "dueDate": "2026-10-21T20:00:00.000Z",
+      "isCompleted": false,
+      "notes": "See the \"Test information\" folder for details about the midterm",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805614@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Tutorial 5 - Available",
+      "type": "lab",
+      "dueDate": "2026-10-26T13:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nTutorial 5\\n\\n\\nView event - https://learn.uwaterloo.",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3787915@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Deliverable 1 (Part 2) submission [Sec 002 Groups 1-20] - Due",
+      "type": "assignment",
+      "dueDate": "2026-10-29T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Deliverable 1 (Part 2) submission [Sec 002 Grou",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3787916@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Deliverable 1 (Part 2) submission [Sec 002 Groups 21-40] - Du",
+      "type": "assignment",
+      "dueDate": "2026-10-30T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Deliverable 1 (Part 2) submission [Sec 002 Grou",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829448@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #5",
+      "type": "quiz",
+      "dueDate": "2026-10-31T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829459@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #5 due",
+      "type": "assignment",
+      "dueDate": "2026-11-02T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805615@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Tutorial 6 - Available",
+      "type": "lab",
+      "dueDate": "2026-11-02T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nTutorial 6\\n\\n\\nView event - https://learn.uwaterloo.",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3800343@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Workplace Safety Quiz - 25 minutes - Due",
+      "type": "quiz",
+      "dueDate": "2026-11-06T04:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Workplace Safety Quiz\\nContent Warning: The following content t",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829449@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #6",
+      "type": "quiz",
+      "dueDate": "2026-11-07T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829460@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #6 due",
+      "type": "assignment",
+      "dueDate": "2026-11-09T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805616@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Tutorial 7 - Available",
+      "type": "lab",
+      "dueDate": "2026-11-09T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nTutorial 7\\n\\n\\nView event - https://learn.uwaterloo.",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3787923@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Deliverable 2 submission [Sec 002 Groups 1-20] - Due",
+      "type": "assignment",
+      "dueDate": "2026-11-11T04:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Deliverable 2 submission [Sec 002 Groups 1-20]",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3787924@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Deliverable 2 submission [Sec 002 Groups 21-40] - Due",
+      "type": "assignment",
+      "dueDate": "2026-11-12T04:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Deliverable 2 submission [Sec 002 Groups 21-40]",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829450@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #7",
+      "type": "quiz",
+      "dueDate": "2026-11-14T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829461@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #7 due",
+      "type": "assignment",
+      "dueDate": "2026-11-16T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805617@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Tutorial 8 - Available",
+      "type": "lab",
+      "dueDate": "2026-11-16T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nTutorial 8\\n\\n\\nView event - https://learn.uwaterloo.",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3788178@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Deliverable 3 submission [Sec 002 Groups 1-20] - Due",
+      "type": "assignment",
+      "dueDate": "2026-11-18T04:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Deliverable 3 submission [Sec 002 Groups 1-20]",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3788179@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Deliverable 3 submission [Sec 002 Groups 21-40] - Due",
+      "type": "assignment",
+      "dueDate": "2026-11-19T04:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Deliverable 3 submission [Sec 002 Groups 21-40]",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829451@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #8",
+      "type": "quiz",
+      "dueDate": "2026-11-21T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829462@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #8 due",
+      "type": "assignment",
+      "dueDate": "2026-11-23T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805618@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Tutorial 9 - Available",
+      "type": "lab",
+      "dueDate": "2026-11-23T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nTutorial 9\\n\\n\\nView event - https://learn.uwaterloo.",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829452@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #9",
+      "type": "quiz",
+      "dueDate": "2026-11-28T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829463@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #9 due",
+      "type": "assignment",
+      "dueDate": "2026-11-30T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3805619@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Remaining Pre-FE Practice - Available",
+      "type": "lab",
+      "dueDate": "2026-11-30T14:00:00.000Z",
+      "isCompleted": false,
+      "notes": "Modules:\\nRemaining Pre-FE Practice\\n\\n\\nView event - https://l",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829453@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Quiz #10",
+      "type": "quiz",
+      "dueDate": "2026-12-05T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829464@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #10 due",
+      "type": "assignment",
+      "dueDate": "2026-12-07T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3829465@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Assignment #11 due",
+      "type": "assignment",
+      "dueDate": "2026-12-09T23:59:00.000Z",
+      "isCompleted": false,
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3788183@learn.uwaterloo.ca",
+      "courseCode": "SEC 002",
+      "courseName": "SEC 002 Course Task",
+      "title": "Group Deliverable 4 submission [Sec 002 Groups 1-40] - Due",
+      "type": "assignment",
+      "dueDate": "2026-12-09T04:59:59.000Z",
+      "isCompleted": false,
+      "notes": "Dropbox:\\nGroup Deliverable 4 submission [Sec 002 Groups 1-40]",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3747430@learn.uwaterloo.ca",
+      "courseCode": "LEARN",
+      "courseName": "LEARN Course Task",
+      "title": "Academic Integrity Quiz - Due",
+      "type": "quiz",
+      "dueDate": "2027-05-01T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "This quiz will introduce you to some scenarios that you could e",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    },
+    {
+      "id": "6606-3747431@learn.uwaterloo.ca",
+      "courseCode": "MATH 116",
+      "courseName": "MATH 116 Course Task",
+      "title": "MATH 116 Course Outline Scavenger Hunt - Due",
+      "type": "assignment",
+      "dueDate": "2027-05-01T03:59:59.000Z",
+      "isCompleted": false,
+      "notes": "The MATH 116 Course Outline Scavenger Hunt is set up as a quiz",
+      "locationUrl": "https://learn.uwaterloo.ca/"
+    }
+  ],
+  "announcements": [
+    {
+      "id": "ann-1",
+      "courseCode": "CS 135",
+      "courseName": "Designing Functional Programs",
+      "title": "A05 Released & Midterm Exam Room Allocation",
+      "content": "Assignment 05 has been published on Learn and is due next Tuesday at 23:59. Midterm room allocations are now available under the Course Info tab. Please check your assigned seat (PAC vs DC).",
+      "date": "2026-09-17T17:57:42.127Z",
+      "author": "Prof. Gregor Richards",
+      "priority": "important"
+    },
+    {
+      "id": "ann-2",
+      "courseCode": "MATH 135",
+      "courseName": "Algebra for Honors Mathematics",
+      "title": "Assignment 4 Solution Key & Proof Tips",
+      "content": "Solutions for Assignment 4 are posted under Content -> Solutions. Make sure to review the induction proof structuring guide before Assignment 5.",
+      "date": "2026-09-16T17:57:42.127Z",
+      "author": "Dr. Carmen Bruni"
+    },
+    {
+      "id": "ann-3",
+      "courseCode": "MATH 137",
+      "courseName": "Calculus 1 for Honors Mathematics",
+      "title": "WebWork Problem Set #6 Open",
+      "content": "WebWork Set 6 covering implicit differentiation and logarithmic differentiation is now accessible. You have up to 5 attempts per question.",
+      "date": "2026-09-15T17:57:42.127Z",
+      "author": "Math Undergrad Office"
+    },
+    {
+      "id": "ann-4",
+      "courseCode": "ENGL 109",
+      "courseName": "Introduction to Academic Writing",
+      "title": "Peer Review Draft Deadline Reminder",
+      "content": "Your Rough Draft for Essay #2 must be submitted to the Learn Discussion Forum by Friday 5 PM for peer review assignment.",
+      "date": "2026-09-14T17:57:42.127Z",
+      "author": "Prof. Sarah Jenkins"
+    }
+  ],
+  "quickLinks": [
+    {
+      "id": "waterlooworks",
+      "name": "WaterlooWorks",
+      "category": "career",
+      "url": "https://waterlooworks.uwaterloo.ca/",
+      "description": "Co-op job search, interview schedules, rankings, and employment services.",
+      "iconName": "Briefcase"
+    },
+    {
+      "id": "learn",
+      "name": "LEARN (D2L)",
+      "category": "core",
+      "url": "https://learn.uwaterloo.ca/",
+      "description": "Course materials, assignment submissions, announcements, and grades.",
+      "iconName": "BookOpen"
+    },
+    {
+      "id": "quest",
+      "name": "Quest",
+      "category": "core",
+      "url": "https://quest.uwaterloo.ca/",
+      "description": "Student information system, course enrollment, transcripts, and tuition fees.",
+      "iconName": "GraduationCap"
+    },
+    {
+      "id": "outlook",
+      "name": "UWaterloo Mail (Outlook)",
+      "category": "core",
+      "url": "https://outlook.office.com/mail/",
+      "description": "Official student email inbox (@uwaterloo.ca).",
+      "iconName": "Mail"
+    },
+    {
+      "id": "portal",
+      "name": "UW Portal",
+      "category": "campus",
+      "url": "https://portal.uwaterloo.ca/",
+      "description": "Campus widgets, food services schedules, GRT transit, and alerts.",
+      "iconName": "LayoutGrid"
+    },
+    {
+      "id": "crowdmark",
+      "name": "Crowdmark",
+      "category": "academic",
+      "url": "https://app.crowdmark.com/",
+      "description": "Online grading platform for math, engineering, and science assignments.",
+      "iconName": "FileCheck"
+    },
+    {
+      "id": "piazza",
+      "name": "Piazza",
+      "category": "academic",
+      "url": "https://piazza.com/",
+      "description": "Q&A discussion forum for course content and peer assistance.",
+      "iconName": "MessageSquare"
+    },
+    {
+      "id": "watiam",
+      "name": "WatIAM",
+      "category": "core",
+      "url": "https://idm.uwaterloo.ca/identity/self-service",
+      "description": "Identity management, password updates, and 2FA configuration.",
+      "iconName": "Key"
+    },
+    {
+      "id": "workday",
+      "name": "Workday",
+      "category": "career",
+      "url": "https://wd3.myworkday.com/uwaterloo",
+      "description": "TA/RA employment, payroll, tax forms, and campus job administration.",
+      "iconName": "DollarSign"
+    },
+    {
+      "id": "wusa",
+      "name": "WUSA",
+      "category": "campus",
+      "url": "https://wusa.ca/",
+      "description": "Waterloo Undergraduate Student Association, health dental plan, and clubs.",
+      "iconName": "Users"
+    },
+    {
+      "id": "library",
+      "name": "UW Library (Omni)",
+      "category": "academic",
+      "url": "https://uwaterloo.ca/library/",
+      "description": "Dana Porter & Davis Centre library catalogs, research papers, and study room bookings.",
+      "iconName": "Library"
+    }
+  ],
+  "schedule": [
+    {
+      "id": "sch-1",
+      "courseCode": "CS 135",
+      "courseName": "Designing Functional Programs",
+      "title": "Lecture 001",
+      "location": "MC 2065",
+      "startTime": "10:00 AM",
+      "endTime": "11:20 AM",
+      "daysOfWeek": [
+        "Mon",
+        "Wed",
+        "Fri"
+      ],
+      "instructor": "Gregor Richards",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-2",
+      "courseCode": "MATH 135",
+      "courseName": "Algebra for Honors Mathematics",
+      "title": "Lecture 002",
+      "location": "MC 4020",
+      "startTime": "11:30 AM",
+      "endTime": "12:50 PM",
+      "daysOfWeek": [
+        "Mon",
+        "Wed",
+        "Fri"
+      ],
+      "instructor": "Carmen Bruni",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-3",
+      "courseCode": "MATH 137",
+      "courseName": "Calculus 1 for Honors Mathematics",
+      "title": "Lecture 003",
+      "location": "RCH 101",
+      "startTime": "01:30 PM",
+      "endTime": "02:50 PM",
+      "daysOfWeek": [
+        "Tue",
+        "Thu"
+      ],
+      "instructor": "David Jao",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-4",
+      "courseCode": "CS 135",
+      "courseName": "Designing Functional Programs",
+      "title": "Tutorial 101",
+      "location": "MC 3003",
+      "startTime": "03:30 PM",
+      "endTime": "04:20 PM",
+      "daysOfWeek": [
+        "Wed"
+      ],
+      "instructor": "ISG TA",
+      "type": "tutorial"
+    },
+    {
+      "id": "sch-5",
+      "courseCode": "PHYS 121",
+      "courseName": "Mechanics & Waves",
+      "title": "Physics Lab 01",
+      "location": "PHY 310",
+      "startTime": "02:30 PM",
+      "endTime": "05:20 PM",
+      "daysOfWeek": [
+        "Thu"
+      ],
+      "instructor": "Lab Instructor",
+      "type": "lab"
+    }
+  ],
+  "settings": {
+    "theme": "light",
+    "d2lFeedUrl": "https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?token=act3s2yw0g48a4qw45347",
+    "lastSyncedAt": "2026-09-18T20:03:46.028Z",
+    "customLinks": [],
+    "courseColors": {
+      "CS 135": "#3b82f61a",
+      "MATH 135": "#10b9811a",
+      "MATH 137": "#8b5cf61a",
+      "ENGL 109": "#f59e0b1a",
+      "PHYS 121": "#ef44441a",
+      "LEARN": "#64748b1a"
+    },
+    "sidebarOrder": [
+      "dashboard",
+      "schedule",
+      "links",
+      "announcements",
+      "assignments",
+      "calendar",
+      "settings"
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "d2lFeedUrl": "",
+  "d2lFeedUrl": "https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?token=act3s2yw0g48a4qw45347",
   "theme": "light",
-  "autoSyncIntervalMinutes": 15,
+  "autoSyncIntervalMinutes": 3600,
   "courseColors": {
     "CS 135": "#3b82f61a",
     "MATH 135": "#10b9811a",

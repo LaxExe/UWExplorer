@@ -1,0 +1,1918 @@
+BEGIN:VCALENDAR
+PRODID:-//D2L//NONSGML v1.0//EN
+VERSION:2.0
+METHOD:PUBLISH
+X-WR-CALNAME:All Courses - University of Waterloo
+BEGIN:VTIMEZONE
+TZID:America/Toronto
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:20110313T030000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:20101107T010000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Test
+LOCATION:University of Waterloo
+CLASS:PUBLIC
+DTSTART:20120409T133000Z
+DTEND:20120409T140000Z
+UID:6606-113825@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20120427T133839Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Course Drop\, Penalty 1 Period ends: WD assigned Mar. 20 (T)
+LOCATION:MTHEL 99 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180320
+DTEND;VALUE=DATE:20180321
+UID:6606-3782094@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134528Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Course Drop\, Penalty 1 Period ends: WD assigned Mar. 20 (T)
+LOCATION:MATH 117 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180320
+DTEND;VALUE=DATE:20180321
+UID:6606-3782270@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134545Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Course Drop\, Penalty 1 Period ends: WD assigned Mar. 20 (T)
+LOCATION:MATH 115 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180320
+DTEND;VALUE=DATE:20180321
+UID:6606-3782382@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134554Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Good Friday holiday: Mar. 30 (F)
+LOCATION:MTHEL 99 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180330
+DTEND;VALUE=DATE:20180331
+UID:6606-3782101@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134528Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Good Friday holiday: Mar. 30 (F)
+LOCATION:MATH 117 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180330
+DTEND;VALUE=DATE:20180331
+UID:6606-3782277@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134545Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Good Friday holiday: Mar. 30 (F)
+LOCATION:MATH 115 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180330
+DTEND;VALUE=DATE:20180331
+UID:6606-3782389@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134554Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Lectures or classes end Apr. 4 (W)
+LOCATION:MTHEL 99 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180404
+DTEND;VALUE=DATE:20180405
+UID:6606-3782095@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134528Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Lectures or classes end Apr. 4 (W)
+LOCATION:MATH 117 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180404
+DTEND;VALUE=DATE:20180405
+UID:6606-3782271@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134545Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Lectures or classes end Apr. 4 (W)
+LOCATION:MATH 115 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180404
+DTEND;VALUE=DATE:20180405
+UID:6606-3782383@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134554Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:On-campus examinations begin Apr. 9 (M)
+LOCATION:MTHEL 99 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180409
+DTEND;VALUE=DATE:20180410
+UID:6606-3782096@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134528Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:On-campus examinations begin Apr. 9 (M)
+LOCATION:MATH 117 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180409
+DTEND;VALUE=DATE:20180410
+UID:6606-3782272@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134545Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:On-campus examinations begin Apr. 9 (M)
+LOCATION:MATH 115 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180409
+DTEND;VALUE=DATE:20180410
+UID:6606-3782384@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134554Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:On-campus examinations end Apr. 24 (T)
+LOCATION:MTHEL 99 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180424
+DTEND;VALUE=DATE:20180425
+UID:6606-3782097@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134528Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:On-campus examinations end Apr. 24 (T)
+LOCATION:MATH 117 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180424
+DTEND;VALUE=DATE:20180425
+UID:6606-3782273@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134545Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:On-campus examinations end Apr. 24 (T)
+LOCATION:MATH 115 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180424
+DTEND;VALUE=DATE:20180425
+UID:6606-3782385@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134554Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Unofficial grades begin to appear in Quest Apr. 25 (W)
+LOCATION:MTHEL 99 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180425
+DTEND;VALUE=DATE:20180426
+UID:6606-3782098@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134528Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Unofficial grades begin to appear in Quest Apr. 25 (W)
+LOCATION:MATH 117 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180425
+DTEND;VALUE=DATE:20180426
+UID:6606-3782274@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134545Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Unofficial grades begin to appear in Quest Apr. 25 (W)
+LOCATION:MATH 115 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180425
+DTEND;VALUE=DATE:20180426
+UID:6606-3782386@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134554Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Lectures begin May 1 (T)
+LOCATION:MTHEL 99 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180501
+DTEND;VALUE=DATE:20180502
+UID:6606-3782100@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134528Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Lectures begin May 1 (T)
+LOCATION:MATH 117 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180501
+DTEND;VALUE=DATE:20180502
+UID:6606-3782276@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134545Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Lectures begin May 1 (T)
+LOCATION:MATH 115 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180501
+DTEND;VALUE=DATE:20180502
+UID:6606-3782388@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134554Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Standings and official grades are available in Quest May 18 (F)
+LOCATION:MTHEL 99 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180518
+DTEND;VALUE=DATE:20180519
+UID:6606-3782099@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134528Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Standings and official grades are available in Quest May 18 (F)
+LOCATION:MATH 117 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180518
+DTEND;VALUE=DATE:20180519
+UID:6606-3782275@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134545Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Standings and official grades are available in Quest May 18 (F)
+LOCATION:MATH 115 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20180518
+DTEND;VALUE=DATE:20180519
+UID:6606-3782387@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260716T134554Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Fall 2020 Work Term Ends
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20201223
+DTEND;VALUE=DATE:20201224
+UID:6606-2848205@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Winter 2021 Work Term Starts
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210104
+DTEND;VALUE=DATE:20210105
+UID:6606-2848206@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #1 Posting #1 Applications
+LOCATION:Engineering Co-op Community
+DESCRIPTION:Applications allowed for this period - 50 apps\nTotal applicati
+	ons allowed to date - 50 apps
+CLASS:PUBLIC
+DTSTART:20210111T140000Z
+DTEND:20210119T140000Z
+UID:6606-2848207@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #1 Posting #1 All Postings Open
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210115
+DTEND;VALUE=DATE:20210116
+UID:6606-2848208@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #1 Posting #2 Applications
+LOCATION:Engineering Co-op Community
+DESCRIPTION:Total applications allowed to date - 100 apps
+CLASS:PUBLIC
+DTSTART:20210120T140000Z
+DTEND:20210126T140000Z
+UID:6606-2848209@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Deadline to request removal from cycle #1 interview/match process
+LOCATION:Engineering Co-op Community
+DESCRIPTION:See https://uwaterloo.ca/co-operative-education/find-your-co-op
+	-job/find-job-waterlooworks/interview/withdrawing-waterlooworks-application
+	s-and-interviews for details
+CLASS:PUBLIC
+DTSTART:20210121T170000Z
+DTEND:20210121T170000Z
+UID:6606-2848210@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #1 Posting #2 All Postings open
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210122
+DTEND;VALUE=DATE:20210123
+UID:6606-2848211@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #1 Remote Interview Period
+LOCATION:Engineering Co-op Community
+DESCRIPTION:https://uwaterloo.ca/co-operative-education/find-your-co-op-job
+	/find-job-waterlooworks/interview
+CLASS:PUBLIC
+DTSTART:20210125T050000Z
+DTEND:20210211T043000Z
+UID:6606-2848212@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #1 Rankings
+LOCATION:Engineering Co-op Community
+DESCRIPTION:https://uwaterloo.ca/co-operative-education/find-your-co-op-job
+	/find-job-waterlooworks/rankmatch\nMatch results available at end of day
+CLASS:PUBLIC
+DTSTART:20210211T190000Z
+DTEND:20210212T190000Z
+UID:6606-2848213@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #1 Student rankings consults
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART:20210212T150000Z
+DTEND:20210212T180000Z
+UID:6606-2848214@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #2 Posting #1 Applications
+LOCATION:Engineering Co-op Community
+DESCRIPTION:Total applications allowed to date - 150 apps
+CLASS:PUBLIC
+DTSTART:20210216T140000Z
+DTEND:20210223T140000Z
+UID:6606-2848215@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #2 Posting #1 All postings open
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210219
+DTEND;VALUE=DATE:20210220
+UID:6606-2848217@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #2 Posting #2
+LOCATION:Engineering Co-op Community
+DESCRIPTION:Total applications allowed to date - 200 apps
+CLASS:PUBLIC
+DTSTART:20210224T140000Z
+DTEND:20210302T140000Z
+UID:6606-2848216@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Deadline to request removal from Cycle #2 interview/match process
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART:20210225T170000Z
+DTEND:20210225T170000Z
+UID:6606-2848218@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #2 Posting #2 All postings open
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210226
+DTEND;VALUE=DATE:20210227
+UID:6606-2848219@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #2 Remote Interviews
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART:20210226T050000Z
+DTEND:20210311T043000Z
+UID:6606-2848220@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Deadline to submit an Arrange Own Job form to include an external o
+	ffer in upcoming match
+LOCATION:Engineering Co-op Community
+DESCRIPTION:https://uwaterloo.ca/co-operative-education/find-your-co-op-job
+	/arrange-your-own-job
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210305
+DTEND;VALUE=DATE:20210306
+UID:6606-2848221@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Last day to start work to receive credit for a Winter 2021 work ter
+	m
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210308
+DTEND;VALUE=DATE:20210309
+UID:6606-2848222@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycle #2 Rankings
+LOCATION:Engineering Co-op Community
+DESCRIPTION:Match results available at end of day on the 12th
+CLASS:PUBLIC
+DTSTART:20210311T190000Z
+DTEND:20210312T190000Z
+UID:6606-2848223@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Student rankings consult
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART:20210312T150000Z
+DTEND:20210312T180000Z
+UID:6606-2848224@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Cycles #3-6 Open
+LOCATION:Engineering Co-op Community
+DESCRIPTION:New jobs posted daily (open for 2 business days and close at 9a
+	m EST)\nApplication limit increased to 500 total
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210316
+DTEND;VALUE=DATE:20210317
+UID:6606-2848225@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Remote Interviews
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART:20210323T040000Z
+DTEND:20210326T000000Z
+UID:6606-2848226@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Student Rankings
+LOCATION:Engineering Co-op Community
+DESCRIPTION:Available EOD on 26th
+CLASS:PUBLIC
+DTSTART:20210326T000000Z
+DTEND:20210326T140000Z
+UID:6606-2848227@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Remote Interviews
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART:20210330T040000Z
+DTEND:20210401T000000Z
+UID:6606-2848228@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Student Rankings Open
+LOCATION:Engineering Co-op Community
+DESCRIPTION:Match results available EOD
+CLASS:PUBLIC
+DTSTART:20210401T000000Z
+DTEND:20210401T140000Z
+UID:6606-2848229@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Remote Interviews
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;TZID=America/Toronto:20210406T000000
+DTEND;TZID=America/Toronto:20210408T200000
+UID:6606-2848230@learn.uwaterloo.ca
+SEQUENCE:0
+RRULE:FREQ=WEEKLY;UNTIL=20210415T040000Z;INTERVAL=1;BYDAY=TU
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Student Rankings Open
+LOCATION:Engineering Co-op Community
+DESCRIPTION:Match results available EOD
+CLASS:PUBLIC
+DTSTART:20210409T000000Z
+DTEND:20210409T140000Z
+UID:6606-2848232@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Student Rankings Open
+LOCATION:Engineering Co-op Community
+DESCRIPTION:Match results available EOD
+CLASS:PUBLIC
+DTSTART:20210416T000000Z
+DTEND:20210416T140000Z
+UID:6606-2848233@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Direct Offers Start
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210419
+DTEND;VALUE=DATE:20210420
+UID:6606-2848234@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Winter 2021 work term ends
+LOCATION:Engineering Co-op Community
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20210423
+DTEND;VALUE=DATE:20210424
+UID:6606-2848235@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20230627T141851Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Dropbox for Outline for Practice Presentation #1  - Due
+LOCATION:COMMST 192 - Fall 2026(007)
+DESCRIPTION:Dropbox:\nDropbox for Outline for Practice Presentation #1  - h
+	ttps://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=1
+	307087&db=417663\n\n\nView event - https://learn.uwaterloo.ca/d2l/le/calend
+	ar/1307087/event/3819868/detailsview?ou=1307087#3819868
+CLASS:PUBLIC
+DTSTART:20250922T170000Z
+DTEND:20250922T170000Z
+UID:6606-3819868@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260909T040908Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Dropbox for Outline to Mini Speech #2  - Due
+LOCATION:COMMST 192 - Fall 2026(007)
+DESCRIPTION:Dropbox:\nDropbox for Outline to Mini Speech #2  - https://lear
+	n.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=1307087&db=4
+	17664\n\n\nView event - https://learn.uwaterloo.ca/d2l/le/calendar/1307087/
+	event/3819864/detailsview?ou=1307087#3819864
+CLASS:PUBLIC
+DTSTART:20251002T035959Z
+DTEND:20251002T035959Z
+UID:6606-3819864@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260909T040854Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Dropbox for Progress Report and Annotated Bibliography  - Due
+LOCATION:COMMST 192 - Fall 2026(007)
+DESCRIPTION:Dropbox:\nDropbox for Progress Report and Annotated Bibliograph
+	y  - https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2
+	l?ou=1307087&db=417666\n\n\nView event - https://learn.uwaterloo.ca/d2l/le/
+	calendar/1307087/event/3819869/detailsview?ou=1307087#3819869
+CLASS:PUBLIC
+DTSTART:20251103T045959Z
+DTEND:20251103T045959Z
+UID:6606-3819869@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260909T040908Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Homework November 3 - Due
+LOCATION:COMMST 192 - Fall 2026(007)
+DESCRIPTION:Dropbox:\nHomework November 3 - https://learn.uwaterloo.ca/d2l/
+	lms/dropbox/user/folder_submit_files.d2l?ou=1307087&db=417671\n\n\nView eve
+	nt - https://learn.uwaterloo.ca/d2l/le/calendar/1307087/event/3819870/detai
+	lsview?ou=1307087#3819870
+CLASS:PUBLIC
+DTSTART:20251103T210000Z
+DTEND:20251103T210000Z
+UID:6606-3819870@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260909T040910Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Report Drafts\, Due December 1 - Due
+LOCATION:COMMST 192 - Fall 2026(007)
+DESCRIPTION:Dropbox:\nReport Drafts\, Due December 1 - https://learn.uwater
+	loo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=1307087&db=417669\n\
+	n\nView event - https://learn.uwaterloo.ca/d2l/le/calendar/1307087/event/38
+	19865/detailsview?ou=1307087#3819865
+CLASS:PUBLIC
+DTSTART:20251201T180000Z
+DTEND:20251201T180000Z
+UID:6606-3819865@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260909T040856Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Final Recommendation Report - Due
+LOCATION:COMMST 192 - Fall 2026(007)
+DESCRIPTION:Dropbox:\nFinal Recommendation Report - https://learn.uwaterloo
+	.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=1307087&db=417667\n\n\n
+	View event - https://learn.uwaterloo.ca/d2l/le/calendar/1307087/event/38198
+	67/detailsview?ou=1307087#3819867
+CLASS:PUBLIC
+DTSTART:20251206T045959Z
+DTEND:20251206T045959Z
+UID:6606-3819867@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260909T040902Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Dropbox for Mediated Reflection  - Due
+LOCATION:COMMST 192 - Fall 2026(007)
+DESCRIPTION:Dropbox:\nDropbox for Mediated Reflection  - https://learn.uwat
+	erloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=1307087&db=417668\
+	n\n\nView event - https://learn.uwaterloo.ca/d2l/le/calendar/1307087/event/
+	3819866/detailsview?ou=1307087#3819866
+CLASS:PUBLIC
+DTSTART:20251216T045959Z
+DTEND:20251216T045959Z
+UID:6606-3819866@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260909T040858Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:View your course schedule on Quest - Due
+LOCATION:Engineering Ready Modules (2026)
+DESCRIPTION:On July 22\, you'll be able to view your class schedule in Ques
+	t. Your schedule tells you when and where your classes will take place in t
+	he Fall term.\n\n\nChecklists:\nView your course schedule on Quest - https:
+	//learn.uwaterloo.ca/d2l/lms/checklist/viewchecklist.d2l?ou=1271136&checkli
+	stId=15351\n\n\nView event - https://learn.uwaterloo.ca/d2l/le/calendar/127
+	1136/event/3747432/detailsview?ou=1271136#3747432
+CLASS:PUBLIC
+DTSTART:20260722T160000Z
+DTEND:20260722T160000Z
+UID:6606-3747432@learn.uwaterloo.ca
+SEQUENCE:2
+LAST-MODIFIED:20260702T164920Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Engineering Ready Knowledge Check - Due
+LOCATION:Engineering Ready Modules (2026)
+DESCRIPTION:\nTest your understanding of Waterloo Ready with this short 4-q
+	uestion quiz! This is a great opportunity to check what you've learned and 
+	reinforce key concepts.\nDon't worry about getting everything right on your
+	 first try—you can take the quiz as many times as you'd like. To successful
+	ly complete this activity\, you'll need to achieve a score of 100%. Use eac
+	h attempt as a chance to learn\, review\, and improve your understanding.\n
+	Good luck!\n\n\n\nQuizzes:\nEngineering Ready Knowledge Check - https://lea
+	rn.uwaterloo.ca/d2l/lms/quizzing/quizzing.d2l?ou=1271136&qi=322237\n\n\nVie
+	w event - https://learn.uwaterloo.ca/d2l/le/calendar/1271136/event/3778069/
+	detailsview?ou=1271136#3778069
+CLASS:PUBLIC
+DTSTART:20260905T035959Z
+DTEND:20260905T035959Z
+UID:6606-3778069@learn.uwaterloo.ca
+SEQUENCE:2
+LAST-MODIFIED:20260702T163503Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:WHMIS Completion - Due
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:You must upload a screenshot of the final quiz grade to verify 
+	that you have completed WHMIS before your first workshop.\n\n\nDropbox:\nWH
+	MIS Completion - https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_sub
+	mit_files.d2l?ou=1318281&db=417211\n\n\nView event - https://learn.uwaterlo
+	o.ca/d2l/le/calendar/1318281/event/3820640/detailsview?ou=1318281#3820640
+CLASS:PUBLIC
+DTSTART:20260914T123000Z
+DTEND:20260914T123000Z
+UID:6606-3820640@learn.uwaterloo.ca
+SEQUENCE:4
+LAST-MODIFIED:20260909T180338Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Tutorial 2 - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nTutorial 2 - https://learn.uwaterloo.ca/d2l/le/conten
+	t/1288774/Home?itemIdentifier=D2L.LE.Content.ContentObject.ModuleCO-6653264
+	\n\n\nView event - https://learn.uwaterloo.ca/d2l/le/calendar/1288774/event
+	/3805610/detailsview?ou=1288774#3805610
+CLASS:PUBLIC
+DTSTART:20260914T130000Z
+DTEND:20260914T130000Z
+UID:6606-3805610@learn.uwaterloo.ca
+SEQUENCE:2
+LAST-MODIFIED:20260828T212824Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:4 Stream AE\, GEOE\, ENVE\, CHE - Mandatory Résumé Review Event
+LOCATION:Claudette Millar Hall (CMH) - Great Hall (CFE – Fall 2026)
+DESCRIPTION:\n\n\nWhat: A 15-minute résumé review with a first year tutor o
+	r trained staff member \n\nWhere: CMH Great Hall. Note that there is constr
+	uction near the front door - follow signage to enter through the side door\
+	n\n\n\n\n\nWhen: You are required to attend the session designated for your
+	 program and stream. Events run from September 14–17 & 21–24\, from 4:30 to
+	 6:30 PM (Note: Monday Sep 14 has a 3:30 start time). \n\n\n\n\n\n\nWhat to
+	 bring:   \n\n\n\n\n\n\nYour WatCard  \n\n\n\n\n\n\nSomething to take notes
+	 with   \n\n\n\n\n\n\nBring your résumé on a laptop or printed (printing is
+	 available close by near the CMH Front Desk\, or any other W Print self-ser
+	ve printer locations. Be sure to load funds on your WatCard ahead of time).
+	 Reviews cannot be done on phones. \n\n\n\n\n\nMaterials:\nCFE Mandatory Ré
+	sumé Review Schedule - https://learn.uwaterloo.ca/d2l/le/content/1301395/vi
+	ewContent/6630779/View\n\n\nView event - https://learn.uwaterloo.ca/d2l/le/
+	calendar/1301395/event/3800462/detailsview?ou=1301395#3800462
+CLASS:PUBLIC
+DTSTART:20260914T193000Z
+DTEND:20260914T223000Z
+UID:6606-3800462@learn.uwaterloo.ca
+SEQUENCE:8
+LAST-MODIFIED:20260901T195517Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:4 Stream ELE\, CE - Mandatory Résumé Review Event
+LOCATION:Claudette Millar Hall (CMH) - Great Hall (CFE – Fall 2026)
+DESCRIPTION:\n\n\nWhat: A 15-minute résumé review with a first year tutor o
+	r trained staff member \n\nWhere: CMH Great Hall. Note that there is constr
+	uction near the front door - follow signage to enter through the side door.
+	 \n\n\n\n\n\nWhen: You are required to attend the session designated for yo
+	ur program and stream. Events run from September 14–17 & 21–24\, from 4:30 
+	to 6:30 PM\n\n\n\n\n\n\nWhat to bring:   \n\n\n\n\n\n\nYour WatCard  \n\n\n
+	\n\n\n\nSomething to take notes with   \n\n\n\n\n\n\nBring your résumé on a
+	 laptop or printed (printing is available close by near the CMH Front Desk\
+	, or any other W Print self-serve printer locations. Be sure to load funds 
+	on your WatCard ahead of time). Reviews cannot be done on phones. \n\n\n\n\
+	n\nMaterials:\nCFE Mandatory Résumé Review Schedule - https://learn.uwaterl
+	oo.ca/d2l/le/content/1301395/viewContent/6630779/View\n\n\nView event - htt
+	ps://learn.uwaterloo.ca/d2l/le/calendar/1301395/event/3800466/detailsview?o
+	u=1301395#3800466
+CLASS:PUBLIC
+DTSTART:20260915T203000Z
+DTEND:20260915T223000Z
+UID:6606-3800466@learn.uwaterloo.ca
+SEQUENCE:4
+LAST-MODIFIED:20260901T195327Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:4 Stream MECH\, TRON - Mandatory Résumé Review Event
+LOCATION:Claudette Millar Hall (CMH) - Great Hall (CFE – Fall 2026)
+DESCRIPTION:\n\n\nWhat: A 15-minute résumé review with a first year tutor o
+	r trained staff member \n\nWhere: CMH Great Hall. Note that there is constr
+	uction near the front door - follow signage to enter through the side door.
+	 \n\n\n\n\n\nWhen: You are required to attend the session designated for yo
+	ur program and stream. Events run from September 14–17 & 21–24\, from 4:30 
+	to 6:30 PM \n\n\n\n\n\n\nWhat to bring:   \n\n\n\n\n\n\nYour WatCard  \n\n\
+	n\n\n\n\nSomething to take notes with   \n\n\n\n\n\n\nBring your résumé on 
+	a laptop or printed (printing is available close by near the CMH Front Desk
+	\, or any other W Print self-serve printer locations. Be sure to load funds
+	 on your WatCard ahead of time). Reviews cannot be done on phones. \n\n\n\n
+	\n\nMaterials:\nCFE Mandatory Résumé Review Schedule - https://learn.uwater
+	loo.ca/d2l/le/content/1301395/viewContent/6630779/View\n\n\nView event - ht
+	tps://learn.uwaterloo.ca/d2l/le/calendar/1301395/event/3800467/detailsview?
+	ou=1301395#3800467
+CLASS:PUBLIC
+DTSTART:20260916T203000Z
+DTEND:20260916T223000Z
+UID:6606-3800467@learn.uwaterloo.ca
+SEQUENCE:3
+LAST-MODIFIED:20260901T195339Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:8 Stream MGTE\, TRON - Mandatory Résumé Review Event
+LOCATION:Claudette Millar Hall (CMH) - Great Hall (CFE – Fall 2026)
+DESCRIPTION:\n\n\nWhat: A 15-minute résumé review with a first year tutor o
+	r trained staff member \n\nWhere: CMH Great Hall. Note that there is constr
+	uction near the front door - follow signage to enter through the side door.
+	 \n\n\n\n\n\nWhen: You are required to attend the session designated for yo
+	ur program and stream. Events run from September 14–17 & 21–24\, from 4:30 
+	to 6:30 PM\n\n\n\n\n\n\nWhat to bring:   \n\n\n\n\n\n\nYour WatCard  \n\n\n
+	\n\n\n\nSomething to take notes with   \n\n\n\n\n\n\nBring your résumé on a
+	 laptop or printed (printing is available close by near the CMH Front Desk\
+	, or any other W Print self-serve printer locations. Be sure to load funds 
+	on your WatCard ahead of time). Reviews cannot be done on phones. \n\n\n\n\
+	n\nMaterials:\nCFE Mandatory Résumé Review Schedule - https://learn.uwaterl
+	oo.ca/d2l/le/content/1301395/viewContent/6630779/View\n\n\nView event - htt
+	ps://learn.uwaterloo.ca/d2l/le/calendar/1301395/event/3800471/detailsview?o
+	u=1301395#3800471
+CLASS:PUBLIC
+DTSTART:20260917T203000Z
+DTEND:20260917T223000Z
+UID:6606-3800471@learn.uwaterloo.ca
+SEQUENCE:2
+LAST-MODIFIED:20260901T195403Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Prework 1 Quiz - Due
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Workshop 1 Prequiz\n\n\nQuizzes:\nPrework 1 Quiz - https://lear
+	n.uwaterloo.ca/d2l/lms/quizzing/quizzing.d2l?ou=1318281&qi=328370\n\n\nView
+	 event - https://learn.uwaterloo.ca/d2l/le/calendar/1318281/event/3818542/d
+	etailsview?ou=1318281#3818542
+CLASS:PUBLIC
+DTSTART:20260918T035959Z
+DTEND:20260918T035959Z
+UID:6606-3818542@learn.uwaterloo.ca
+SEQUENCE:9
+LAST-MODIFIED:20260914T130414Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #1
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20260918
+DTEND;VALUE=DATE:20260919
+UID:6606-3828654@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260915T145449Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #1 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+UID:6606-3829455@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025422Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Short Video submission (for grading) [all students] - Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Remember to submit your video in two dropboxes.\n\n\nDropbox:\n
+	Short Video submission (for grading) [all students] - https://learn.uwaterl
+	oo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=1290161&db=410483\n\n
+	\nView event - https://learn.uwaterloo.ca/d2l/le/calendar/1290161/event/378
+	7337/detailsview?ou=1290161#3787337
+CLASS:PUBLIC
+DTSTART:20260921T035959Z
+DTEND:20260921T035959Z
+UID:6606-3787337@learn.uwaterloo.ca
+SEQUENCE:2
+LAST-MODIFIED:20260724T181512Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Short Video submission (for group viewing) [Sec 002 Groups 1-40] - 
+	Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Remember to submit your video in two dropboxes.\n\n\nDropbox:\n
+	Short Video submission (for group viewing) [Sec 002 Groups 1-40] - https://
+	learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=1290161&
+	db=410485&grpid=1292473\n\n\nView event - https://learn.uwaterloo.ca/d2l/le
+	/calendar/1290161/event/3787367/detailsview?ou=1290161#3787367
+CLASS:PUBLIC
+DTSTART:20260921T035959Z
+DTEND:20260921T035959Z
+UID:6606-3787367@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260724T181751Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Tutorial 3 - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nTutorial 3\n\n\nView event - https://learn.uwaterloo.
+	ca/d2l/le/calendar/1288774/event/3805611/detailsview?ou=1288774#3805611
+CLASS:PUBLIC
+DTSTART:20260921T130000Z
+DTEND:20260921T130000Z
+UID:6606-3805611@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260828T213145Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:8 Stream BME\, CE - Mandatory Résumé Review Event
+LOCATION:Claudette Millar Hall (CMH) - Great Hall (CFE – Fall 2026)
+DESCRIPTION:\n\n\nWhat: A 15-minute résumé review with a first year tutor o
+	r trained staff member \n\nWhere: CMH Great Hall. Note that there is constr
+	uction near the front door - follow signage to enter through the side door.
+	 \n\n\n\n\n\nWhen: You are required to attend the session designated for yo
+	ur program and stream. Events run from September 14–17 & 21–24\, from 4:30 
+	to 6:30 PM \n\n\n\n\n\n\nWhat to bring:   \n\n\n\n\n\n\nYour WatCard  \n\n\
+	n\n\n\n\nSomething to take notes with   \n\n\n\n\n\n\nBring your résumé on 
+	a laptop or printed (printing is available close by near the CMH Front Desk
+	\, or any other W Print self-serve printer locations. Be sure to load funds
+	 on your WatCard ahead of time). Reviews cannot be done on phones. \n\n\n\n
+	\n\nMaterials:\nCFE Mandatory Résumé Review Schedule - https://learn.uwater
+	loo.ca/d2l/le/content/1301395/viewContent/6630779/View\n\n\nView event - ht
+	tps://learn.uwaterloo.ca/d2l/le/calendar/1301395/event/3800473/detailsview?
+	ou=1301395#3800473
+CLASS:PUBLIC
+DTSTART:20260921T203000Z
+DTEND:20260921T223000Z
+UID:6606-3800473@learn.uwaterloo.ca
+SEQUENCE:2
+LAST-MODIFIED:20260901T195419Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:8 Stream MECH\, SE - Mandatory Résumé Review Event
+LOCATION:Claudette Millar Hall (CMH) - Great Hall (CFE – Fall 2026)
+DESCRIPTION:\n\n\nWhat: A 15-minute résumé review with a first year tutor o
+	r trained staff member \n\nWhere: CMH Great Hall. Note that there is constr
+	uction near the front door - follow signage to enter through the side door.
+	 \n\n\n\n\n\nWhen: You are required to attend the session designated for yo
+	ur program and stream. Events run from September 14–17 & 21–24\, from 4:30 
+	to 6:30 PM (Note: Monday Sep 14 has a 3:30 start time). \n\n\n\n\n\n\nWhat 
+	to bring:   \n\n\n\n\n\n\nYour WatCard  \n\n\n\n\n\n\nSomething to take not
+	es with   \n\n\n\n\n\n\nBring your résumé on a laptop or printed (printing 
+	is available close by near the CMH Front Desk\, or any other W Print self-s
+	erve printer locations. Be sure to load funds on your WatCard ahead of time
+	). Reviews cannot be done on phones. \n\n\n\n\n\nMaterials:\nCFE Mandatory 
+	Résumé Review Schedule - https://learn.uwaterloo.ca/d2l/le/content/1301395/
+	viewContent/6630779/View\n\n\nView event - https://learn.uwaterloo.ca/d2l/l
+	e/calendar/1301395/event/3800475/detailsview?ou=1301395#3800475
+CLASS:PUBLIC
+DTSTART:20260922T203000Z
+DTEND:20260922T223000Z
+UID:6606-3800475@learn.uwaterloo.ca
+SEQUENCE:5
+LAST-MODIFIED:20260901T195433Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Project Team Contract - Available
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Modules:\nProject Team Contract\n\n\nView event - https://learn
+	.uwaterloo.ca/d2l/le/calendar/1318281/event/3829963/detailsview?ou=1318281#
+	3829963
+CLASS:PUBLIC
+DTSTART:20260923T163000Z
+DTEND:20260923T163000Z
+UID:6606-3829963@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260916T182302Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:8 Stream CIVE\, SYDE - Mandatory Résumé Review Event
+LOCATION:Claudette Millar Hall (CMH) - Great Hall (CFE – Fall 2026)
+DESCRIPTION:\n\n\nWhat: A 15-minute résumé review with a first year tutor o
+	r trained staff member \n\nWhere: CMH Great Hall. Note that there is constr
+	uction near the front door - follow signage to enter through the side door.
+	 \n\n\n\n\n\nWhen: You are required to attend the session designated for yo
+	ur program and stream. Events run from September 14–17 & 21–24\, from 4:30 
+	to 6:30 PM \n\n\n\n\n\n\nWhat to bring:   \n\n\n\n\n\n\nYour WatCard  \n\n\
+	n\n\n\n\nSomething to take notes with   \n\n\n\n\n\n\nBring your résumé on 
+	a laptop or printed (printing is available close by near the CMH Front Desk
+	\, or any other W Print self-serve printer locations. Be sure to load funds
+	 on your WatCard ahead of time). Reviews cannot be done on phones. \n\n\n\n
+	\n\nMaterials:\nCFE Mandatory Résumé Review Schedule - https://learn.uwater
+	loo.ca/d2l/le/content/1301395/viewContent/6630779/View\n\n\nView event - ht
+	tps://learn.uwaterloo.ca/d2l/le/calendar/1301395/event/3800476/detailsview?
+	ou=1301395#3800476
+CLASS:PUBLIC
+DTSTART:20260923T203000Z
+DTEND:20260923T223000Z
+UID:6606-3800476@learn.uwaterloo.ca
+SEQUENCE:6
+LAST-MODIFIED:20260901T195451Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:8 Stream CHE\, NANO - Mandatory Résumé Review Event
+LOCATION:Claudette Millar Hall (CMH) - Great Hall (CFE – Fall 2026)
+DESCRIPTION:\n\n\nWhat: A 15-minute résumé review with a first year tutor o
+	r trained staff member \n\nWhere: CMH Great Hall. Note that there is constr
+	uction near the front door - follow signage to enter through the side door\
+	n\n\n\n\n\nWhen: You are required to attend the session designated for your
+	 program and stream. Events run from September 14–17 & 21–24\, from 4:30 to
+	 6:30 PM \n\n\n\n\n\n\nWhat to bring:   \n\n\n\n\n\n\nYour WatCard  \n\n\n\
+	n\n\n\nSomething to take notes with   \n\n\n\n\n\n\nBring your résumé on a 
+	laptop or printed (printing is available close by near the CMH Front Desk\,
+	 or any other W Print self-serve printer locations. Be sure to load funds o
+	n your WatCard ahead of time). Reviews cannot be done on phones. \n\n\n\n\n
+	\nMaterials:\nCFE Mandatory Résumé Review Schedule - https://learn.uwaterlo
+	o.ca/d2l/le/content/1301395/viewContent/6630779/View\n\n\nView event - http
+	s://learn.uwaterloo.ca/d2l/le/calendar/1301395/event/3800480/detailsview?ou
+	=1301395#3800480
+CLASS:PUBLIC
+DTSTART:20260924T203000Z
+DTEND:20260924T223000Z
+UID:6606-3800480@learn.uwaterloo.ca
+SEQUENCE:2
+LAST-MODIFIED:20260901T195507Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Résumé Quiz - 15 minutes - Due
+LOCATION:CFE – Fall 2026
+DESCRIPTION:Résumé Quiz\nThis quiz will open a week before its due date. Pl
+	ease complete once you have reviewed the content in Part 2. \nPlease note:\
+	n\nIf\, after 3 attempts\, you have not achieved 60% on this quiz\, please 
+	contact cfe@uwaterloo.ca to discuss next steps\nThis quiz will no longer be
+	 visible after the deadline to complete it has passed\n\n\n\nQuizzes:\nRésu
+	mé Quiz - 15 minutes - https://learn.uwaterloo.ca/d2l/lms/quizzing/quizzing
+	.d2l?ou=1301395&qi=325400\n\n\nView event - https://learn.uwaterloo.ca/d2l/
+	le/calendar/1301395/event/3800340/detailsview?ou=1301395#3800340
+CLASS:PUBLIC
+DTSTART:20260925T035959Z
+DTEND:20260925T035959Z
+UID:6606-3800340@learn.uwaterloo.ca
+SEQUENCE:9
+LAST-MODIFIED:20260909T011526Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Prework 2 Quiz - Due
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Quizzes:\nPrework 2 Quiz - https://learn.uwaterloo.ca/d2l/lms/q
+	uizzing/quizzing.d2l?ou=1318281&qi=328373\n\n\nView event - https://learn.u
+	waterloo.ca/d2l/le/calendar/1318281/event/3818544/detailsview?ou=1318281#38
+	18544
+CLASS:PUBLIC
+DTSTART:20260925T035959Z
+DTEND:20260925T035959Z
+UID:6606-3818544@learn.uwaterloo.ca
+SEQUENCE:7
+LAST-MODIFIED:20260915T181115Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Workshop 2 Learn Submissions - Due
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Dropbox:\nWorkshop 2 Learn Submissions\n\n\nView event - https:
+	//learn.uwaterloo.ca/d2l/le/calendar/1318281/event/3818547/detailsview?ou=1
+	318281#3818547
+CLASS:PUBLIC
+DTSTART:20260925T035959Z
+DTEND:20260925T035959Z
+UID:6606-3818547@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260908T173738Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #2
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20260926
+UID:6606-3828655@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260915T145508Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #2 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+UID:6606-3829456@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025449Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Agreement Form submission [Sec 002 Groups 1-40] - Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Agreement Form submission [Sec 002 Groups 1-40]
+	 - https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?
+	ou=1290161&db=410501&grpid=1292473\n\n\nView event - https://learn.uwaterlo
+	o.ca/d2l/le/calendar/1290161/event/3787385/detailsview?ou=1290161#3787385
+CLASS:PUBLIC
+DTSTART:20260928T035959Z
+DTEND:20260928T035959Z
+UID:6606-3787385@learn.uwaterloo.ca
+SEQUENCE:2
+LAST-MODIFIED:20260724T182502Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Tutorial 4 - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nTutorial 4\n\n\nView event - https://learn.uwaterloo.
+	ca/d2l/le/calendar/1288774/event/3805613/detailsview?ou=1288774#3805613
+CLASS:PUBLIC
+DTSTART:20260928T130000Z
+DTEND:20260928T130000Z
+UID:6606-3805613@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260828T213145Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Project 1 - Grade calculator - Due
+LOCATION:ECE 150 - Fall 2026
+DESCRIPTION:Modules:\nProject 1 - Grade calculator - https://learn.uwaterlo
+	o.ca/d2l/le/content/1298794/Home?itemIdentifier=D2L.LE.Content.ContentObjec
+	t.ModuleCO-6706059\n\n\nView event - https://learn.uwaterloo.ca/d2l/le/cale
+	ndar/1298794/event/3827956/detailsview?ou=1298794#3827956
+CLASS:PUBLIC
+DTSTART:20260930T020000Z
+DTEND:20260930T020000Z
+UID:6606-3827956@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260914T192420Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:ECE198_GenAI_Workshop - Available
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Materials:\nECE198_GenAI_Workshop\n\n\nView event - https://lea
+	rn.uwaterloo.ca/d2l/le/calendar/1318281/event/3829957/detailsview?ou=131828
+	1#3829957
+CLASS:PUBLIC
+DTSTART:20260930T163000Z
+DTEND:20260930T163000Z
+UID:6606-3829957@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T181402Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:ECE198_GenAI_Workshop - Available
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Materials:\nECE198_GenAI_Workshop\n\n\nView event - https://lea
+	rn.uwaterloo.ca/d2l/le/calendar/1318281/event/3829958/detailsview?ou=131828
+	1#3829958
+CLASS:PUBLIC
+DTSTART:20260930T163000Z
+DTEND:20260930T163000Z
+UID:6606-3829958@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T181402Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:InStage Interview (Credit for Completion) Due
+LOCATION:CFE – Fall 2026
+DESCRIPTION:Materials:\nObject Not Found\n\n\nView event - https://learn.uw
+	aterloo.ca/d2l/le/calendar/1301395/event/3800344/detailsview?ou=1301395#380
+	0344
+CLASS:PUBLIC
+DTSTART:20261002T033000Z
+DTEND:20261002T035900Z
+UID:6606-3800344@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260819T165818Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Interview Skills Quiz - 15 minutes - Due
+LOCATION:CFE – Fall 2026
+DESCRIPTION:Interview Skills Quiz\nThis quiz will open a week before its du
+	e date. Please complete once you have reviewed the content in Part 3. \nPle
+	ase note:\n\nIf\, after 3 attempts\, you have not achieved 60% on this quiz
+	\, please contact cfe@uwaterloo.ca to discuss next steps\nThis quiz will no
+	 longer be visible after the deadline to complete it has passed\n\n\n\nQuiz
+	zes:\nInterview Skills Quiz - 15 minutes - https://learn.uwaterloo.ca/d2l/l
+	ms/quizzing/quizzing.d2l?ou=1301395&qi=325399\n\n\nView event - https://lea
+	rn.uwaterloo.ca/d2l/le/calendar/1301395/event/3800339/detailsview?ou=130139
+	5#3800339
+CLASS:PUBLIC
+DTSTART:20261002T035959Z
+DTEND:20261002T035959Z
+UID:6606-3800339@learn.uwaterloo.ca
+SEQUENCE:11
+LAST-MODIFIED:20260909T011556Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Prework 3 Quiz - Due
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Please complete the following brief survey. The results will be
+	 anonymous and used to help support engineering design students. Link to su
+	rvey: GenAI & Design\n\n\nQuizzes:\nPrework 3 Quiz - https://learn.uwaterlo
+	o.ca/d2l/lms/quizzing/quizzing.d2l?ou=1318281&qi=328374\n\n\nView event - h
+	ttps://learn.uwaterloo.ca/d2l/le/calendar/1318281/event/3818545/detailsview
+	?ou=1318281#3818545
+CLASS:PUBLIC
+DTSTART:20261002T035959Z
+DTEND:20261002T035959Z
+UID:6606-3818545@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260908T173738Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Workshop 3 AI-Supported Design Submission - Due
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Dropbox:\nWorkshop 3 AI-Supported Design Submission\n\n\nView e
+	vent - https://learn.uwaterloo.ca/d2l/le/calendar/1318281/event/3818548/det
+	ailsview?ou=1318281#3818548
+CLASS:PUBLIC
+DTSTART:20261002T035959Z
+DTEND:20261002T035959Z
+UID:6606-3818548@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260908T173738Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #3
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261003
+UID:6606-3828656@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260915T145523Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Team Contract - Due
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Please submit one Team Contract per group using the Team Contra
+	ct Template attached. \n\n\nDropbox:\nTeam Contract - https://learn.uwaterl
+	oo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=1318281&db=417205\n\n
+	\nView event - https://learn.uwaterloo.ca/d2l/le/calendar/1318281/event/382
+	0660/detailsview?ou=1318281#3820660
+CLASS:PUBLIC
+DTSTART:20261003T035959Z
+DTEND:20261003T035959Z
+UID:6606-3820660@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260909T182119Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #3 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+UID:6606-3829457@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025507Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Remaining Pre-MT Practice - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nRemaining Pre-MT Practice\n\n\nView event - https://l
+	earn.uwaterloo.ca/d2l/le/calendar/1288774/event/3805612/detailsview?ou=1288
+	774#3805612
+CLASS:PUBLIC
+DTSTART:20261005T130000Z
+DTEND:20261005T130000Z
+UID:6606-3805612@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260828T213145Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Deliverable 1 (Part 1) submission [Sec 002 Groups 1-20] - Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Deliverable 1 (Part 1) submission [Sec 002 Grou
+	ps 1-20] - https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_fi
+	les.d2l?ou=1290161&db=410520&grpid=1292473\n\n\nView event - https://learn.
+	uwaterloo.ca/d2l/le/calendar/1290161/event/3787404/detailsview?ou=1290161#3
+	787404
+CLASS:PUBLIC
+DTSTART:20261007T035959Z
+DTEND:20261007T035959Z
+UID:6606-3787404@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260724T183659Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Deliverable 1 (Part 1) submission [Sec 002 Groups 21-40] - Du
+	e
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Deliverable 1 (Part 1) submission [Sec 002 Grou
+	ps 21-40] - https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_f
+	iles.d2l?ou=1290161&db=410521&grpid=1292473\n\n\nView event - https://learn
+	.uwaterloo.ca/d2l/le/calendar/1290161/event/3787405/detailsview?ou=1290161#
+	3787405
+CLASS:PUBLIC
+DTSTART:20261008T035959Z
+DTEND:20261008T035959Z
+UID:6606-3787405@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260724T183835Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:CFE Check-in Survey - 10 minutes - Due
+LOCATION:CFE – Fall 2026
+DESCRIPTION:The CFE Check-In Survey can be found at the following link\, an
+	d must be submitted before completing this quiz: https://uwaterloo.ca1.qual
+	trics.com/jfe/form/SV_eR5gWQWIYMAQqaO\n\n\n\n\n\nPlease note: This grade it
+	em is not automatically passed to your gradebook. You will receive 10% of y
+	our CFE grade for completing this quiz. We are collecting feedback to help 
+	improve the course\, but each response must be reviewed before marks can be
+	 transferred.\nAs long as you have answered each question in the survey lin
+	ked above\, you will receive full marks for this quiz. Grades will appear i
+	n your gradebook by the mid-November.\nThis quiz will be visible for one we
+	ek before its due date.\n\n\n\nQuizzes:\nCFE Check-in Survey - 10 minutes -
+	 https://learn.uwaterloo.ca/d2l/lms/quizzing/quizzing.d2l?ou=1301395&qi=325
+	401\n\n\nView event - https://learn.uwaterloo.ca/d2l/le/calendar/1301395/ev
+	ent/3800341/detailsview?ou=1301395#3800341
+CLASS:PUBLIC
+DTSTART:20261009T035959Z
+DTEND:20261009T035959Z
+UID:6606-3800341@learn.uwaterloo.ca
+SEQUENCE:12
+LAST-MODIFIED:20260909T011639Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:CFE Knowledge Quiz - 20 minutes - Due
+LOCATION:CFE – Fall 2026
+DESCRIPTION:CFE Knowledge Quiz\n\nThis quiz will open a week before its due
+	 date. Please complete once you have reviewed the content in Part 4. \nPlea
+	se note:\n\nIf\, after 3 attempts\, you have not achieved 60% on this quiz\
+	, please contact cfe@uwaterloo.ca to discuss next steps\nThis quiz will no 
+	longer be visible after the deadline to complete it has passed\n\n\n\nQuizz
+	es:\nCFE Knowledge Quiz - 20 minutes - https://learn.uwaterloo.ca/d2l/lms/q
+	uizzing/quizzing.d2l?ou=1301395&qi=325402\n\n\nView event - https://learn.u
+	waterloo.ca/d2l/le/calendar/1301395/event/3800342/detailsview?ou=1301395#38
+	00342
+CLASS:PUBLIC
+DTSTART:20261009T035959Z
+DTEND:20261009T035959Z
+UID:6606-3800342@learn.uwaterloo.ca
+SEQUENCE:9
+LAST-MODIFIED:20260909T011639Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Prework 4 Quiz - Due
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Quizzes:\nPrework 4 Quiz - https://learn.uwaterloo.ca/d2l/lms/q
+	uizzing/quizzing.d2l?ou=1318281&qi=328371\n\n\nView event - https://learn.u
+	waterloo.ca/d2l/le/calendar/1318281/event/3818543/detailsview?ou=1318281#38
+	18543
+CLASS:PUBLIC
+DTSTART:20261009T035959Z
+DTEND:20261009T035959Z
+UID:6606-3818543@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260908T173738Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Workshop 4 Learn Submissions - Due
+LOCATION:ECE 198 - Fall 2026
+DESCRIPTION:Dropbox:\nWorkshop 4 Learn Submissions\n\n\nView event - https:
+	//learn.uwaterloo.ca/d2l/le/calendar/1318281/event/3818546/detailsview?ou=1
+	318281#3818546
+CLASS:PUBLIC
+DTSTART:20261009T035959Z
+DTEND:20261009T035959Z
+UID:6606-3818546@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260908T173738Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #4
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+UID:6606-3829445@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T024035Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #4 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261009
+DTEND;VALUE=DATE:20261010
+UID:6606-3829458@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025536Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:ECE190 midterm test
+LOCATION:various locations (ECE 190 - Fall 2026)
+DESCRIPTION:See the "Test information" folder for details about the midterm
+	.  
+CLASS:PUBLIC
+DTSTART:20261021T190000Z
+DTEND:20261021T200000Z
+UID:6606-3793064@learn.uwaterloo.ca
+SEQUENCE:3
+LAST-MODIFIED:20260818T135145Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Tutorial 5 - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nTutorial 5\n\n\nView event - https://learn.uwaterloo.
+	ca/d2l/le/calendar/1288774/event/3805614/detailsview?ou=1288774#3805614
+CLASS:PUBLIC
+DTSTART:20261026T130000Z
+DTEND:20261026T130000Z
+UID:6606-3805614@learn.uwaterloo.ca
+SEQUENCE:2
+LAST-MODIFIED:20260828T213145Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Deliverable 1 (Part 2) submission [Sec 002 Groups 1-20] - Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Deliverable 1 (Part 2) submission [Sec 002 Grou
+	ps 1-20] - https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_fi
+	les.d2l?ou=1290161&db=410616&grpid=1292473\n\n\nView event - https://learn.
+	uwaterloo.ca/d2l/le/calendar/1290161/event/3787915/detailsview?ou=1290161#3
+	787915
+CLASS:PUBLIC
+DTSTART:20261029T035959Z
+DTEND:20261029T035959Z
+UID:6606-3787915@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260725T130242Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Deliverable 1 (Part 2) submission [Sec 002 Groups 21-40] - Du
+	e
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Deliverable 1 (Part 2) submission [Sec 002 Grou
+	ps 21-40] - https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_f
+	iles.d2l?ou=1290161&db=410617&grpid=1292473\n\n\nView event - https://learn
+	.uwaterloo.ca/d2l/le/calendar/1290161/event/3787916/detailsview?ou=1290161#
+	3787916
+CLASS:PUBLIC
+DTSTART:20261030T035959Z
+DTEND:20261030T035959Z
+UID:6606-3787916@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260725T130348Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #5
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+UID:6606-3829448@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T024914Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #5 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+UID:6606-3829459@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025600Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Tutorial 6 - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nTutorial 6\n\n\nView event - https://learn.uwaterloo.
+	ca/d2l/le/calendar/1288774/event/3805615/detailsview?ou=1288774#3805615
+CLASS:PUBLIC
+DTSTART:20261102T140000Z
+DTEND:20261102T140000Z
+UID:6606-3805615@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260828T213145Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Workplace Safety Quiz - 25 minutes - Due
+LOCATION:CFE – Fall 2026
+DESCRIPTION:Workplace Safety Quiz\nContent Warning: The following content t
+	ouches on sensitive subject matter pertaining to workplace harassment and d
+	iscrimination. Please take care of yourselves as you read through this mate
+	rial and engage with the content as it feels comfortable for you.\nThis qui
+	z will open a week before its due date. Please complete once you have revie
+	wed the content in Part 5. \nPlease note:\n\nIf\, after 3 attempts\, you ha
+	ve not achieved 60% on this quiz\, please contact cfe@uwaterloo.ca to discu
+	ss next steps\nThis quiz will no longer be visible after the deadline to co
+	mplete it has passed\n\n\n\nQuizzes:\nWorkplace Safety Quiz - 25 minutes - 
+	https://learn.uwaterloo.ca/d2l/lms/quizzing/quizzing.d2l?ou=1301395&qi=3254
+	03\n\n\nView event - https://learn.uwaterloo.ca/d2l/le/calendar/1301395/eve
+	nt/3800343/detailsview?ou=1301395#3800343
+CLASS:PUBLIC
+DTSTART:20261106T045959Z
+DTEND:20261106T045959Z
+UID:6606-3800343@learn.uwaterloo.ca
+SEQUENCE:9
+LAST-MODIFIED:20260909T011650Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #6
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+UID:6606-3829449@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T024927Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #6 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+UID:6606-3829460@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025612Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Tutorial 7 - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nTutorial 7\n\n\nView event - https://learn.uwaterloo.
+	ca/d2l/le/calendar/1288774/event/3805616/detailsview?ou=1288774#3805616
+CLASS:PUBLIC
+DTSTART:20261109T140000Z
+DTEND:20261109T140000Z
+UID:6606-3805616@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260828T213135Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Deliverable 2 submission [Sec 002 Groups 1-20] - Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Deliverable 2 submission [Sec 002 Groups 1-20] 
+	- https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?o
+	u=1290161&db=410626&grpid=1292473\n\n\nView event - https://learn.uwaterloo
+	.ca/d2l/le/calendar/1290161/event/3787923/detailsview?ou=1290161#3787923
+CLASS:PUBLIC
+DTSTART:20261111T045959Z
+DTEND:20261111T045959Z
+UID:6606-3787923@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260725T132507Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Deliverable 2 submission [Sec 002 Groups 21-40] - Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Deliverable 2 submission [Sec 002 Groups 21-40]
+	 - https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?
+	ou=1290161&db=410627&grpid=1292473\n\n\nView event - https://learn.uwaterlo
+	o.ca/d2l/le/calendar/1290161/event/3787924/detailsview?ou=1290161#3787924
+CLASS:PUBLIC
+DTSTART:20261112T045959Z
+DTEND:20261112T045959Z
+UID:6606-3787924@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260725T132617Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #7
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+UID:6606-3829450@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T024942Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #7 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+UID:6606-3829461@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025629Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Tutorial 8 - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nTutorial 8\n\n\nView event - https://learn.uwaterloo.
+	ca/d2l/le/calendar/1288774/event/3805617/detailsview?ou=1288774#3805617
+CLASS:PUBLIC
+DTSTART:20261116T140000Z
+DTEND:20261116T140000Z
+UID:6606-3805617@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260828T213135Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Deliverable 3 submission [Sec 002 Groups 1-20] - Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Deliverable 3 submission [Sec 002 Groups 1-20] 
+	- https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?o
+	u=1290161&db=410662&grpid=1292473\n\n\nView event - https://learn.uwaterloo
+	.ca/d2l/le/calendar/1290161/event/3788178/detailsview?ou=1290161#3788178
+CLASS:PUBLIC
+DTSTART:20261118T045959Z
+DTEND:20261118T045959Z
+UID:6606-3788178@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260727T115952Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Deliverable 3 submission [Sec 002 Groups 21-40] - Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Deliverable 3 submission [Sec 002 Groups 21-40]
+	 - https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?
+	ou=1290161&db=410663&grpid=1292473\n\n\nView event - https://learn.uwaterlo
+	o.ca/d2l/le/calendar/1290161/event/3788179/detailsview?ou=1290161#3788179
+CLASS:PUBLIC
+DTSTART:20261119T045959Z
+DTEND:20261119T045959Z
+UID:6606-3788179@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260727T120110Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #8
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+UID:6606-3829451@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T024953Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #8 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+UID:6606-3829462@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025651Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Tutorial 9 - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nTutorial 9\n\n\nView event - https://learn.uwaterloo.
+	ca/d2l/le/calendar/1288774/event/3805618/detailsview?ou=1288774#3805618
+CLASS:PUBLIC
+DTSTART:20261123T140000Z
+DTEND:20261123T140000Z
+UID:6606-3805618@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260828T213136Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #9
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+UID:6606-3829452@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025005Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #9 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+UID:6606-3829463@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025704Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Remaining Pre-FE Practice - Available
+LOCATION:MATH 117 - Fall 2026
+DESCRIPTION:Modules:\nRemaining Pre-FE Practice\n\n\nView event - https://l
+	earn.uwaterloo.ca/d2l/le/calendar/1288774/event/3805619/detailsview?ou=1288
+	774#3805619
+CLASS:PUBLIC
+DTSTART:20261130T140000Z
+DTEND:20261130T140000Z
+UID:6606-3805619@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260828T213136Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Quiz #10
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+UID:6606-3829453@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025017Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #10 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261206
+DTEND;VALUE=DATE:20261207
+UID:6606-3829464@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260916T025730Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Assignment #11 due
+LOCATION:ECE 105 - Fall 2026
+CLASS:PUBLIC
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+UID:6606-3829465@learn.uwaterloo.ca
+SEQUENCE:0
+LAST-MODIFIED:20260916T025749Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Group Deliverable 4 submission [Sec 002 Groups 1-40] - Due
+LOCATION:ECE 190 - Fall 2026
+DESCRIPTION:Dropbox:\nGroup Deliverable 4 submission [Sec 002 Groups 1-40] 
+	- https://learn.uwaterloo.ca/d2l/lms/dropbox/user/folder_submit_files.d2l?o
+	u=1290161&db=410667&grpid=1292473\n\n\nView event - https://learn.uwaterloo
+	.ca/d2l/le/calendar/1290161/event/3788183/detailsview?ou=1290161#3788183
+CLASS:PUBLIC
+DTSTART:20261209T045959Z
+DTEND:20261209T045959Z
+UID:6606-3788183@learn.uwaterloo.ca
+SEQUENCE:1
+LAST-MODIFIED:20260727T120750Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:Academic Integrity Quiz - Due
+LOCATION:Engineering Ready Modules (2026)
+DESCRIPTION:This quiz will introduce you to some scenarios that you could e
+	ncounter in your first year of study\, and throughout your post-secondary e
+	ducation. Give the questions an attempt and test your understanding of what
+	 it means to act with integrity in the university environment.\n\n\nQuizzes
+	:\nAcademic Integrity Quiz - https://learn.uwaterloo.ca/d2l/lms/quizzing/qu
+	izzing.d2l?ou=1271136&qi=318951\n\n\nView event - https://learn.uwaterloo.c
+	a/d2l/le/calendar/1271136/event/3747430/detailsview?ou=1271136#3747430
+CLASS:PUBLIC
+DTSTART:20270501T035959Z
+DTEND:20270501T035959Z
+UID:6606-3747430@learn.uwaterloo.ca
+SEQUENCE:3
+LAST-MODIFIED:20260617T181408Z
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20260918T200345Z
+SUMMARY:MATH 116 Course Outline Scavenger Hunt - Due
+LOCATION:Engineering Ready Modules (2026)
+DESCRIPTION:The MATH 116 Course Outline Scavenger Hunt is set up as a quiz 
+	is to let you explore how to take a quiz in the LEARN platform. Completing 
+	this will also help you become familiar with the different components of a 
+	course outline.\nThis quiz is not graded\, and you can retake it as many ti
+	mes as you would like. You will need to refer to the Math116 Course Outline
+	 to complete the quiz. You can also review the Module 2 Course Outline sect
+	ion for clues to where specific course information can be found in a course
+	 outline. \nPlease note that the course outline used is just a sample cours
+	e outline for a first-year engineering course and is for illustrative purpo
+	ses only. Different courses may have their course outlines structured diffe
+	rently.\n\n\nQuizzes:\nMATH 116 Course Outline Scavenger Hunt - https://lea
+	rn.uwaterloo.ca/d2l/lms/quizzing/quizzing.d2l?ou=1271136&qi=318952\n\n\nVie
+	w event - https://learn.uwaterloo.ca/d2l/le/calendar/1271136/event/3747431/
+	detailsview?ou=1271136#3747431
+CLASS:PUBLIC
+DTSTART:20270501T035959Z
+DTEND:20270501T035959Z
+UID:6606-3747431@learn.uwaterloo.ca
+SEQUENCE:19
+LAST-MODIFIED:20260702T164245Z
+END:VEVENT
+END:VCALENDAR

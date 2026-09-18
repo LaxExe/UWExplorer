@@ -11,7 +11,7 @@ import { Settings } from './pages/Settings';
 
 import { QuickLink, Announcement, Assignment, ScheduleItem, UserSettings } from './types';
 import { INITIAL_QUICK_LINKS, INITIAL_ANNOUNCEMENTS, INITIAL_ASSIGNMENTS, INITIAL_SCHEDULE, DEFAULT_COURSE_COLORS } from './data/mockData';
-import { fetchD2LFeed } from './services/d2lSync';
+import { fetchD2LFeed, loadLocalData, parseICSData, saveLocalDB } from './services/d2lSync';
 
 const DEFAULT_SIDEBAR_ORDER = ['dashboard', 'schedule', 'links', 'announcements', 'assignments', 'calendar', 'settings'];
 
@@ -78,6 +78,44 @@ export function App() {
     return INITIAL_ASSIGNMENTS;
   });
 
+  // On mount: Load local disk data (/api/local-data) to parse data/d2l_calendar.ics & data/uwexplorer_db.json
+  useEffect(() => {
+    async function loadDiskData() {
+      const diskData = await loadLocalData();
+      if (diskData && (diskData.icsText || diskData.config || diskData.db)) {
+        let icsAssignments: Assignment[] = [];
+        if (diskData.icsText) {
+          icsAssignments = parseICSData(diskData.icsText);
+        }
+
+        if (diskData.config) {
+          setSettings(prev => ({
+            ...prev,
+            d2lFeedUrl: diskData.config.d2lFeedUrl || prev.d2lFeedUrl,
+            theme: diskData.config.theme || prev.theme,
+            courseColors: diskData.config.courseColors || prev.courseColors,
+            sidebarOrder: diskData.config.sidebarOrder || prev.sidebarOrder,
+          }));
+        }
+
+        if (diskData.db && diskData.db.lastSyncedAt) {
+          setSettings(prev => ({ ...prev, lastSyncedAt: diskData.db.lastSyncedAt }));
+        }
+
+        if (icsAssignments.length > 0) {
+          // Merge ICS assignments with any manual ones
+          setAssignments(prev => {
+            const icsIds = new Set(icsAssignments.map(a => a.id));
+            const manualOnly = prev.filter(a => !icsIds.has(a.id) && a.id.startsWith('manual-'));
+            return [...icsAssignments, ...manualOnly];
+          });
+        }
+      }
+    }
+
+    loadDiskData();
+  }, []);
+
   // Sync theme
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', settings.theme);
@@ -94,15 +132,17 @@ export function App() {
     localStorage.setItem('uwexplorer_schedule', JSON.stringify(schedule));
   }, [schedule]);
 
-  // Save assignments
+  // Save assignments & sync to disk DB
   useEffect(() => {
     localStorage.setItem('uwexplorer_assignments', JSON.stringify(assignments));
-  }, [assignments]);
-
-  // Save announcements
-  useEffect(() => {
-    localStorage.setItem('uwexplorer_announcements', JSON.stringify(announcements));
-  }, [announcements]);
+    saveLocalDB({
+      assignments,
+      announcements,
+      quickLinks,
+      schedule,
+      settings,
+    });
+  }, [assignments, announcements, quickLinks, schedule, settings]);
 
   const handleToggleTheme = () => {
     setSettings(prev => ({
@@ -190,7 +230,7 @@ export function App() {
     if (!settings.d2lFeedUrl) return;
 
     setIsSyncing(true);
-    setSyncMessage('Fetching D2L feed through CORS proxy fallback chain...');
+    setSyncMessage('Fetching D2L feed through Node.js backend...');
 
     const res = await fetchD2LFeed(settings.d2lFeedUrl);
     setIsSyncing(false);
@@ -199,7 +239,7 @@ export function App() {
       setSyncMessage(`Sync Notice: ${res.error}`);
     } else {
       handleImportAssignments(res.assignments);
-      setSyncMessage(`Successfully fetched ${res.assignments.length} deadline(s) from D2L Learn feed!`);
+      setSyncMessage(`Successfully parsed ${res.assignments.length} deadline(s) from data/d2l_calendar.ics!`);
     }
   };
 
