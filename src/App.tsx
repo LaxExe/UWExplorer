@@ -129,6 +129,16 @@ export function App() {
     setAssignments(prev => prev.filter(a => a.id !== id));
   };
 
+  const handleToggleReadAnnouncement = (id: string) => {
+    setAnnouncements(prev =>
+      prev.map(a => (a.id === id ? { ...a, isRead: !a.isRead } : a))
+    );
+  };
+
+  const handleMarkAllAnnouncementsRead = () => {
+    setAnnouncements(prev => prev.map(a => ({ ...a, isRead: true })));
+  };
+
   const handleAddQuickLink = (newLink: Omit<QuickLink, 'id'>) => {
     const item: QuickLink = {
       ...newLink,
@@ -198,6 +208,8 @@ export function App() {
     }
   };
 
+  const unreadAnnouncementsCount = announcements.filter(a => !a.isRead).length;
+
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--c5)] flex flex-col transition-colors">
       <Header
@@ -208,78 +220,82 @@ export function App() {
         isSyncing={isSyncing}
       />
 
-      <div className="flex-1 flex flex-col md:flex-row">
+      <div className="max-w-[1300px] w-full mx-auto flex-1 flex flex-col md:flex-row items-stretch">
         <Sidebar
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           assignmentsCount={assignments.filter(a => !a.isCompleted).length}
-          announcementsCount={announcements.length}
+          announcementsCount={unreadAnnouncementsCount}
         />
 
-        <main className="flex-1 p-6 overflow-y-auto">
-          {activeTab === 'dashboard' && (
-            <Dashboard
-              quickLinks={quickLinks}
-              announcements={announcements}
-              assignments={assignments}
-              courseColors={settings.courseColors}
-              onToggleAssignment={handleToggleAssignment}
-              onNavigate={setActiveTab}
-            />
-          )}
+        <main className="flex-1 p-6 overflow-y-auto w-full flex justify-center">
+          <div className="w-full max-w-[1100px] mx-auto">
+            {activeTab === 'dashboard' && (
+              <Dashboard
+                quickLinks={quickLinks}
+                announcements={announcements}
+                assignments={assignments}
+                courseColors={settings.courseColors}
+                onToggleAssignment={handleToggleAssignment}
+                onNavigate={setActiveTab}
+              />
+            )}
 
-          {activeTab === 'schedule' && (
-            <Schedule
-              schedule={schedule}
-              courseColors={settings.courseColors}
-              onAddScheduleItem={handleAddScheduleItem}
-              onDeleteScheduleItem={handleDeleteScheduleItem}
-            />
-          )}
+            {activeTab === 'schedule' && (
+              <Schedule
+                schedule={schedule}
+                courseColors={settings.courseColors}
+                onAddScheduleItem={handleAddScheduleItem}
+                onDeleteScheduleItem={handleDeleteScheduleItem}
+              />
+            )}
 
-          {activeTab === 'links' && (
-            <QuickLinks
-              links={quickLinks}
-              onAddLink={handleAddQuickLink}
-              onUpdateLink={handleUpdateQuickLink}
-              onRemoveLink={handleRemoveQuickLink}
-            />
-          )}
+            {activeTab === 'links' && (
+              <QuickLinks
+                links={quickLinks}
+                onAddLink={handleAddQuickLink}
+                onUpdateLink={handleUpdateQuickLink}
+                onRemoveLink={handleRemoveQuickLink}
+              />
+            )}
 
-          {activeTab === 'announcements' && (
-            <Announcements
-              announcements={announcements}
-              courseColors={settings.courseColors}
-            />
-          )}
+            {activeTab === 'announcements' && (
+              <Announcements
+                announcements={announcements}
+                courseColors={settings.courseColors}
+                onToggleReadAnnouncement={handleToggleReadAnnouncement}
+                onMarkAllRead={handleMarkAllAnnouncementsRead}
+              />
+            )}
 
-          {activeTab === 'assignments' && (
-            <Assignments
-              assignments={assignments}
-              courseColors={settings.courseColors}
-              onToggleAssignment={handleToggleAssignment}
-              onAddAssignment={handleAddAssignment}
-              onDeleteAssignment={handleDeleteAssignment}
-            />
-          )}
+            {activeTab === 'assignments' && (
+              <Assignments
+                assignments={assignments}
+                courseColors={settings.courseColors}
+                onToggleAssignment={handleToggleAssignment}
+                onAddAssignment={handleAddAssignment}
+                onDeleteAssignment={handleDeleteAssignment}
+              />
+            )}
 
-          {activeTab === 'calendar' && (
-            <CalendarView
-              assignments={assignments}
-              courseColors={settings.courseColors}
-            />
-          )}
+            {activeTab === 'calendar' && (
+              <CalendarView
+                assignments={assignments}
+                courseColors={settings.courseColors}
+              />
+            )}
 
-          {activeTab === 'settings' && (
-            <Settings
-              settings={settings}
-              onUpdateSettings={handleUpdateSettings}
-              onSyncD2L={handleSyncD2L}
-              onResetData={handleResetData}
-              isSyncing={isSyncing}
-              syncMessage={syncMessage}
-            />
-          )}
+            {activeTab === 'settings' && (
+              <Settings
+                settings={settings}
+                onUpdateSettings={handleUpdateSettings}
+                onSyncD2L={handleSyncD2L}
+                onResetData={handleResetData}
+                isSyncing={isSyncing}
+                syncMessage={syncMessage}
+              />
+            )}
+          </div>
         </main>
       </div>
     </div>

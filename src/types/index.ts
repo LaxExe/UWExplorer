@@ -17,6 +17,7 @@ export interface Announcement {
   date: string; // ISO string
   author?: string;
   priority?: 'normal' | 'important';
+  isRead?: boolean;
 }
 
 export interface Assignment {
@@ -38,9 +39,9 @@ export interface ScheduleItem {
   courseName: string;
   title: string;
   location: string;
-  startTime: string; // e.g. "10:00 AM" or "10:00"
-  endTime: string;   // e.g. "11:20 AM" or "11:20"
-  daysOfWeek: string[]; // ['Mon', 'Wed', 'Fri']
+  startTime: string;
+  endTime: string;
+  daysOfWeek: string[];
   instructor?: string;
   type: 'lecture' | 'lab' | 'tutorial' | 'office_hours';
 }
@@ -49,5 +50,5 @@ export interface UserSettings {
   theme: 'light' | 'dark';
   d2lFeedUrl: string;
   lastSyncedAt: string | null;
-  courseColors: Record<string, string>; // courseCode -> hex/rgba color
+  courseColors: Record<string, string>;
 }

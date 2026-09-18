@@ -62,7 +62,7 @@ export const Settings: React.FC<SettingsProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-6 max-w-[900px]">
+    <div className="flex flex-col gap-6 max-w-[900px] mx-auto w-full">
       <div>
         <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
           Settings & Customization

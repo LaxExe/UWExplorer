@@ -33,7 +33,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
   );
 
   return (
-    <div className="flex flex-col gap-6 max-w-[1100px]">
+    <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
       {/* Hero Banner (WaterlooWorks button removed per request) */}
       <div className="uw-card flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>

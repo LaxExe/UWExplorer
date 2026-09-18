@@ -39,7 +39,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ assignments, courseC
   const selectedAssignments = assignmentsByDate[selectedDateStr] || [];
 
   return (
-    <div className="flex flex-col gap-6 max-w-[1100px]">
+    <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
       <div>
         <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
           Semester Deadlines Calendar

@@ -68,7 +68,7 @@ export const Schedule: React.FC<ScheduleProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-6 max-w-[1100px]">
+    <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>

@@ -115,7 +115,7 @@ export const QuickLinks: React.FC<QuickLinksProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-6 max-w-[1100px]">
+    <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
       {/* Header & Actions */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>

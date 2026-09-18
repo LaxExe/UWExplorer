@@ -74,7 +74,7 @@ export const Assignments: React.FC<AssignmentsProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-6 max-w-[1100px]">
+    <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">

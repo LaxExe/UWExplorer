@@ -1,12 +1,12 @@
 import { QuickLink, Announcement, Assignment, ScheduleItem } from '../types';
 
 export const DEFAULT_COURSE_COLORS: Record<string, string> = {
-  'CS 135': '#3b82f61a',   // subtle blue
-  'MATH 135': '#10b9811a', // subtle green
-  'MATH 137': '#8b5cf61a', // subtle purple
-  'ENGL 109': '#f59e0b1a', // subtle amber
-  'PHYS 121': '#ef44441a', // subtle red
-  'LEARN': '#64748b1a',    // subtle slate
+  'CS 135': '#3b82f61a',
+  'MATH 135': '#10b9811a',
+  'MATH 137': '#8b5cf61a',
+  'ENGL 109': '#f59e0b1a',
+  'PHYS 121': '#ef44441a',
+  'LEARN': '#64748b1a',
 };
 
 export const INITIAL_QUICK_LINKS: QuickLink[] = [
@@ -117,6 +117,7 @@ export const INITIAL_ANNOUNCEMENTS: Announcement[] = [
     date: addDays(-1),
     author: 'Prof. Gregor Richards',
     priority: 'important',
+    isRead: false,
   },
   {
     id: 'ann-2',
@@ -126,6 +127,7 @@ export const INITIAL_ANNOUNCEMENTS: Announcement[] = [
     content: 'Solutions for Assignment 4 are posted under Content -> Solutions. Make sure to review the induction proof structuring guide before Assignment 5.',
     date: addDays(-2),
     author: 'Dr. Carmen Bruni',
+    isRead: false,
   },
   {
     id: 'ann-3',
@@ -135,6 +137,7 @@ export const INITIAL_ANNOUNCEMENTS: Announcement[] = [
     content: 'WebWork Set 6 covering implicit differentiation and logarithmic differentiation is now accessible. You have up to 5 attempts per question.',
     date: addDays(-3),
     author: 'Math Undergrad Office',
+    isRead: false,
   },
   {
     id: 'ann-4',
@@ -144,6 +147,7 @@ export const INITIAL_ANNOUNCEMENTS: Announcement[] = [
     content: 'Your Rough Draft for Essay #2 must be submitted to the Learn Discussion Forum by Friday 5 PM for peer review assignment.',
     date: addDays(-4),
     author: 'Prof. Sarah Jenkins',
+    isRead: true,
   },
 ];
 
