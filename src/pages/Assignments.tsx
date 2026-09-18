@@ -4,6 +4,7 @@ import { Search, Plus, ExternalLink, Trash2 } from 'lucide-react';
 
 interface AssignmentsProps {
   assignments: Assignment[];
+  courseColors: Record<string, string>;
   onToggleAssignment: (id: string) => void;
   onAddAssignment: (assignment: Omit<Assignment, 'id'>) => void;
   onDeleteAssignment: (id: string) => void;
@@ -11,16 +12,17 @@ interface AssignmentsProps {
 
 export const Assignments: React.FC<AssignmentsProps> = ({
   assignments,
+  courseColors,
   onToggleAssignment,
   onAddAssignment,
   onDeleteAssignment,
 }) => {
-  const [statusFilter, setStatusFilter] = useState<'all' | 'pending' | 'completed' | 'overdue'>('pending');
+  const [statusFilter, setStatusFilter] = useState<'pending' | 'all' | 'completed' | 'overdue'>('pending');
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  // New assignment form state
+  // Form state
   const [newTitle, setNewTitle] = useState('');
   const [newCourseCode, setNewCourseCode] = useState('');
   const [newType, setNewType] = useState<Assignment['type']>('assignment');
@@ -45,7 +47,6 @@ export const Assignments: React.FC<AssignmentsProps> = ({
     return matchesStatus && matchesType && matchesQuery;
   });
 
-  // Sorted by due date ascending
   const sortedAssignments = [...filteredAssignments].sort(
     (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
   );
@@ -74,14 +75,13 @@ export const Assignments: React.FC<AssignmentsProps> = ({
 
   return (
     <div className="flex flex-col gap-6 max-w-[1100px]">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
             Assignments, Quizzes & Deadlines
           </h2>
           <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-            Track all course deliverables synced from Waterloo Learn or added manually.
+            Track all course deliverables synced from Learn or added manually.
           </p>
         </div>
 
@@ -90,13 +90,11 @@ export const Assignments: React.FC<AssignmentsProps> = ({
           className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)]"
         >
           <Plus className="w-4 h-4" />
-          <span>add manual deadline</span>
+          <span>add deadline</span>
         </button>
       </div>
 
-      {/* Filter and Search Bar */}
       <div className="uw-card p-4 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
-        {/* Search */}
         <div className="relative flex-1">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--c3)]" />
           <input
@@ -108,7 +106,6 @@ export const Assignments: React.FC<AssignmentsProps> = ({
           />
         </div>
 
-        {/* Status Filters */}
         <div className="flex items-center gap-1 overflow-x-auto pb-1 md:pb-0">
           {(['pending', 'all', 'completed', 'overdue'] as const).map((st) => (
             <button
@@ -122,7 +119,6 @@ export const Assignments: React.FC<AssignmentsProps> = ({
         </div>
       </div>
 
-      {/* Assignments Table / List */}
       <div className="flex flex-col gap-3">
         {sortedAssignments.length === 0 ? (
           <div className="uw-card text-center py-12">
@@ -134,13 +130,15 @@ export const Assignments: React.FC<AssignmentsProps> = ({
           sortedAssignments.map((item) => {
             const dueDateObj = new Date(item.dueDate);
             const isOverdue = dueDateObj.getTime() < nowTime && !item.isCompleted;
+            const courseBg = courseColors[item.courseCode] || 'transparent';
 
             return (
               <div
                 key={item.id}
                 className={`uw-card p-4 flex items-start justify-between gap-4 transition-all ${
                   item.isCompleted ? 'opacity-60 bg-[var(--c1)]/20' : ''
-                } ${isOverdue ? 'border-rose-500/40 bg-rose-500/5' : ''}`}
+                } ${isOverdue ? 'border-rose-500/40' : ''}`}
+                style={{ backgroundColor: courseBg !== 'transparent' && !item.isCompleted ? courseBg : undefined }}
               >
                 <div className="flex items-start gap-3.5 flex-1">
                   <input
@@ -205,7 +203,7 @@ export const Assignments: React.FC<AssignmentsProps> = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="uw-button text-[0.68rem] py-1 px-2.5 h-auto"
-                        title="Open assignment portal"
+                        title="Open portal"
                       >
                         <span>open</span>
                         <ExternalLink className="w-3 h-3" />
@@ -226,16 +224,13 @@ export const Assignments: React.FC<AssignmentsProps> = ({
         )}
       </div>
 
-      {/* Modal for Manual Assignment */}
+      {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="uw-card bg-[var(--bg)] w-full max-w-md p-6 border-[var(--c4)]">
             <h3 className="font-sans text-lg font-bold text-[var(--c5)]">
               Add Custom Deadline
             </h3>
-            <p className="mono-text text-xs text-[var(--c3)] mt-1">
-              Add a non-D2L task, project milestone, or personal assignment.
-            </p>
 
             <form onSubmit={handleCreateAssignment} className="flex flex-col gap-4 mt-4">
               <div>
@@ -293,7 +288,7 @@ export const Assignments: React.FC<AssignmentsProps> = ({
               <div>
                 <label className="mono-label block mb-1">Notes</label>
                 <textarea
-                  placeholder="Additional test instructions or requirements..."
+                  placeholder="Additional instructions..."
                   rows={2}
                   value={newNotes}
                   onChange={(e) => setNewNotes(e.target.value)}

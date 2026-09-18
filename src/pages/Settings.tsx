@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { UserSettings } from '../types';
-import { RefreshCw, Download, RotateCcw, Check, HelpCircle } from 'lucide-react';
+import { RefreshCw, Download, RotateCcw, Check, Palette, Plus, Trash2 } from 'lucide-react';
 
 interface SettingsProps {
   settings: UserSettings;
@@ -10,6 +10,17 @@ interface SettingsProps {
   isSyncing: boolean;
   syncMessage: string | null;
 }
+
+const PRESET_COLORS = [
+  { name: 'Blue Tint', hex: '#3b82f61a' },
+  { name: 'Green Tint', hex: '#10b9811a' },
+  { name: 'Purple Tint', hex: '#8b5cf61a' },
+  { name: 'Amber Tint', hex: '#f59e0b1a' },
+  { name: 'Red Tint', hex: '#ef44441a' },
+  { name: 'Rose Tint', hex: '#f43f5e1a' },
+  { name: 'Cyan Tint', hex: '#06b6d41a' },
+  { name: 'Slate Tint', hex: '#64748b1a' },
+];
 
 export const Settings: React.FC<SettingsProps> = ({
   settings,
@@ -22,6 +33,12 @@ export const Settings: React.FC<SettingsProps> = ({
   const [feedInput, setFeedInput] = useState(settings.d2lFeedUrl);
   const [isSaved, setIsSaved] = useState(false);
 
+  // Course Color state
+  const [newCourseCode, setNewCourseCode] = useState('');
+  const [selectedColor, setSelectedColor] = useState('#3b82f61a');
+
+  const courseColors = settings.courseColors || {};
+
   const handleSaveUrl = (e: React.FormEvent) => {
     e.preventDefault();
     onUpdateSettings({ d2lFeedUrl: feedInput.trim() });
@@ -29,34 +46,122 @@ export const Settings: React.FC<SettingsProps> = ({
     setTimeout(() => setIsSaved(false), 3000);
   };
 
+  const handleAddCourseColor = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newCourseCode) return;
+    const code = newCourseCode.toUpperCase().trim();
+    const updated = { ...courseColors, [code]: selectedColor };
+    onUpdateSettings({ courseColors: updated });
+    setNewCourseCode('');
+  };
+
+  const handleRemoveCourseColor = (code: string) => {
+    const updated = { ...courseColors };
+    delete updated[code];
+    onUpdateSettings({ courseColors: updated });
+  };
+
   return (
     <div className="flex flex-col gap-6 max-w-[900px]">
-      {/* Header */}
       <div>
         <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
-          D2L Learn Feed & Preferences
+          Settings & Customization
         </h2>
         <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-          Configure zero-auth client-side calendar sync for Waterloo Learn and manage data persistence.
+          Configure D2L Learn feed sync, per-course subtle background colors, and data backups.
         </p>
+      </div>
+
+      {/* Per-Course Accent Color Customizer */}
+      <div className="uw-card p-6 flex flex-col gap-4">
+        <div className="border-b border-[var(--border)] pb-3 flex items-center justify-between">
+          <div>
+            <h3 className="font-sans font-bold text-base text-[var(--c5)] flex items-center gap-2">
+              <Palette className="w-4 h-4 text-[var(--c3)]" />
+              Per-Course Subtle Background Colors
+            </h3>
+            <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
+              Assign custom background tint colors to courses across your dashboard, assignments, and calendar.
+            </p>
+          </div>
+        </div>
+
+        {/* Existing Course Colors */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {Object.entries(courseColors).map(([code, color]) => (
+            <div
+              key={code}
+              className="uw-card p-3 flex items-center justify-between border-[var(--border)]"
+              style={{ backgroundColor: color }}
+            >
+              <div className="flex items-center gap-2.5">
+                <div
+                  className="w-4 h-4 border border-[var(--border)]"
+                  style={{ backgroundColor: color }}
+                />
+                <span className="font-mono font-bold text-xs text-[var(--c5)]">{code}</span>
+              </div>
+
+              <button
+                onClick={() => handleRemoveCourseColor(code)}
+                className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors"
+                title="Remove course color"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Add Course Color Form */}
+        <form onSubmit={handleAddCourseColor} className="flex flex-col gap-3 pt-3 border-t border-[var(--border)]">
+          <span className="mono-label">assign color to course</span>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="text"
+              placeholder="Course Code (e.g. CS 135)"
+              value={newCourseCode}
+              onChange={(e) => setNewCourseCode(e.target.value)}
+              className="flex-1 bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
+            />
+
+            <div className="flex items-center gap-1.5 overflow-x-auto">
+              {PRESET_COLORS.map((preset) => (
+                <button
+                  type="button"
+                  key={preset.hex}
+                  onClick={() => setSelectedColor(preset.hex)}
+                  className={`w-6 h-6 border transition-all ${
+                    selectedColor === preset.hex ? 'border-[var(--c5)] scale-110' : 'border-[var(--border)]'
+                  }`}
+                  style={{ backgroundColor: preset.hex }}
+                  title={preset.name}
+                />
+              ))}
+            </div>
+
+            <button
+              type="submit"
+              className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)] shrink-0"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>add color</span>
+            </button>
+          </div>
+        </form>
       </div>
 
       {/* D2L Calendar Feed Setup */}
       <div className="uw-card p-6 flex flex-col gap-4">
-        <div className="border-b border-[var(--border)] pb-3 flex items-center justify-between">
-          <div>
-            <span className="mono-label">D2L INTEGRATION</span>
-            <h3 className="font-sans font-bold text-base text-[var(--c5)] mt-0.5">
-              Waterloo Learn Calendar Feed URL
-            </h3>
-          </div>
-          <span className="uw-tag bg-emerald-500/10 border-emerald-500/30 text-emerald-600 font-semibold">
-            zero login required
-          </span>
+        <div className="border-b border-[var(--border)] pb-3">
+          <h3 className="font-sans font-bold text-base text-[var(--c5)]">
+            Waterloo Learn Calendar Feed URL
+          </h3>
         </div>
 
         <p className="mono-text text-xs text-[var(--c4)] leading-relaxed">
-          Waterloo Learn provides an iCal feed URL for your registered courses. By subscribing to this feed, UWexplorer fetches your course deadlines and calendar items client-side without needing your login credentials.
+          Waterloo Learn provides an iCal feed URL for your registered courses. By subscribing to this feed, UWexplorer fetches your course deadlines client-side.
         </p>
 
         <form onSubmit={handleSaveUrl} className="flex flex-col gap-3">
@@ -109,26 +214,10 @@ export const Settings: React.FC<SettingsProps> = ({
         )}
       </div>
 
-      {/* Step-by-Step Instructions */}
-      <div className="uw-card p-6 flex flex-col gap-4">
-        <h3 className="font-sans font-bold text-sm text-[var(--c5)] flex items-center gap-2">
-          <HelpCircle className="w-4 h-4 text-[var(--c3)]" />
-          How to Get Your Waterloo Learn iCal Feed URL
-        </h3>
-
-        <ol className="list-decimal list-inside flex flex-col gap-2 font-mono text-xs text-[var(--c4)] leading-relaxed">
-          <li>Log in to <strong>learn.uwaterloo.ca</strong> in your browser.</li>
-          <li>Click on <strong>Calendar</strong> from the top navigation bar.</li>
-          <li>Click the <strong>Subscribe</strong> button located at the top of the calendar interface.</li>
-          <li>Choose your preferred calendar settings and click <strong>Submit</strong>.</li>
-          <li>Copy the generated <strong>Calendar Feed URL</strong> link and paste it into the box above.</li>
-        </ol>
-      </div>
-
       {/* Data Management & Demo Reset */}
       <div className="uw-card p-6 flex flex-col gap-4">
         <h3 className="font-sans font-bold text-sm text-[var(--c5)]">
-          Data Management & Demo Mode
+          Data Management & Reset
         </h3>
 
         <div className="flex items-center gap-4 flex-wrap">

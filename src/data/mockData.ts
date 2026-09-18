@@ -1,4 +1,13 @@
-import { QuickLink, Announcement, Assignment } from '../types';
+import { QuickLink, Announcement, Assignment, ScheduleItem } from '../types';
+
+export const DEFAULT_COURSE_COLORS: Record<string, string> = {
+  'CS 135': '#3b82f61a',   // subtle blue
+  'MATH 135': '#10b9811a', // subtle green
+  'MATH 137': '#8b5cf61a', // subtle purple
+  'ENGL 109': '#f59e0b1a', // subtle amber
+  'PHYS 121': '#ef44441a', // subtle red
+  'LEARN': '#64748b1a',    // subtle slate
+};
 
 export const INITIAL_QUICK_LINKS: QuickLink[] = [
   {
@@ -91,7 +100,6 @@ export const INITIAL_QUICK_LINKS: QuickLink[] = [
   },
 ];
 
-// Current date offset helper for realistic deadlines
 const now = new Date();
 const addDays = (days: number) => {
   const d = new Date(now);
@@ -197,5 +205,68 @@ export const INITIAL_ASSIGNMENTS: Assignment[] = [
     points: '30 pts',
     locationUrl: 'https://learn.uwaterloo.ca/',
     isCompleted: false,
+  },
+];
+
+export const INITIAL_SCHEDULE: ScheduleItem[] = [
+  {
+    id: 'sch-1',
+    courseCode: 'CS 135',
+    courseName: 'Designing Functional Programs',
+    title: 'Lecture 001',
+    location: 'MC 2065',
+    startTime: '10:00 AM',
+    endTime: '11:20 AM',
+    daysOfWeek: ['Mon', 'Wed', 'Fri'],
+    instructor: 'Gregor Richards',
+    type: 'lecture',
+  },
+  {
+    id: 'sch-2',
+    courseCode: 'MATH 135',
+    courseName: 'Algebra for Honors Mathematics',
+    title: 'Lecture 002',
+    location: 'MC 4020',
+    startTime: '11:30 AM',
+    endTime: '12:50 PM',
+    daysOfWeek: ['Mon', 'Wed', 'Fri'],
+    instructor: 'Carmen Bruni',
+    type: 'lecture',
+  },
+  {
+    id: 'sch-3',
+    courseCode: 'MATH 137',
+    courseName: 'Calculus 1 for Honors Mathematics',
+    title: 'Lecture 003',
+    location: 'RCH 101',
+    startTime: '01:30 PM',
+    endTime: '02:50 PM',
+    daysOfWeek: ['Tue', 'Thu'],
+    instructor: 'David Jao',
+    type: 'lecture',
+  },
+  {
+    id: 'sch-4',
+    courseCode: 'CS 135',
+    courseName: 'Designing Functional Programs',
+    title: 'Tutorial 101',
+    location: 'MC 3003',
+    startTime: '03:30 PM',
+    endTime: '04:20 PM',
+    daysOfWeek: ['Wed'],
+    instructor: 'ISG TA',
+    type: 'tutorial',
+  },
+  {
+    id: 'sch-5',
+    courseCode: 'PHYS 121',
+    courseName: 'Mechanics & Waves',
+    title: 'Physics Lab 01',
+    location: 'PHY 310',
+    startTime: '02:30 PM',
+    endTime: '05:20 PM',
+    daysOfWeek: ['Thu'],
+    instructor: 'Lab Instructor',
+    type: 'lab',
   },
 ];

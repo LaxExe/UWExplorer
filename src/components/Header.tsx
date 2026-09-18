@@ -19,12 +19,13 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const getTitle = () => {
     switch (activeTab) {
-      case 'dashboard': return 'Dashboard Overview';
-      case 'links': return 'Campus Quick Links';
-      case 'announcements': return 'Course Announcements';
+      case 'dashboard': return 'Dashboard';
+      case 'schedule': return "Today's Schedule";
+      case 'links': return 'Quick Links';
+      case 'announcements': return 'Announcements';
       case 'assignments': return 'Assignments & Deadlines';
-      case 'calendar': return 'Semester Calendar';
-      case 'settings': return 'D2L Integration & Settings';
+      case 'calendar': return 'Calendar';
+      case 'settings': return 'Settings';
       default: return 'UWexplorer';
     }
   };
@@ -35,12 +36,9 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="w-8 h-8 border border-[var(--border)] flex items-center justify-center bg-[var(--c1)]">
           <Compass className="w-4 h-4 text-[var(--c5)]" />
         </div>
-        <div>
-          <span className="mono-label block">uwaterloo / student portal</span>
-          <h1 className="text-lg font-semibold text-[var(--c5)] tracking-tight font-sans">
-            {getTitle()}
-          </h1>
-        </div>
+        <h1 className="text-lg font-bold font-sans text-[var(--c5)] tracking-tight">
+          {getTitle()}
+        </h1>
       </div>
 
       <div className="flex items-center gap-3">

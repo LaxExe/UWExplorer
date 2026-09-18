@@ -1,11 +1,12 @@
 import React from 'react';
 import { QuickLink, Announcement, Assignment } from '../types';
-import { Briefcase, ArrowUpRight, Bell, CheckSquare, Calendar, AlertCircle } from 'lucide-react';
+import { ArrowUpRight, Bell, CheckSquare, CalendarDays, AlertCircle } from 'lucide-react';
 
 interface DashboardProps {
   quickLinks: QuickLink[];
   announcements: Announcement[];
   assignments: Assignment[];
+  courseColors: Record<string, string>;
   onToggleAssignment: (id: string) => void;
   onNavigate: (tab: string) => void;
 }
@@ -14,13 +15,12 @@ export const Dashboard: React.FC<DashboardProps> = ({
   quickLinks,
   announcements,
   assignments,
+  courseColors,
   onToggleAssignment,
   onNavigate,
 }) => {
   const pendingAssignments = assignments.filter(a => !a.isCompleted);
-  const completedAssignments = assignments.filter(a => a.isCompleted);
   
-  // Sort assignments by due date
   const sortedPending = [...pendingAssignments].sort((a, b) => 
     new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
   );
@@ -28,54 +28,49 @@ export const Dashboard: React.FC<DashboardProps> = ({
   const upcomingNext = sortedPending.slice(0, 4);
   const recentAnnouncements = announcements.slice(0, 3);
   
-  // Featured links: WaterlooWorks + Learn + Quest + Outlook
   const featuredLinks = quickLinks.filter(l => 
-    ['waterlooworks', 'learn', 'quest', 'outlook', 'crowdmark'].includes(l.id)
+    ['learn', 'quest', 'outlook', 'crowdmark'].includes(l.id)
   );
 
   return (
     <div className="flex flex-col gap-6 max-w-[1100px]">
-      {/* Hero Banner */}
+      {/* Hero Banner (WaterlooWorks button removed per request) */}
       <div className="uw-card flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <span className="mono-label">UNIVERSITY OF WATERLOO DASHBOARD</span>
-          <h2 className="text-2xl font-bold font-sans text-[var(--c5)] tracking-tight mt-1">
-            Welcome back, Warrior.
+          <h2 className="text-2xl font-bold font-sans text-[var(--c5)] tracking-tight">
+            Welcome back, Student.
           </h2>
           <p className="font-mono text-xs text-[var(--c4)] mt-1 max-w-xl">
-            Streamlined Waterloo Learn (D2L) announcements, upcoming assignment deadlines, and direct access to WaterlooWorks, Quest, & Outlook.
+            Streamlined Learn (D2L) announcements, upcoming deadlines, and quick links to your campus portals.
           </p>
         </div>
 
-        <div className="flex items-center gap-3 flex-wrap">
-          <a
-            href="https://waterlooworks.uwaterloo.ca/"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => onNavigate('schedule')}
             className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)]"
           >
-            <Briefcase className="w-4 h-4" />
-            <span>WaterlooWorks</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+            <CalendarDays className="w-4 h-4" />
+            <span>view today's schedule</span>
+          </button>
           <button
             onClick={() => onNavigate('assignments')}
             className="uw-button"
           >
             <CheckSquare className="w-4 h-4" />
-            <span>view deadlines ({pendingAssignments.length})</span>
+            <span>deadlines ({pendingAssignments.length})</span>
           </button>
         </div>
       </div>
 
-      {/* Metrics Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* Metrics Row (Completed items card removed per request) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="uw-card flex flex-col justify-between">
           <div className="flex justify-between items-start">
-            <span className="mono-label">pending assignments</span>
+            <span className="mono-label font-bold text-[var(--c5)]">pending assignments</span>
             <CheckSquare className="w-4 h-4 text-[var(--c3)]" />
           </div>
-          <div className="mt-4">
+          <div className="mt-3">
             <span className="text-3xl font-bold font-sans text-[var(--c5)]">
               {pendingAssignments.length}
             </span>
@@ -85,27 +80,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
         <div className="uw-card flex flex-col justify-between">
           <div className="flex justify-between items-start">
-            <span className="mono-label">recent announcements</span>
+            <span className="mono-label font-bold text-[var(--c5)]">recent announcements</span>
             <Bell className="w-4 h-4 text-[var(--c3)]" />
           </div>
-          <div className="mt-4">
+          <div className="mt-3">
             <span className="text-3xl font-bold font-sans text-[var(--c5)]">
               {announcements.length}
             </span>
             <span className="font-mono text-xs text-[var(--c3)] ml-2">course updates</span>
-          </div>
-        </div>
-
-        <div className="uw-card flex flex-col justify-between">
-          <div className="flex justify-between items-start">
-            <span className="mono-label">completed items</span>
-            <Calendar className="w-4 h-4 text-[var(--c3)]" />
-          </div>
-          <div className="mt-4">
-            <span className="text-3xl font-bold font-sans text-[var(--c5)]">
-              {completedAssignments.length}
-            </span>
-            <span className="font-mono text-xs text-[var(--c3)] ml-2">done this term</span>
           </div>
         </div>
       </div>
@@ -130,17 +112,19 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div className="flex flex-col gap-3">
             {upcomingNext.length === 0 ? (
               <div className="uw-card text-center py-8">
-                <p className="font-mono text-xs text-[var(--c3)]">No upcoming assignments! Enjoy your free time.</p>
+                <p className="font-mono text-xs text-[var(--c3)]">No upcoming assignments!</p>
               </div>
             ) : (
               upcomingNext.map(item => {
                 const dueDateObj = new Date(item.dueDate);
                 const isOverdue = dueDateObj.getTime() < Date.now() && !item.isCompleted;
+                const courseBg = courseColors[item.courseCode] || 'transparent';
 
                 return (
                   <div
                     key={item.id}
                     className="uw-card flex items-start gap-4 justify-between"
+                    style={{ backgroundColor: courseBg !== 'transparent' ? courseBg : undefined }}
                   >
                     <div className="flex items-start gap-3">
                       <input
@@ -183,19 +167,18 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
         </div>
 
-        {/* Right Column: Fast Launch & Announcements */}
+        {/* Right Column: Shortcuts & Announcements */}
         <div className="flex flex-col gap-6">
-          {/* Quick Services Launcher */}
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <h3 className="font-sans text-base font-semibold text-[var(--c5)]">
-                UW Shortcuts
+                Quick Shortcuts
               </h3>
               <button
                 onClick={() => onNavigate('links')}
                 className="mono-label text-xs hover:text-[var(--c5)] cursor-pointer"
               >
-                all services →
+                all links →
               </button>
             </div>
 
@@ -208,23 +191,15 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   rel="noopener noreferrer"
                   className="uw-button w-full justify-between py-2.5 h-auto text-left"
                 >
-                  <div className="flex items-center gap-2.5">
-                    {link.id === 'waterlooworks' ? (
-                      <Briefcase className="w-4 h-4 text-[var(--c5)]" />
-                    ) : (
-                      <ArrowUpRight className="w-4 h-4 text-[var(--c4)]" />
-                    )}
-                    <span className="font-sans font-semibold text-xs text-[var(--c5)]">
-                      {link.name}
-                    </span>
-                  </div>
-                  <span className="mono-label">open</span>
+                  <span className="font-sans font-semibold text-xs text-[var(--c5)]">
+                    {link.name}
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-[var(--c4)]" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Recent Announcements Feed */}
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
               <h3 className="font-sans text-base font-semibold text-[var(--c5)]">
@@ -239,22 +214,30 @@ export const Dashboard: React.FC<DashboardProps> = ({
             </div>
 
             <div className="flex flex-col gap-3">
-              {recentAnnouncements.map(ann => (
-                <div key={ann.id} className="uw-card p-3.5">
-                  <div className="flex items-center justify-between">
-                    <span className="uw-tag">{ann.courseCode}</span>
-                    <span className="mono-label">
-                      {new Date(ann.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                    </span>
+              {recentAnnouncements.map(ann => {
+                const courseBg = courseColors[ann.courseCode] || 'transparent';
+
+                return (
+                  <div
+                    key={ann.id}
+                    className="uw-card p-3.5"
+                    style={{ backgroundColor: courseBg !== 'transparent' ? courseBg : undefined }}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="uw-tag">{ann.courseCode}</span>
+                      <span className="mono-label">
+                        {new Date(ann.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      </span>
+                    </div>
+                    <h4 className="font-sans font-semibold text-xs text-[var(--c5)] mt-2">
+                      {ann.title}
+                    </h4>
+                    <p className="mono-text text-[0.72rem] text-[var(--c3)] line-clamp-2 mt-1">
+                      {ann.content}
+                    </p>
                   </div>
-                  <h4 className="font-sans font-semibold text-xs text-[var(--c5)] mt-2">
-                    {ann.title}
-                  </h4>
-                  <p className="mono-text text-[0.72rem] text-[var(--c3)] line-clamp-2 mt-1">
-                    {ann.content}
-                  </p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

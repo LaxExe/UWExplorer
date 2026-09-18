@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 import { Dashboard } from './pages/Dashboard';
+import { Schedule } from './pages/Schedule';
 import { QuickLinks } from './pages/QuickLinks';
 import { Announcements } from './pages/Announcements';
 import { Assignments } from './pages/Assignments';
 import { CalendarView } from './pages/CalendarView';
 import { Settings } from './pages/Settings';
 
-import { QuickLink, Announcement, Assignment, UserSettings } from './types';
-import { INITIAL_QUICK_LINKS, INITIAL_ANNOUNCEMENTS, INITIAL_ASSIGNMENTS } from './data/mockData';
+import { QuickLink, Announcement, Assignment, ScheduleItem, UserSettings } from './types';
+import { INITIAL_QUICK_LINKS, INITIAL_ANNOUNCEMENTS, INITIAL_ASSIGNMENTS, INITIAL_SCHEDULE, DEFAULT_COURSE_COLORS } from './data/mockData';
 import { fetchD2LFeed } from './services/d2lSync';
 
 export function App() {
@@ -21,26 +22,38 @@ export function App() {
   const [settings, setSettings] = useState<UserSettings>(() => {
     const saved = localStorage.getItem('uwexplorer_settings');
     if (saved) {
-      try { return JSON.parse(saved); } catch (e) {}
+      try {
+        const parsed = JSON.parse(saved);
+        return {
+          ...parsed,
+          courseColors: parsed.courseColors || DEFAULT_COURSE_COLORS,
+        };
+      } catch (e) {}
     }
     return {
       theme: 'light',
       d2lFeedUrl: '',
       lastSyncedAt: null,
-      customLinks: [],
+      courseColors: DEFAULT_COURSE_COLORS,
     };
   });
 
   // Persistent quick links state
   const [quickLinks, setQuickLinks] = useState<QuickLink[]>(() => {
-    const savedCustom = localStorage.getItem('uwexplorer_custom_links');
-    if (savedCustom) {
-      try {
-        const custom: QuickLink[] = JSON.parse(savedCustom);
-        return [...INITIAL_QUICK_LINKS, ...custom];
-      } catch (e) {}
+    const savedLinks = localStorage.getItem('uwexplorer_quick_links');
+    if (savedLinks) {
+      try { return JSON.parse(savedLinks); } catch (e) {}
     }
     return INITIAL_QUICK_LINKS;
+  });
+
+  // Persistent schedule state
+  const [schedule, setSchedule] = useState<ScheduleItem[]>(() => {
+    const saved = localStorage.getItem('uwexplorer_schedule');
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
+    }
+    return INITIAL_SCHEDULE;
   });
 
   // Persistent announcements state
@@ -61,17 +74,21 @@ export function App() {
     return INITIAL_ASSIGNMENTS;
   });
 
-  // Theme synchronization with html[data-theme]
+  // Sync theme
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', settings.theme);
     localStorage.setItem('uwexplorer_settings', JSON.stringify(settings));
   }, [settings]);
 
-  // Save quick links to localStorage
+  // Save quick links
   useEffect(() => {
-    const customOnly = quickLinks.filter(l => l.isCustom);
-    localStorage.setItem('uwexplorer_custom_links', JSON.stringify(customOnly));
+    localStorage.setItem('uwexplorer_quick_links', JSON.stringify(quickLinks));
   }, [quickLinks]);
+
+  // Save schedule
+  useEffect(() => {
+    localStorage.setItem('uwexplorer_schedule', JSON.stringify(schedule));
+  }, [schedule]);
 
   // Save assignments
   useEffect(() => {
@@ -115,14 +132,30 @@ export function App() {
   const handleAddQuickLink = (newLink: Omit<QuickLink, 'id'>) => {
     const item: QuickLink = {
       ...newLink,
-      id: `custom-${Date.now()}`,
+      id: `link-${Date.now()}`,
       isCustom: true,
     };
     setQuickLinks(prev => [...prev, item]);
   };
 
+  const handleUpdateQuickLink = (id: string, updated: Partial<QuickLink>) => {
+    setQuickLinks(prev => prev.map(l => (l.id === id ? { ...l, ...updated } : l)));
+  };
+
   const handleRemoveQuickLink = (id: string) => {
     setQuickLinks(prev => prev.filter(l => l.id !== id));
+  };
+
+  const handleAddScheduleItem = (newItem: Omit<ScheduleItem, 'id'>) => {
+    const item: ScheduleItem = {
+      ...newItem,
+      id: `sch-${Date.now()}`,
+    };
+    setSchedule(prev => [...prev, item]);
+  };
+
+  const handleDeleteScheduleItem = (id: string) => {
+    setSchedule(prev => prev.filter(s => s.id !== id));
   };
 
   const handleSyncD2L = async () => {
@@ -137,7 +170,6 @@ export function App() {
     if (res.error) {
       setSyncMessage(`Sync Notice: ${res.error}`);
     } else {
-      // Merge fetched events with existing manual/demo assignments
       const fetchedIds = new Set(res.assignments.map(a => a.id));
       const existingNonD2L = assignments.filter(a => !fetchedIds.has(a.id));
       setAssignments([...res.assignments, ...existingNonD2L]);
@@ -150,15 +182,16 @@ export function App() {
   };
 
   const handleResetData = () => {
-    if (window.confirm('Reset to default Waterloo sample data? Custom items will be cleared.')) {
+    if (window.confirm('Reset to default sample data?')) {
       setAssignments(INITIAL_ASSIGNMENTS);
       setAnnouncements(INITIAL_ANNOUNCEMENTS);
       setQuickLinks(INITIAL_QUICK_LINKS);
+      setSchedule(INITIAL_SCHEDULE);
       setSettings({
         theme: 'light',
         d2lFeedUrl: '',
         lastSyncedAt: null,
-        customLinks: [],
+        courseColors: DEFAULT_COURSE_COLORS,
       });
       localStorage.clear();
       setSyncMessage('Data reset to default Waterloo sample mode.');
@@ -189,8 +222,18 @@ export function App() {
               quickLinks={quickLinks}
               announcements={announcements}
               assignments={assignments}
+              courseColors={settings.courseColors}
               onToggleAssignment={handleToggleAssignment}
               onNavigate={setActiveTab}
+            />
+          )}
+
+          {activeTab === 'schedule' && (
+            <Schedule
+              schedule={schedule}
+              courseColors={settings.courseColors}
+              onAddScheduleItem={handleAddScheduleItem}
+              onDeleteScheduleItem={handleDeleteScheduleItem}
             />
           )}
 
@@ -198,17 +241,22 @@ export function App() {
             <QuickLinks
               links={quickLinks}
               onAddLink={handleAddQuickLink}
+              onUpdateLink={handleUpdateQuickLink}
               onRemoveLink={handleRemoveQuickLink}
             />
           )}
 
           {activeTab === 'announcements' && (
-            <Announcements announcements={announcements} />
+            <Announcements
+              announcements={announcements}
+              courseColors={settings.courseColors}
+            />
           )}
 
           {activeTab === 'assignments' && (
             <Assignments
               assignments={assignments}
+              courseColors={settings.courseColors}
               onToggleAssignment={handleToggleAssignment}
               onAddAssignment={handleAddAssignment}
               onDeleteAssignment={handleDeleteAssignment}
@@ -216,7 +264,10 @@ export function App() {
           )}
 
           {activeTab === 'calendar' && (
-            <CalendarView assignments={assignments} />
+            <CalendarView
+              assignments={assignments}
+              courseColors={settings.courseColors}
+            />
           )}
 
           {activeTab === 'settings' && (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutDashboard, ExternalLink, Bell, CheckSquare, Calendar as CalendarIcon, Settings as SettingsIcon } from 'lucide-react';
+import { LayoutDashboard, CalendarDays, ExternalLink, Bell, CheckSquare, Calendar as CalendarIcon, Settings as SettingsIcon } from 'lucide-react';
 
 interface SidebarProps {
   activeTab: string;
@@ -16,6 +16,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const navItems = [
     { id: 'dashboard', label: 'dashboard', icon: LayoutDashboard },
+    { id: 'schedule', label: 'schedule', icon: CalendarDays },
     { id: 'links', label: 'quick links', icon: ExternalLink },
     { id: 'announcements', label: 'announcements', icon: Bell, badge: announcementsCount },
     { id: 'assignments', label: 'assignments', icon: CheckSquare, badge: assignmentsCount },
@@ -24,11 +25,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <aside className="w-64 border-r border-[var(--border)] bg-[var(--bg)] min-h-[calc(100vh-65px)] p-4 flex flex-col justify-between">
+    <aside className="w-56 border-r border-[var(--border)] bg-[var(--bg)] min-h-[calc(100vh-65px)] p-4 flex flex-col justify-between">
       <div className="flex flex-col gap-1">
         <div className="px-3 py-2 mb-2 border-b border-[var(--border)]">
-          <span className="text-[0.68rem] font-mono text-[var(--c3)] tracking-widest uppercase">
-            UWEXPLORER v1.0
+          <span className="font-sans font-bold text-sm text-[var(--c5)] tracking-wider">
+            UWEXPLORER
           </span>
         </div>
 
@@ -55,17 +56,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
             );
           })}
         </nav>
-      </div>
-
-      <div className="p-3 border border-[var(--border)] bg-[var(--c1)] flex flex-col gap-1">
-        <span className="mono-label">system status</span>
-        <div className="flex items-center gap-2 mt-1">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span className="font-mono text-xs text-[var(--c4)]">D2L Feed Ready</span>
-        </div>
-        <p className="font-mono text-[0.68rem] text-[var(--c3)] mt-1">
-          Waterloo Learn sync active via client iCal parser.
-        </p>
       </div>
     </aside>
   );
