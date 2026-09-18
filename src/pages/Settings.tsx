@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { UserSettings, Assignment } from '../types';
-import { RefreshCw, Download, RotateCcw, Check, Palette, Plus, Trash2, Upload, FileText, Mail, ExternalLink, HelpCircle } from 'lucide-react';
+import { UserSettings, Assignment, Announcement, ScheduleItem } from '../types';
+import { RefreshCw, Download, RotateCcw, Check, Palette, Plus, Trash2, Upload, FileText, Mail, ExternalLink, ShieldCheck } from 'lucide-react';
 import { parseICSData } from '../services/d2lSync';
 
 interface SettingsProps {
   settings: UserSettings;
+  assignments: Assignment[];
+  announcements: Announcement[];
+  schedule: ScheduleItem[];
   onUpdateSettings: (newSettings: Partial<UserSettings>) => void;
   onSyncD2L: () => void;
   onImportAssignments?: (assignments: Assignment[]) => void;
@@ -26,6 +29,9 @@ const PRESET_COLORS = [
 
 export const Settings: React.FC<SettingsProps> = ({
   settings,
+  assignments,
+  announcements,
+  schedule,
   onUpdateSettings,
   onSyncD2L,
   onImportAssignments,
@@ -38,11 +44,20 @@ export const Settings: React.FC<SettingsProps> = ({
   const [icsTextPaste, setIcsTextPaste] = useState('');
   const [uploadNotice, setUploadNotice] = useState<string | null>(null);
 
-  // Course Color state
+  // Form for custom course code addition
   const [newCourseCode, setNewCourseCode] = useState('');
   const [selectedColor, setSelectedColor] = useState('#3b82f61a');
 
   const courseColors = settings.courseColors || {};
+
+  // Automatically discover all active course codes across assignments, announcements, and schedule
+  const activeCourseSet = new Set<string>();
+  assignments.forEach(a => { if (a.courseCode) activeCourseSet.add(a.courseCode.toUpperCase()); });
+  announcements.forEach(a => { if (a.courseCode) activeCourseSet.add(a.courseCode.toUpperCase()); });
+  schedule.forEach(s => { if (s.courseCode) activeCourseSet.add(s.courseCode.toUpperCase()); });
+  Object.keys(courseColors).forEach(c => activeCourseSet.add(c.toUpperCase()));
+
+  const allCourses = Array.from(activeCourseSet).sort();
 
   const handleSaveUrl = (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,6 +100,11 @@ export const Settings: React.FC<SettingsProps> = ({
     }
   };
 
+  const handleSetCourseColor = (code: string, colorHex: string) => {
+    const updated = { ...courseColors, [code]: colorHex };
+    onUpdateSettings({ courseColors: updated });
+  };
+
   const handleAddCourseColor = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newCourseCode) return;
@@ -104,11 +124,121 @@ export const Settings: React.FC<SettingsProps> = ({
     <div className="flex flex-col gap-6 max-w-[900px] mx-auto w-full">
       <div>
         <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
-          Settings & Calendar Sync Options
+          Settings & Verified Courses
         </h2>
         <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-          Configure Learn / Outlook feed sync, upload .ics calendar files, and manage per-course colors.
+          Verified course list auto-extracted from your D2L feeds, schedule, and assignments.
         </p>
+      </div>
+
+      {/* Auto-Discovered Verified Courses Manager */}
+      <div className="uw-card p-6 flex flex-col gap-4 border-[var(--c4)]">
+        <div className="border-b border-[var(--border)] pb-3 flex items-center justify-between">
+          <div>
+            <h3 className="font-sans font-bold text-base text-[var(--c5)] flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              Verified Enrolled Courses ({allCourses.length})
+            </h3>
+            <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
+              Automatically verified from your D2L calendar, announcements, and schedule items.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          {allCourses.length === 0 ? (
+            <p className="mono-text text-xs text-[var(--c3)] py-4 text-center">
+              No courses discovered yet. Sync your D2L feed URL or add classes to verify courses!
+            </p>
+          ) : (
+            allCourses.map((code) => {
+              const currentColor = courseColors[code] || PRESET_COLORS[0].hex;
+
+              return (
+                <div
+                  key={code}
+                  className="uw-card p-3.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-[var(--border)]"
+                  style={{ backgroundColor: currentColor }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-5 h-5 border border-[var(--border)] shrink-0"
+                      style={{ backgroundColor: currentColor }}
+                    />
+                    <div>
+                      <span className="font-mono font-bold text-sm text-[var(--c5)]">{code}</span>
+                      <span className="mono-label text-[0.68rem] block text-[var(--c3)]">verified course</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="mono-label text-[0.68rem]">accent color:</span>
+                    <div className="flex items-center gap-1.5">
+                      {PRESET_COLORS.map((preset) => (
+                        <button
+                          key={preset.hex}
+                          type="button"
+                          onClick={() => handleSetCourseColor(code, preset.hex)}
+                          className={`w-5 h-5 border transition-all ${
+                            currentColor === preset.hex ? 'border-[var(--c5)] scale-125' : 'border-[var(--border)]'
+                          }`}
+                          style={{ backgroundColor: preset.hex }}
+                          title={preset.name}
+                        />
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={() => handleRemoveCourseColor(code)}
+                      className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors ml-1"
+                      title="Reset course color"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              );
+            })
+          )}
+        </div>
+
+        {/* Manual Course Code Addition */}
+        <form onSubmit={handleAddCourseColor} className="flex flex-col gap-3 pt-3 border-t border-[var(--border)]">
+          <span className="mono-label">add manual course code</span>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="text"
+              placeholder="e.g. ECE 105 or CS 246"
+              value={newCourseCode}
+              onChange={(e) => setNewCourseCode(e.target.value)}
+              className="flex-1 bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
+            />
+
+            <div className="flex items-center gap-1.5 overflow-x-auto">
+              {PRESET_COLORS.map((preset) => (
+                <button
+                  type="button"
+                  key={preset.hex}
+                  onClick={() => setSelectedColor(preset.hex)}
+                  className={`w-6 h-6 border transition-all ${
+                    selectedColor === preset.hex ? 'border-[var(--c5)] scale-110' : 'border-[var(--border)]'
+                  }`}
+                  style={{ backgroundColor: preset.hex }}
+                  title={preset.name}
+                />
+              ))}
+            </div>
+
+            <button
+              type="submit"
+              className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)] shrink-0"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>add course</span>
+            </button>
+          </div>
+        </form>
       </div>
 
       {/* Recommended Outlook Sync Method Banner */}
@@ -116,7 +246,7 @@ export const Settings: React.FC<SettingsProps> = ({
         <div className="flex items-center justify-between">
           <span className="uw-tag bg-emerald-500/10 border-emerald-500/30 text-emerald-600 font-bold flex items-center gap-1.5">
             <Mail className="w-3.5 h-3.5" />
-            recommended method (outlook 365 bridge)
+            outlook 365 bridge (recommended)
           </span>
           <a
             href="https://outlook.office.com/calendar/"
@@ -132,10 +262,6 @@ export const Settings: React.FC<SettingsProps> = ({
         <h3 className="font-sans font-bold text-base text-[var(--c5)]">
           Syncing via UWaterloo Outlook (Zero 403 Errors & Automatic Updates)
         </h3>
-
-        <p className="mono-text text-xs text-[var(--c4)] leading-relaxed">
-          Connecting your Learn Calendar to Outlook 365 is the most reliable method! Outlook mirrors your Learn calendar in Microsoft's cloud without CORS or HTTP 403 blocks.
-        </p>
 
         <ol className="list-decimal list-inside flex flex-col gap-1.5 font-mono text-xs text-[var(--c5)] mt-1">
           <li>Log in to <strong>learn.uwaterloo.ca</strong> &rarr; Calendar &rarr; Subscribe &rarr; Copy D2L link.</li>
@@ -155,10 +281,6 @@ export const Settings: React.FC<SettingsProps> = ({
             auto sync
           </span>
         </div>
-
-        <p className="mono-text text-xs text-[var(--c4)] leading-relaxed">
-          Paste your Waterloo Learn or Outlook published `.ics` URL below.
-        </p>
 
         <form onSubmit={handleSaveUrl} className="flex flex-col gap-3">
           <label className="mono-label">calendar feed url (.ics / webcal)</label>
@@ -217,9 +339,6 @@ export const Settings: React.FC<SettingsProps> = ({
             <Upload className="w-4 h-4 text-[var(--c3)]" />
             Direct .ics File Upload / iCal Paste (Offline Backup)
           </h3>
-          <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-            Download the `.ics` file from Learn &rarr; Calendar &rarr; Export and upload it here as an offline backup!
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -263,84 +382,6 @@ export const Settings: React.FC<SettingsProps> = ({
             {uploadNotice}
           </div>
         )}
-      </div>
-
-      {/* Per-Course Accent Color Customizer */}
-      <div className="uw-card p-6 flex flex-col gap-4">
-        <div className="border-b border-[var(--border)] pb-3 flex items-center justify-between">
-          <div>
-            <h3 className="font-sans font-bold text-base text-[var(--c5)] flex items-center gap-2">
-              <Palette className="w-4 h-4 text-[var(--c3)]" />
-              Per-Course Subtle Background Colors
-            </h3>
-            <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-              Assign custom background tint colors to courses across your dashboard, assignments, and calendar.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {Object.entries(courseColors).map(([code, color]) => (
-            <div
-              key={code}
-              className="uw-card p-3 flex items-center justify-between border-[var(--border)]"
-              style={{ backgroundColor: color }}
-            >
-              <div className="flex items-center gap-2.5">
-                <div
-                  className="w-4 h-4 border border-[var(--border)]"
-                  style={{ backgroundColor: color }}
-                />
-                <span className="font-mono font-bold text-xs text-[var(--c5)]">{code}</span>
-              </div>
-
-              <button
-                onClick={() => handleRemoveCourseColor(code)}
-                className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors"
-                title="Remove course color"
-              >
-                <Trash2 className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          ))}
-        </div>
-
-        <form onSubmit={handleAddCourseColor} className="flex flex-col gap-3 pt-3 border-t border-[var(--border)]">
-          <span className="mono-label">assign color to course</span>
-
-          <div className="flex flex-col sm:flex-row gap-3">
-            <input
-              type="text"
-              placeholder="Course Code (e.g. CS 135)"
-              value={newCourseCode}
-              onChange={(e) => setNewCourseCode(e.target.value)}
-              className="flex-1 bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
-            />
-
-            <div className="flex items-center gap-1.5 overflow-x-auto">
-              {PRESET_COLORS.map((preset) => (
-                <button
-                  type="button"
-                  key={preset.hex}
-                  onClick={() => setSelectedColor(preset.hex)}
-                  className={`w-6 h-6 border transition-all ${
-                    selectedColor === preset.hex ? 'border-[var(--c5)] scale-110' : 'border-[var(--border)]'
-                  }`}
-                  style={{ backgroundColor: preset.hex }}
-                  title={preset.name}
-                />
-              ))}
-            </div>
-
-            <button
-              type="submit"
-              className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)] shrink-0"
-            >
-              <Plus className="w-3.5 h-3.5" />
-              <span>add color</span>
-            </button>
-          </div>
-        </form>
       </div>
 
       {/* Data Management & Demo Reset */}
