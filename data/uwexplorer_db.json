@@ -1453,9 +1453,10 @@
       "courseName": "Designing Functional Programs",
       "title": "A05 Released & Midterm Exam Room Allocation",
       "content": "Assignment 05 has been published on Learn and is due next Tuesday at 23:59. Midterm room allocations are now available under the Course Info tab. Please check your assigned seat (PAC vs DC).",
-      "date": "2026-09-17T17:57:42.127Z",
+      "date": "2026-09-17T17:57:58.991Z",
       "author": "Prof. Gregor Richards",
-      "priority": "important"
+      "priority": "important",
+      "isRead": false
     },
     {
       "id": "ann-2",
@@ -1463,8 +1464,9 @@
       "courseName": "Algebra for Honors Mathematics",
       "title": "Assignment 4 Solution Key & Proof Tips",
       "content": "Solutions for Assignment 4 are posted under Content -> Solutions. Make sure to review the induction proof structuring guide before Assignment 5.",
-      "date": "2026-09-16T17:57:42.127Z",
-      "author": "Dr. Carmen Bruni"
+      "date": "2026-09-16T17:57:58.991Z",
+      "author": "Dr. Carmen Bruni",
+      "isRead": false
     },
     {
       "id": "ann-3",
@@ -1472,8 +1474,9 @@
       "courseName": "Calculus 1 for Honors Mathematics",
       "title": "WebWork Problem Set #6 Open",
       "content": "WebWork Set 6 covering implicit differentiation and logarithmic differentiation is now accessible. You have up to 5 attempts per question.",
-      "date": "2026-09-15T17:57:42.127Z",
-      "author": "Math Undergrad Office"
+      "date": "2026-09-15T17:57:58.991Z",
+      "author": "Math Undergrad Office",
+      "isRead": false
     },
     {
       "id": "ann-4",
@@ -1481,8 +1484,9 @@
       "courseName": "Introduction to Academic Writing",
       "title": "Peer Review Draft Deadline Reminder",
       "content": "Your Rough Draft for Essay #2 must be submitted to the Learn Discussion Forum by Friday 5 PM for peer review assignment.",
-      "date": "2026-09-14T17:57:42.127Z",
-      "author": "Prof. Sarah Jenkins"
+      "date": "2026-09-14T17:57:58.991Z",
+      "author": "Prof. Sarah Jenkins",
+      "isRead": false
     }
   ],
   "quickLinks": [
@@ -1655,7 +1659,7 @@
   "settings": {
     "theme": "light",
     "d2lFeedUrl": "https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?token=act3s2yw0g48a4qw45347",
-    "lastSyncedAt": "2026-09-18T20:03:46.028Z",
+    "lastSyncedAt": null,
     "customLinks": [],
     "courseColors": {
       "CS 135": "#3b82f61a",

@@ -103,7 +103,6 @@ export function App() {
         }
 
         if (icsAssignments.length > 0) {
-          // Merge ICS assignments with any manual ones
           setAssignments(prev => {
             const icsIds = new Set(icsAssignments.map(a => a.id));
             const manualOnly = prev.filter(a => !icsIds.has(a.id) && a.id.startsWith('manual-'));
@@ -239,7 +238,7 @@ export function App() {
       setSyncMessage(`Sync Notice: ${res.error}`);
     } else {
       handleImportAssignments(res.assignments);
-      setSyncMessage(`Successfully parsed ${res.assignments.length} deadline(s) from data/d2l_calendar.ics!`);
+      setSyncMessage(`Successfully parsed ${res.assignments.length} deadline(s) from D2L feed!`);
     }
   };
 
@@ -344,6 +343,9 @@ export function App() {
             {activeTab === 'settings' && (
               <Settings
                 settings={settings}
+                assignments={assignments}
+                announcements={announcements}
+                schedule={schedule}
                 onUpdateSettings={handleUpdateSettings}
                 onSyncD2L={handleSyncD2L}
                 onImportAssignments={handleImportAssignments}
