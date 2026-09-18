@@ -51,4 +51,5 @@ export interface UserSettings {
   d2lFeedUrl: string;
   lastSyncedAt: string | null;
   courseColors: Record<string, string>;
+  sidebarOrder: string[]; // array of tab IDs e.g. ['dashboard', 'schedule', ...]
 }

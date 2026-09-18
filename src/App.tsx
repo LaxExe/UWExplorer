@@ -13,6 +13,8 @@ import { QuickLink, Announcement, Assignment, ScheduleItem, UserSettings } from 
 import { INITIAL_QUICK_LINKS, INITIAL_ANNOUNCEMENTS, INITIAL_ASSIGNMENTS, INITIAL_SCHEDULE, DEFAULT_COURSE_COLORS } from './data/mockData';
 import { fetchD2LFeed } from './services/d2lSync';
 
+const DEFAULT_SIDEBAR_ORDER = ['dashboard', 'schedule', 'links', 'announcements', 'assignments', 'calendar', 'settings'];
+
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
@@ -27,6 +29,7 @@ export function App() {
         return {
           ...parsed,
           courseColors: parsed.courseColors || DEFAULT_COURSE_COLORS,
+          sidebarOrder: parsed.sidebarOrder || DEFAULT_SIDEBAR_ORDER,
         };
       } catch (e) {}
     }
@@ -35,6 +38,7 @@ export function App() {
       d2lFeedUrl: '',
       lastSyncedAt: null,
       courseColors: DEFAULT_COURSE_COLORS,
+      sidebarOrder: DEFAULT_SIDEBAR_ORDER,
     };
   });
 
@@ -109,6 +113,10 @@ export function App() {
 
   const handleUpdateSettings = (newPartial: Partial<UserSettings>) => {
     setSettings(prev => ({ ...prev, ...newPartial }));
+  };
+
+  const handleReorderSidebar = (newOrder: string[]) => {
+    setSettings(prev => ({ ...prev, sidebarOrder: newOrder }));
   };
 
   const handleToggleAssignment = (id: string) => {
@@ -202,6 +210,7 @@ export function App() {
         d2lFeedUrl: '',
         lastSyncedAt: null,
         courseColors: DEFAULT_COURSE_COLORS,
+        sidebarOrder: DEFAULT_SIDEBAR_ORDER,
       });
       localStorage.clear();
       setSyncMessage('Data reset to default Waterloo sample mode.');
@@ -226,6 +235,8 @@ export function App() {
           setActiveTab={setActiveTab}
           assignmentsCount={assignments.filter(a => !a.isCompleted).length}
           announcementsCount={unreadAnnouncementsCount}
+          sidebarOrder={settings.sidebarOrder || DEFAULT_SIDEBAR_ORDER}
+          onReorderSidebar={handleReorderSidebar}
         />
 
         <main className="flex-1 p-6 overflow-y-auto w-full flex justify-center">
@@ -235,6 +246,7 @@ export function App() {
                 quickLinks={quickLinks}
                 announcements={announcements}
                 assignments={assignments}
+                schedule={schedule}
                 courseColors={settings.courseColors}
                 onToggleAssignment={handleToggleAssignment}
                 onNavigate={setActiveTab}

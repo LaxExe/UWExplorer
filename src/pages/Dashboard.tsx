@@ -1,11 +1,12 @@
 import React from 'react';
-import { QuickLink, Announcement, Assignment } from '../types';
+import { QuickLink, Announcement, Assignment, ScheduleItem } from '../types';
 import { ArrowUpRight, Bell, CheckSquare, CalendarDays, AlertCircle } from 'lucide-react';
 
 interface DashboardProps {
   quickLinks: QuickLink[];
   announcements: Announcement[];
   assignments: Assignment[];
+  schedule: ScheduleItem[];
   courseColors: Record<string, string>;
   onToggleAssignment: (id: string) => void;
   onNavigate: (tab: string) => void;
@@ -15,57 +16,49 @@ export const Dashboard: React.FC<DashboardProps> = ({
   quickLinks,
   announcements,
   assignments,
+  schedule,
   courseColors,
   onToggleAssignment,
   onNavigate,
 }) => {
   const pendingAssignments = assignments.filter(a => !a.isCompleted);
-  
+  const unreadAnnouncements = announcements.filter(a => !a.isRead);
+
+  // Today's classes calculation
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const todayStr = days[new Date().getDay()];
+  const todayClasses = schedule.filter(s => s.daysOfWeek.includes(todayStr));
+
   const sortedPending = [...pendingAssignments].sort((a, b) => 
     new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
   );
 
   const upcomingNext = sortedPending.slice(0, 4);
   const recentAnnouncements = announcements.slice(0, 3);
-  
+
   const featuredLinks = quickLinks.filter(l => 
     ['learn', 'quest', 'outlook', 'crowdmark'].includes(l.id)
   );
 
   return (
     <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
-      {/* Hero Banner (WaterlooWorks button removed per request) */}
-      <div className="uw-card flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <h2 className="text-2xl font-bold font-sans text-[var(--c5)] tracking-tight">
-            Welcome back, Student.
-          </h2>
-          <p className="font-mono text-xs text-[var(--c4)] mt-1 max-w-xl">
-            Streamlined Learn (D2L) announcements, upcoming deadlines, and quick links to your campus portals.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => onNavigate('schedule')}
-            className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)]"
-          >
-            <CalendarDays className="w-4 h-4" />
-            <span>view today's schedule</span>
-          </button>
-          <button
-            onClick={() => onNavigate('assignments')}
-            className="uw-button"
-          >
-            <CheckSquare className="w-4 h-4" />
-            <span>deadlines ({pendingAssignments.length})</span>
-          </button>
-        </div>
+      {/* Hero Banner (No action buttons per request) */}
+      <div className="uw-card p-6">
+        <h2 className="text-2xl font-bold font-sans text-[var(--c5)] tracking-tight">
+          Welcome back.
+        </h2>
+        <p className="font-mono text-xs text-[var(--c4)] mt-1 max-w-xl">
+          Streamlined Learn (D2L) announcements, upcoming deadlines, and quick links to your campus portals.
+        </p>
       </div>
 
-      {/* Metrics Row (Completed items card removed per request) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="uw-card flex flex-col justify-between">
+      {/* Metrics Row (3 cards in the same row) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Card 1: Pending Assignments */}
+        <div
+          onClick={() => onNavigate('assignments')}
+          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
+        >
           <div className="flex justify-between items-start">
             <span className="mono-label font-bold text-[var(--c5)]">pending assignments</span>
             <CheckSquare className="w-4 h-4 text-[var(--c3)]" />
@@ -78,16 +71,40 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
         </div>
 
-        <div className="uw-card flex flex-col justify-between">
+        {/* Card 2: Recent Announcements (Displays UNREAD count) */}
+        <div
+          onClick={() => onNavigate('announcements')}
+          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
+        >
           <div className="flex justify-between items-start">
             <span className="mono-label font-bold text-[var(--c5)]">recent announcements</span>
             <Bell className="w-4 h-4 text-[var(--c3)]" />
           </div>
           <div className="mt-3">
             <span className="text-3xl font-bold font-sans text-[var(--c5)]">
-              {announcements.length}
+              {unreadAnnouncements.length}
             </span>
-            <span className="font-mono text-xs text-[var(--c3)] ml-2">course updates</span>
+            <span className="font-mono text-xs text-[var(--c3)] ml-2">unread updates</span>
+          </div>
+        </div>
+
+        {/* Card 3: Today's Schedule Card */}
+        <div
+          onClick={() => onNavigate('schedule')}
+          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all bg-[var(--c1)]/30"
+        >
+          <div className="flex justify-between items-start">
+            <span className="mono-label font-bold text-[var(--c5)]">today's schedule</span>
+            <CalendarDays className="w-4 h-4 text-[var(--c5)]" />
+          </div>
+          <div className="mt-3 flex items-center justify-between">
+            <div>
+              <span className="text-3xl font-bold font-sans text-[var(--c5)]">
+                {todayClasses.length}
+              </span>
+              <span className="font-mono text-xs text-[var(--c3)] ml-2">classes today</span>
+            </div>
+            <span className="mono-label text-[0.68rem] text-[var(--c5)] hover:underline">view schedule →</span>
           </div>
         </div>
       </div>
