@@ -1,4 +1,4 @@
-import { Assignment } from '../types';
+import { Assignment, Announcement } from '../types';
 
 /**
  * Basic lightweight client-side iCal / ICS text parser.
@@ -26,7 +26,6 @@ export function parseICSData(icsText: string): Assignment[] {
       location = '';
     } else if (line.startsWith('END:VEVENT')) {
       if (inEvent && summary) {
-        // Attempt to extract course code from summary e.g. "CS 135: Assignment 5" or "[MATH 135] Homework 4"
         const courseMatch = summary.match(/([A-Z]{2,6}\s?\d{3}[A-Z]?)/i);
         const courseCode = courseMatch ? courseMatch[1].toUpperCase() : 'LEARN';
         
@@ -95,9 +94,6 @@ function inferAssignmentType(title: string): Assignment['type'] {
   return 'assignment';
 }
 
-/**
- * Normalizes webcal:// or http:// URLs to https://
- */
 export function normalizeFeedUrl(url: string): string {
   let cleaned = url.trim();
   if (cleaned.startsWith('webcal://')) {
@@ -109,7 +105,7 @@ export function normalizeFeedUrl(url: string): string {
 }
 
 /**
- * Fetch feed via CORS proxies with fallback strategies to bypass 403 / CORS restrictions.
+ * Fetch calendar feed via multi-proxy fallback chain.
  */
 export async function fetchD2LFeed(feedUrl: string): Promise<{ assignments: Assignment[]; error?: string }> {
   if (!feedUrl.trim()) {
@@ -119,13 +115,9 @@ export async function fetchD2LFeed(feedUrl: string): Promise<{ assignments: Assi
   const normalizedUrl = normalizeFeedUrl(feedUrl);
 
   const proxyEndpoints = [
-    // Direct attempt
     normalizedUrl,
-    // Proxy 1: AllOrigins raw
     `https://api.allorigins.win/raw?url=${encodeURIComponent(normalizedUrl)}`,
-    // Proxy 2: CodeTabs
     `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(normalizedUrl)}`,
-    // Proxy 3: CorsProxy.io
     `https://corsproxy.io/?${encodeURIComponent(normalizedUrl)}`,
   ];
 
@@ -155,6 +147,43 @@ export async function fetchD2LFeed(feedUrl: string): Promise<{ assignments: Assi
 
   return {
     assignments: [],
-    error: `D2L Access Restriction (${lastError || 'HTTP 403'}). Waterloo Learn blocks browser cross-origin requests. Try using the "Upload .ics File" option below!`,
+    error: `D2L Access Restriction (${lastError || 'HTTP 403'}). Waterloo Learn blocks browser cross-origin requests. Use the "Upload .ics File" option as a backup!`,
   };
+}
+
+/**
+ * Parse D2L RSS XML string for announcements.
+ */
+export function parseRSSAnnouncements(xmlText: string): Announcement[] {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+  const items = xmlDoc.querySelectorAll('item');
+
+  const announcements: Announcement[] = [];
+
+  items.forEach((item, index) => {
+    const title = item.querySelector('title')?.textContent || 'Course Announcement';
+    const description = item.querySelector('description')?.textContent || '';
+    const pubDate = item.querySelector('pubDate')?.textContent || new Date().toISOString();
+    const author = item.querySelector('author')?.textContent || item.querySelector('dc\\:creator')?.textContent || 'Instructor';
+
+    const courseMatch = title.match(/([A-Z]{2,6}\s?\d{3}[A-Z]?)/i) || description.match(/([A-Z]{2,6}\s?\d{3}[A-Z]?)/i);
+    const courseCode = courseMatch ? courseMatch[1].toUpperCase() : 'LEARN';
+
+    // Strip HTML tags from description if any
+    const cleanContent = description.replace(/<[^>]*>/g, '').trim();
+
+    announcements.push({
+      id: `rss-${index}-${Date.now()}`,
+      courseCode,
+      courseName: `${courseCode} Course`,
+      title: title.replace(/^[A-Z]{2,6}\s?\d{3}[A-Z]?:\s?/i, ''),
+      content: cleanContent || title,
+      date: new Date(pubDate).toISOString(),
+      author,
+      isRead: false,
+    });
+  });
+
+  return announcements;
 }

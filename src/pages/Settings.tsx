@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { UserSettings, Assignment } from '../types';
-import { RefreshCw, Download, RotateCcw, Check, Palette, Plus, Trash2, Upload, FileText } from 'lucide-react';
+import { RefreshCw, Download, RotateCcw, Check, Palette, Plus, Trash2, Upload, FileText, Mail, ExternalLink, HelpCircle } from 'lucide-react';
 import { parseICSData } from '../services/d2lSync';
 
 interface SettingsProps {
@@ -104,18 +104,52 @@ export const Settings: React.FC<SettingsProps> = ({
     <div className="flex flex-col gap-6 max-w-[900px] mx-auto w-full">
       <div>
         <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
-          Settings & D2L Sync Options
+          Settings & Calendar Sync Options
         </h2>
         <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-          Configure Learn feed URL, upload .ics calendar files directly, and manage per-course colors.
+          Configure Learn / Outlook feed sync, upload .ics calendar files, and manage per-course colors.
         </p>
       </div>
 
-      {/* D2L Calendar Feed Setup */}
+      {/* Recommended Outlook Sync Method Banner */}
+      <div className="uw-card p-6 border-emerald-500/40 bg-emerald-500/5 flex flex-col gap-3">
+        <div className="flex items-center justify-between">
+          <span className="uw-tag bg-emerald-500/10 border-emerald-500/30 text-emerald-600 font-bold flex items-center gap-1.5">
+            <Mail className="w-3.5 h-3.5" />
+            recommended method (outlook 365 bridge)
+          </span>
+          <a
+            href="https://outlook.office.com/calendar/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="uw-button text-xs"
+          >
+            <span>open uwaterloo outlook</span>
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
+
+        <h3 className="font-sans font-bold text-base text-[var(--c5)]">
+          Syncing via UWaterloo Outlook (Zero 403 Errors & Automatic Updates)
+        </h3>
+
+        <p className="mono-text text-xs text-[var(--c4)] leading-relaxed">
+          Connecting your Learn Calendar to Outlook 365 is the most reliable method! Outlook mirrors your Learn calendar in Microsoft's cloud without CORS or HTTP 403 blocks.
+        </p>
+
+        <ol className="list-decimal list-inside flex flex-col gap-1.5 font-mono text-xs text-[var(--c5)] mt-1">
+          <li>Log in to <strong>learn.uwaterloo.ca</strong> &rarr; Calendar &rarr; Subscribe &rarr; Copy D2L link.</li>
+          <li>Open <strong>Outlook Calendar</strong> (using your @uwaterloo.ca login) &rarr; Add Calendar &rarr; Subscribe from web &rarr; Paste D2L link.</li>
+          <li>In Outlook Settings &rarr; Shared Calendars &rarr; Publish Calendar &rarr; Copy Outlook's `.ics` link.</li>
+          <li>Paste that Outlook `.ics` link into the Feed URL box below!</li>
+        </ol>
+      </div>
+
+      {/* D2L / Outlook Calendar Feed Setup */}
       <div className="uw-card p-6 flex flex-col gap-4">
         <div className="border-b border-[var(--border)] pb-3 flex items-center justify-between">
           <h3 className="font-sans font-bold text-base text-[var(--c5)]">
-            Waterloo Learn Calendar Feed URL
+            Calendar Feed URL (Learn or Outlook iCal)
           </h3>
           <span className="uw-tag bg-emerald-500/10 border-emerald-500/30 text-emerald-600 font-semibold">
             auto sync
@@ -123,15 +157,15 @@ export const Settings: React.FC<SettingsProps> = ({
         </div>
 
         <p className="mono-text text-xs text-[var(--c4)] leading-relaxed">
-          Paste your Waterloo Learn Calendar Subscribe URL (`webcal://` or `https://`).
+          Paste your Waterloo Learn or Outlook published `.ics` URL below.
         </p>
 
         <form onSubmit={handleSaveUrl} className="flex flex-col gap-3">
-          <label className="mono-label">d2l subscribe url</label>
+          <label className="mono-label">calendar feed url (.ics / webcal)</label>
           <div className="flex flex-col sm:flex-row gap-2">
             <input
               type="url"
-              placeholder="https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?..."
+              placeholder="https://outlook.office365.com/owa/calendar/.../reachcalendar.ics"
               value={feedInput}
               onChange={(e) => setFeedInput(e.target.value)}
               className="flex-1 bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
@@ -176,20 +210,19 @@ export const Settings: React.FC<SettingsProps> = ({
         )}
       </div>
 
-      {/* Alternative Direct File Upload / Paste (Bypasses HTTP 403 / CORS) */}
+      {/* Alternative Direct File Upload / Paste */}
       <div className="uw-card p-6 flex flex-col gap-4">
         <div className="border-b border-[var(--border)] pb-3">
           <h3 className="font-sans font-bold text-base text-[var(--c5)] flex items-center gap-2">
             <Upload className="w-4 h-4 text-[var(--c3)]" />
-            Direct .ics File Upload / iCal Paste (Bypasses 403 CORS)
+            Direct .ics File Upload / iCal Paste (Offline Backup)
           </h3>
           <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-            If your D2L feed URL returns HTTP 403 due to CORS restrictions, download the `.ics` file from Learn &rarr; Calendar &rarr; Export and upload it here!
+            Download the `.ics` file from Learn &rarr; Calendar &rarr; Export and upload it here as an offline backup!
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* File Upload */}
           <div className="flex flex-col gap-2 p-4 border border-[var(--border)] bg-[var(--c1)]/20">
             <span className="mono-label flex items-center gap-1.5">
               <Upload className="w-3.5 h-3.5" />
@@ -203,7 +236,6 @@ export const Settings: React.FC<SettingsProps> = ({
             />
           </div>
 
-          {/* Paste ICS Text */}
           <form onSubmit={handlePasteImport} className="flex flex-col gap-2 p-4 border border-[var(--border)] bg-[var(--c1)]/20">
             <span className="mono-label flex items-center gap-1.5">
               <FileText className="w-3.5 h-3.5" />
