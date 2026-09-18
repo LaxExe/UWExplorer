@@ -28,7 +28,7 @@ export function App() {
         const parsed = JSON.parse(saved);
         return {
           ...parsed,
-          courseColors: parsed.courseColors || DEFAULT_COURSE_COLORS,
+          courseColors: parsed.courseColors || {},
           sidebarOrder: parsed.sidebarOrder || DEFAULT_SIDEBAR_ORDER,
         };
       } catch (e) {}
@@ -37,7 +37,7 @@ export function App() {
       theme: 'light',
       d2lFeedUrl: '',
       lastSyncedAt: null,
-      courseColors: DEFAULT_COURSE_COLORS,
+      courseColors: {},
       sidebarOrder: DEFAULT_SIDEBAR_ORDER,
     };
   });
@@ -103,9 +103,9 @@ export function App() {
         }
 
         if (icsAssignments.length > 0) {
+          // If real ICS assignments exist, strip sample mock data completely!
           setAssignments(prev => {
-            const icsIds = new Set(icsAssignments.map(a => a.id));
-            const manualOnly = prev.filter(a => !icsIds.has(a.id) && a.id.startsWith('manual-'));
+            const manualOnly = prev.filter(a => a.id.startsWith('manual-'));
             return [...icsAssignments, ...manualOnly];
           });
         }
@@ -177,12 +177,28 @@ export function App() {
   };
 
   const handleImportAssignments = (newEvents: Assignment[]) => {
-    const fetchedIds = new Set(newEvents.map(a => a.id));
-    const existingNonD2L = assignments.filter(a => !fetchedIds.has(a.id));
-    setAssignments([...newEvents, ...existingNonD2L]);
+    // Replace mock assignments completely with real synced events + user manual entries
+    setAssignments(prev => {
+      const manualOnly = prev.filter(a => a.id.startsWith('manual-'));
+      return [...newEvents, ...manualOnly];
+    });
+
     setSettings(prev => ({
       ...prev,
       lastSyncedAt: new Date().toISOString(),
+    }));
+  };
+
+  const handleClearSampleData = () => {
+    // Purge mock assignments & mock announcements completely
+    setAssignments(prev => prev.filter(a => !a.id.startsWith('asgn-')));
+    setAnnouncements(prev => prev.filter(a => !a.id.startsWith('ann-')));
+    setSchedule(prev => prev.filter(s => !s.id.startsWith('sch-')));
+
+    // Clean up courseColors map to keep only courses present in current assignments/schedule
+    setSettings(prev => ({
+      ...prev,
+      courseColors: {},
     }));
   };
 
@@ -349,6 +365,7 @@ export function App() {
                 onUpdateSettings={handleUpdateSettings}
                 onSyncD2L={handleSyncD2L}
                 onImportAssignments={handleImportAssignments}
+                onClearSampleData={handleClearSampleData}
                 onResetData={handleResetData}
                 isSyncing={isSyncing}
                 syncMessage={syncMessage}
