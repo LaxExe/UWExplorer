@@ -105,85 +105,82 @@ export function normalizeFeedUrl(url: string): string {
 }
 
 /**
- * Fetch calendar feed via multi-proxy fallback chain.
+ * Trigger backend Node.js download of live D2L feed directly into data/d2l_calendar.ics.
+ * Node.js fetches completely bypass browser CORS & 403 blocks!
  */
 export async function fetchD2LFeed(feedUrl: string): Promise<{ assignments: Assignment[]; error?: string }> {
-  if (!feedUrl.trim()) {
-    return { assignments: [], error: 'No feed URL specified.' };
-  }
+  try {
+    const res = await fetch('/api/trigger-sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ d2lFeedUrl: feedUrl }),
+    });
 
-  const normalizedUrl = normalizeFeedUrl(feedUrl);
+    const data = await res.json();
+    if (!res.ok || data.error) {
+      throw new Error(data.error || 'Backend sync failed.');
+    }
 
-  const proxyEndpoints = [
-    normalizedUrl,
-    `https://api.allorigins.win/raw?url=${encodeURIComponent(normalizedUrl)}`,
-    `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(normalizedUrl)}`,
-    `https://corsproxy.io/?${encodeURIComponent(normalizedUrl)}`,
-  ];
+    if (data.icsText) {
+      const parsed = parseICSData(data.icsText);
+      return { assignments: parsed };
+    }
 
-  let lastError = '';
+    return { assignments: [], error: 'Downloaded file was empty.' };
+  } catch (err: any) {
+    // Client side fallback if server API is unavailable
+    const normalizedUrl = normalizeFeedUrl(feedUrl);
+    const proxyEndpoints = [
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(normalizedUrl)}`,
+      `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(normalizedUrl)}`,
+      `https://corsproxy.io/?${encodeURIComponent(normalizedUrl)}`,
+    ];
 
-  for (const endpoint of proxyEndpoints) {
-    try {
-      const res = await fetch(endpoint, {
-        headers: { Accept: 'text/calendar, text/plain, */*' },
-      }).catch(() => null);
-
-      if (res && res.ok) {
-        const text = await res.text();
-        if (text && (text.includes('BEGIN:VCALENDAR') || text.includes('BEGIN:VEVENT'))) {
-          const parsed = parseICSData(text);
-          if (parsed.length > 0) {
+    for (const endpoint of proxyEndpoints) {
+      try {
+        const res = await fetch(endpoint).catch(() => null);
+        if (res && res.ok) {
+          const text = await res.text();
+          if (text.includes('BEGIN:VCALENDAR') || text.includes('BEGIN:VEVENT')) {
+            const parsed = parseICSData(text);
             return { assignments: parsed };
           }
         }
-      } else if (res && res.status) {
-        lastError = `HTTP Error ${res.status}`;
-      }
-    } catch (e: any) {
-      lastError = e?.message || 'Network error';
+      } catch (e) {}
     }
-  }
 
-  return {
-    assignments: [],
-    error: `D2L Access Restriction (${lastError || 'HTTP 403'}). Waterloo Learn blocks browser cross-origin requests. Use the "Upload .ics File" option as a backup!`,
-  };
+    return {
+      assignments: [],
+      error: `D2L Access Restriction: ${err.message || 'HTTP 403'}. Use the "Upload .ics File" option in Settings!`,
+    };
+  }
 }
 
 /**
- * Parse D2L RSS XML string for announcements.
+ * Loads local disk data from /api/local-data
  */
-export function parseRSSAnnouncements(xmlText: string): Announcement[] {
-  const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-  const items = xmlDoc.querySelectorAll('item');
+export async function loadLocalData(): Promise<{ icsText?: string; db?: any; config?: any }> {
+  try {
+    const res = await fetch('/api/local-data');
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (e) {}
+  return {};
+}
 
-  const announcements: Announcement[] = [];
-
-  items.forEach((item, index) => {
-    const title = item.querySelector('title')?.textContent || 'Course Announcement';
-    const description = item.querySelector('description')?.textContent || '';
-    const pubDate = item.querySelector('pubDate')?.textContent || new Date().toISOString();
-    const author = item.querySelector('author')?.textContent || item.querySelector('dc\\:creator')?.textContent || 'Instructor';
-
-    const courseMatch = title.match(/([A-Z]{2,6}\s?\d{3}[A-Z]?)/i) || description.match(/([A-Z]{2,6}\s?\d{3}[A-Z]?)/i);
-    const courseCode = courseMatch ? courseMatch[1].toUpperCase() : 'LEARN';
-
-    // Strip HTML tags from description if any
-    const cleanContent = description.replace(/<[^>]*>/g, '').trim();
-
-    announcements.push({
-      id: `rss-${index}-${Date.now()}`,
-      courseCode,
-      courseName: `${courseCode} Course`,
-      title: title.replace(/^[A-Z]{2,6}\s?\d{3}[A-Z]?:\s?/i, ''),
-      content: cleanContent || title,
-      date: new Date(pubDate).toISOString(),
-      author,
-      isRead: false,
+/**
+ * Saves database to /api/save-db
+ */
+export async function saveLocalDB(dbData: any): Promise<boolean> {
+  try {
+    const res = await fetch('/api/save-db', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dbData),
     });
-  });
-
-  return announcements;
+    return res.ok;
+  } catch (e) {
+    return false;
+  }
 }
