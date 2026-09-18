@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { UserSettings, Assignment, Announcement, ScheduleItem } from '../types';
-import { RefreshCw, Download, RotateCcw, Check, Palette, Plus, Trash2, Upload, FileText, Mail, ExternalLink, ShieldCheck } from 'lucide-react';
+import { RefreshCw, Download, RotateCcw, Check, Palette, Plus, Trash2, Upload, FileText, Mail, ExternalLink, ShieldCheck, Sparkles } from 'lucide-react';
 import { parseICSData } from '../services/d2lSync';
 
 interface SettingsProps {
@@ -11,6 +11,7 @@ interface SettingsProps {
   onUpdateSettings: (newSettings: Partial<UserSettings>) => void;
   onSyncD2L: () => void;
   onImportAssignments?: (assignments: Assignment[]) => void;
+  onClearSampleData?: () => void;
   onResetData: () => void;
   isSyncing: boolean;
   syncMessage: string | null;
@@ -35,6 +36,7 @@ export const Settings: React.FC<SettingsProps> = ({
   onUpdateSettings,
   onSyncD2L,
   onImportAssignments,
+  onClearSampleData,
   onResetData,
   isSyncing,
   syncMessage,
@@ -50,7 +52,7 @@ export const Settings: React.FC<SettingsProps> = ({
 
   const courseColors = settings.courseColors || {};
 
-  // Automatically discover all active course codes across assignments, announcements, and schedule
+  // Automatically discover all active course codes across non-sample assignments, announcements, and schedule
   const activeCourseSet = new Set<string>();
   assignments.forEach(a => { if (a.courseCode) activeCourseSet.add(a.courseCode.toUpperCase()); });
   announcements.forEach(a => { if (a.courseCode) activeCourseSet.add(a.courseCode.toUpperCase()); });
@@ -77,7 +79,7 @@ export const Settings: React.FC<SettingsProps> = ({
         const events = parseICSData(text);
         if (events.length > 0) {
           onImportAssignments(events);
-          setUploadNotice(`Successfully imported ${events.length} deadline(s) from uploaded .ics file!`);
+          setUploadNotice(`Successfully imported ${events.length} deadline(s) from uploaded .ics file! Sample courses removed.`);
         } else {
           setUploadNotice('No valid VEVENT items found in file.');
         }
@@ -93,7 +95,7 @@ export const Settings: React.FC<SettingsProps> = ({
     const events = parseICSData(icsTextPaste);
     if (events.length > 0) {
       onImportAssignments(events);
-      setUploadNotice(`Successfully imported ${events.length} deadline(s) from pasted text!`);
+      setUploadNotice(`Successfully imported ${events.length} deadline(s) from pasted text! Sample courses removed.`);
       setIcsTextPaste('');
     } else {
       setUploadNotice('Could not parse valid iCal events from text.');
@@ -122,13 +124,26 @@ export const Settings: React.FC<SettingsProps> = ({
 
   return (
     <div className="flex flex-col gap-6 max-w-[900px] mx-auto w-full">
-      <div>
-        <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
-          Settings & Verified Courses
-        </h2>
-        <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-          Verified course list auto-extracted from your D2L feeds, schedule, and assignments.
-        </p>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
+            Settings & Enrolled Courses
+          </h2>
+          <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
+            Verified course list auto-extracted from your D2L feeds, schedule, and assignments.
+          </p>
+        </div>
+
+        {onClearSampleData && (
+          <button
+            onClick={onClearSampleData}
+            className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)] text-xs"
+            title="Purge sample demo courses (CS 135, etc.) and keep only your actual timetable courses"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+            <span>purge demo sample courses</span>
+          </button>
+        )}
       </div>
 
       {/* Auto-Discovered Verified Courses Manager */}
@@ -140,7 +155,7 @@ export const Settings: React.FC<SettingsProps> = ({
               Verified Enrolled Courses ({allCourses.length})
             </h3>
             <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-              Automatically verified from your D2L calendar, announcements, and schedule items.
+              Course codes extracted from your D2L feeds and class schedule.
             </p>
           </div>
         </div>
@@ -167,7 +182,7 @@ export const Settings: React.FC<SettingsProps> = ({
                     />
                     <div>
                       <span className="font-mono font-bold text-sm text-[var(--c5)]">{code}</span>
-                      <span className="mono-label text-[0.68rem] block text-[var(--c3)]">verified course</span>
+                      <span className="mono-label text-[0.68rem] block text-[var(--c3)]">active course</span>
                     </div>
                   </div>
 
@@ -191,7 +206,7 @@ export const Settings: React.FC<SettingsProps> = ({
                     <button
                       onClick={() => handleRemoveCourseColor(code)}
                       className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors ml-1"
-                      title="Reset course color"
+                      title="Remove course color"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
