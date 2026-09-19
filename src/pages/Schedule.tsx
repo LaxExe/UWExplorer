@@ -124,81 +124,78 @@ export const Schedule: React.FC<ScheduleProps> = ({
         </div>
       </div>
 
-      {/* 8:30 AM - 5:30 PM Clean Timetable Grid (No Hover Animations) */}
-      <div className="border border-[var(--border)] bg-[var(--bg)] divide-y divide-[var(--border)]">
-        {TIME_SLOTS.map((slot) => {
-          const slotClasses = getSlotClasses(slot);
-          const hasClass = slotClasses.length > 0;
+      {/* Clean Today's Classes List (No lines in-between, no free slot labels) */}
+      <div className="flex flex-col gap-3">
+        {filteredItems.length === 0 ? (
+          <div className="uw-card text-center py-12">
+            <p className="font-mono text-xs text-[var(--c3)]">
+              No classes scheduled for {selectedDay}.
+            </p>
+          </div>
+        ) : (
+          filteredItems.map(item => {
+            const courseColor = courseColors[item.courseCode] || 'transparent';
 
-          return (
-            <div
-              key={slot.label}
-              className={`p-3.5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${
-                hasClass ? 'bg-[var(--bg)]' : 'bg-[var(--c1)]/30'
-              }`}
-            >
-              {/* Time Slot Column */}
-              <div className="flex items-center gap-3 min-w-[180px] shrink-0 font-mono">
-                <span className="text-xs font-bold text-[var(--c5)] w-16">
-                  {slot.label.split(' - ')[0]}
-                </span>
-                <span className="text-[0.68rem] text-[var(--c3)]">
-                  ({slot.label})
-                </span>
+            return (
+              <div
+                key={item.id}
+                className="uw-card p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+                style={{ backgroundColor: courseColor !== 'transparent' ? courseColor : undefined }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 border border-[var(--border)] bg-[var(--bg)] flex flex-col items-center justify-center shrink-0">
+                    <span className="font-mono font-bold text-xs text-[var(--c5)]">
+                      {item.courseCode.split(' ')[0]}
+                    </span>
+                    <span className="font-mono text-[0.62rem] text-[var(--c3)]">
+                      {item.courseCode.split(' ')[1] || ''}
+                    </span>
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="uw-tag font-bold">{item.courseCode}</span>
+                      <span className="uw-tag">{item.type}</span>
+                    </div>
+
+                    <h3 className="font-sans font-bold text-base text-[var(--c5)] mt-1">
+                      {item.title}
+                    </h3>
+
+                    <div className="flex items-center gap-4 mt-1 font-mono text-xs text-[var(--c4)] flex-wrap">
+                      <span className="flex items-center gap-1 font-semibold text-[var(--c5)]">
+                        <MapPin className="w-3.5 h-3.5 text-[var(--c3)]" />
+                        {item.location}
+                      </span>
+
+                      {item.instructor && (
+                        <span className="flex items-center gap-1 text-[var(--c3)]">
+                          <User className="w-3.5 h-3.5" />
+                          {item.instructor}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between w-full md:w-auto gap-4">
+                  <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[var(--c5)]">
+                    <Clock className="w-3.5 h-3.5 text-[var(--c3)]" />
+                    <span>{item.startTime} - {item.endTime}</span>
+                  </div>
+
+                  <button
+                    onClick={() => onDeleteScheduleItem(item.id)}
+                    className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors shrink-0"
+                    title="Delete class"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
-
-              {/* Class Content or Free Slot */}
-              {hasClass ? (
-                <div className="flex-1 flex flex-col gap-2 w-full">
-                  {slotClasses.map(item => {
-                    const courseColor = courseColors[item.courseCode] || 'transparent';
-                    return (
-                      <div
-                        key={item.id}
-                        className="p-3 border border-[var(--border)] flex items-center justify-between gap-3"
-                        style={{ backgroundColor: courseColor !== 'transparent' ? courseColor : undefined }}
-                      >
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <span className="uw-tag font-bold">{item.courseCode}</span>
-                            <span className="uw-tag">{item.type}</span>
-                          </div>
-                          <h4 className="font-sans font-bold text-sm text-[var(--c5)] mt-1">
-                            {item.title}
-                          </h4>
-                          <div className="flex items-center gap-4 mt-1 font-mono text-xs text-[var(--c4)]">
-                            <span className="flex items-center gap-1 font-semibold">
-                              <MapPin className="w-3.5 h-3.5 text-[var(--c3)]" />
-                              {item.location}
-                            </span>
-                            {item.instructor && (
-                              <span className="flex items-center gap-1 text-[var(--c3)]">
-                                <User className="w-3.5 h-3.5" />
-                                {item.instructor}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        <button
-                          onClick={() => onDeleteScheduleItem(item.id)}
-                          className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors shrink-0"
-                          title="Delete class slot"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : (
-                <div className="flex-1 font-mono text-xs text-[var(--c3)] italic py-1">
-                  — Free —
-                </div>
-              )}
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
 
       {/* Modal for Adding Class */}
