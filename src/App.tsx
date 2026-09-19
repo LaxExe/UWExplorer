@@ -2,23 +2,20 @@ import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
 import { Dashboard } from './pages/Dashboard';
+import { Courses } from './pages/Courses';
 import { Schedule } from './pages/Schedule';
 import { QuickLinks } from './pages/QuickLinks';
-import { Announcements } from './pages/Announcements';
-import { Assignments } from './pages/Assignments';
 import { CalendarView } from './pages/CalendarView';
 import { Settings } from './pages/Settings';
 
-import { QuickLink, Announcement, Assignment, ScheduleItem, UserSettings } from './types';
-import { INITIAL_QUICK_LINKS, INITIAL_ANNOUNCEMENTS, INITIAL_ASSIGNMENTS, INITIAL_SCHEDULE, DEFAULT_COURSE_COLORS } from './data/mockData';
-import { fetchD2LFeed, loadLocalData, parseICSData, saveLocalDB } from './services/d2lSync';
+import { Course, TaskItem, ScheduleItem, QuickLink, UserSettings } from './types';
+import { INITIAL_COURSES, INITIAL_TASKS, INITIAL_SCHEDULE, INITIAL_QUICK_LINKS } from './data/mockData';
+import { loadLocalData, saveLocalDB } from './services/d2lSync';
 
-const DEFAULT_SIDEBAR_ORDER = ['dashboard', 'schedule', 'links', 'announcements', 'assignments', 'calendar', 'settings'];
+const DEFAULT_SIDEBAR_ORDER = ['dashboard', 'courses', 'schedule', 'links', 'calendar', 'settings'];
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('dashboard');
-  const [isSyncing, setIsSyncing] = useState<boolean>(false);
-  const [syncMessage, setSyncMessage] = useState<string | null>(null);
 
   // Persistent settings state
   const [settings, setSettings] = useState<UserSettings>(() => {
@@ -28,27 +25,32 @@ export function App() {
         const parsed = JSON.parse(saved);
         return {
           ...parsed,
-          courseColors: parsed.courseColors || {},
           sidebarOrder: parsed.sidebarOrder || DEFAULT_SIDEBAR_ORDER,
         };
       } catch (e) {}
     }
     return {
       theme: 'light',
-      d2lFeedUrl: '',
-      lastSyncedAt: null,
-      courseColors: {},
       sidebarOrder: DEFAULT_SIDEBAR_ORDER,
     };
   });
 
-  // Persistent quick links state
-  const [quickLinks, setQuickLinks] = useState<QuickLink[]>(() => {
-    const savedLinks = localStorage.getItem('uwexplorer_quick_links');
-    if (savedLinks) {
-      try { return JSON.parse(savedLinks); } catch (e) {}
+  // Persistent courses state
+  const [courses, setCourses] = useState<Course[]>(() => {
+    const saved = localStorage.getItem('uwexplorer_courses');
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
     }
-    return INITIAL_QUICK_LINKS;
+    return INITIAL_COURSES;
+  });
+
+  // Persistent tasks state
+  const [tasks, setTasks] = useState<TaskItem[]>(() => {
+    const saved = localStorage.getItem('uwexplorer_tasks');
+    if (saved) {
+      try { return JSON.parse(saved); } catch (e) {}
+    }
+    return INITIAL_TASKS;
   });
 
   // Persistent schedule state
@@ -60,59 +62,28 @@ export function App() {
     return INITIAL_SCHEDULE;
   });
 
-  // Persistent announcements state
-  const [announcements, setAnnouncements] = useState<Announcement[]>(() => {
-    const saved = localStorage.getItem('uwexplorer_announcements');
-    if (saved) {
-      try { return JSON.parse(saved); } catch (e) {}
+  // Persistent quick links state
+  const [quickLinks, setQuickLinks] = useState<QuickLink[]>(() => {
+    const savedLinks = localStorage.getItem('uwexplorer_quick_links');
+    if (savedLinks) {
+      try { return JSON.parse(savedLinks); } catch (e) {}
     }
-    return INITIAL_ANNOUNCEMENTS;
+    return INITIAL_QUICK_LINKS;
   });
 
-  // Persistent assignments state
-  const [assignments, setAssignments] = useState<Assignment[]>(() => {
-    const saved = localStorage.getItem('uwexplorer_assignments');
-    if (saved) {
-      try { return JSON.parse(saved); } catch (e) {}
-    }
-    return INITIAL_ASSIGNMENTS;
-  });
-
-  // On mount: Load local disk data (/api/local-data) to parse data/d2l_calendar.ics & data/uwexplorer_db.json
+  // Load disk DB on mount if available
   useEffect(() => {
-    async function loadDiskData() {
+    async function loadDisk() {
       const diskData = await loadLocalData();
-      if (diskData && (diskData.icsText || diskData.config || diskData.db)) {
-        let icsAssignments: Assignment[] = [];
-        if (diskData.icsText) {
-          icsAssignments = parseICSData(diskData.icsText);
-        }
-
-        if (diskData.config) {
-          setSettings(prev => ({
-            ...prev,
-            d2lFeedUrl: diskData.config.d2lFeedUrl || prev.d2lFeedUrl,
-            theme: diskData.config.theme || prev.theme,
-            courseColors: diskData.config.courseColors || prev.courseColors,
-            sidebarOrder: diskData.config.sidebarOrder || prev.sidebarOrder,
-          }));
-        }
-
-        if (diskData.db && diskData.db.lastSyncedAt) {
-          setSettings(prev => ({ ...prev, lastSyncedAt: diskData.db.lastSyncedAt }));
-        }
-
-        if (icsAssignments.length > 0) {
-          // If real ICS assignments exist, strip sample mock data completely!
-          setAssignments(prev => {
-            const manualOnly = prev.filter(a => a.id.startsWith('manual-'));
-            return [...icsAssignments, ...manualOnly];
-          });
-        }
+      if (diskData && diskData.db) {
+        const db = diskData.db;
+        if (db.courses && db.courses.length > 0) setCourses(db.courses);
+        if (db.tasks && db.tasks.length > 0) setTasks(db.tasks);
+        if (db.schedule && db.schedule.length > 0) setSchedule(db.schedule);
+        if (db.quickLinks && db.quickLinks.length > 0) setQuickLinks(db.quickLinks);
       }
     }
-
-    loadDiskData();
+    loadDisk();
   }, []);
 
   // Sync theme
@@ -121,27 +92,36 @@ export function App() {
     localStorage.setItem('uwexplorer_settings', JSON.stringify(settings));
   }, [settings]);
 
-  // Save quick links
+  // Save courses
   useEffect(() => {
-    localStorage.setItem('uwexplorer_quick_links', JSON.stringify(quickLinks));
-  }, [quickLinks]);
+    localStorage.setItem('uwexplorer_courses', JSON.stringify(courses));
+  }, [courses]);
+
+  // Save tasks
+  useEffect(() => {
+    localStorage.setItem('uwexplorer_tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   // Save schedule
   useEffect(() => {
     localStorage.setItem('uwexplorer_schedule', JSON.stringify(schedule));
   }, [schedule]);
 
-  // Save assignments & sync to disk DB
+  // Save quick links
   useEffect(() => {
-    localStorage.setItem('uwexplorer_assignments', JSON.stringify(assignments));
+    localStorage.setItem('uwexplorer_quick_links', JSON.stringify(quickLinks));
+  }, [quickLinks]);
+
+  // Sync full state to disk DB file (data/uwexplorer_db.json)
+  useEffect(() => {
     saveLocalDB({
-      assignments,
-      announcements,
-      quickLinks,
+      courses,
+      tasks,
       schedule,
+      quickLinks,
       settings,
     });
-  }, [assignments, announcements, quickLinks, schedule, settings]);
+  }, [courses, tasks, schedule, quickLinks, settings]);
 
   const handleToggleTheme = () => {
     setSettings(prev => ({
@@ -158,60 +138,56 @@ export function App() {
     setSettings(prev => ({ ...prev, sidebarOrder: newOrder }));
   };
 
-  const handleToggleAssignment = (id: string) => {
-    setAssignments(prev =>
-      prev.map(a => (a.id === id ? { ...a, isCompleted: !a.isCompleted } : a))
-    );
-  };
-
-  const handleAddAssignment = (newAsgn: Omit<Assignment, 'id'>) => {
-    const item: Assignment = {
-      ...newAsgn,
-      id: `manual-${Date.now()}`,
+  // Course Actions
+  const handleAddCourse = (newCourse: Omit<Course, 'id'>) => {
+    const item: Course = {
+      ...newCourse,
+      id: `c-${Date.now()}`,
     };
-    setAssignments(prev => [item, ...prev]);
+    setCourses(prev => [...prev, item]);
   };
 
-  const handleDeleteAssignment = (id: string) => {
-    setAssignments(prev => prev.filter(a => a.id !== id));
+  const handleUpdateCourseColor = (courseId: string, color: string) => {
+    setCourses(prev => prev.map(c => (c.id === courseId ? { ...c, color } : c)));
   };
 
-  const handleImportAssignments = (newEvents: Assignment[]) => {
-    // Replace mock assignments completely with real synced events + user manual entries
-    setAssignments(prev => {
-      const manualOnly = prev.filter(a => a.id.startsWith('manual-'));
-      return [...newEvents, ...manualOnly];
-    });
-
-    setSettings(prev => ({
-      ...prev,
-      lastSyncedAt: new Date().toISOString(),
-    }));
+  const handleDeleteCourse = (courseId: string) => {
+    setCourses(prev => prev.filter(c => c.id !== courseId));
   };
 
-  const handleClearSampleData = () => {
-    // Purge mock assignments & mock announcements completely
-    setAssignments(prev => prev.filter(a => !a.id.startsWith('asgn-')));
-    setAnnouncements(prev => prev.filter(a => !a.id.startsWith('ann-')));
-    setSchedule(prev => prev.filter(s => !s.id.startsWith('sch-')));
-
-    // Clean up courseColors map to keep only courses present in current assignments/schedule
-    setSettings(prev => ({
-      ...prev,
-      courseColors: {},
-    }));
+  // Task Actions
+  const handleAddTask = (newTask: Omit<TaskItem, 'id'>) => {
+    const item: TaskItem = {
+      ...newTask,
+      id: `t-${Date.now()}`,
+    };
+    setTasks(prev => [item, ...prev]);
   };
 
-  const handleToggleReadAnnouncement = (id: string) => {
-    setAnnouncements(prev =>
-      prev.map(a => (a.id === id ? { ...a, isRead: !a.isRead } : a))
+  const handleToggleTask = (taskId: string) => {
+    setTasks(prev =>
+      prev.map(t => (t.id === taskId ? { ...t, isCompleted: !t.isCompleted } : t))
     );
   };
 
-  const handleMarkAllAnnouncementsRead = () => {
-    setAnnouncements(prev => prev.map(a => ({ ...a, isRead: true })));
+  const handleDeleteTask = (taskId: string) => {
+    setTasks(prev => prev.filter(t => t.id !== taskId));
   };
 
+  // Schedule Actions
+  const handleAddScheduleItem = (newItem: Omit<ScheduleItem, 'id'>) => {
+    const item: ScheduleItem = {
+      ...newItem,
+      id: `sch-${Date.now()}`,
+    };
+    setSchedule(prev => [...prev, item]);
+  };
+
+  const handleDeleteScheduleItem = (id: string) => {
+    setSchedule(prev => prev.filter(s => s.id !== id));
+  };
+
+  // Quick Links Actions
   const handleAddQuickLink = (newLink: Omit<QuickLink, 'id'>) => {
     const item: QuickLink = {
       ...newLink,
@@ -229,54 +205,21 @@ export function App() {
     setQuickLinks(prev => prev.filter(l => l.id !== id));
   };
 
-  const handleAddScheduleItem = (newItem: Omit<ScheduleItem, 'id'>) => {
-    const item: ScheduleItem = {
-      ...newItem,
-      id: `sch-${Date.now()}`,
-    };
-    setSchedule(prev => [...prev, item]);
-  };
-
-  const handleDeleteScheduleItem = (id: string) => {
-    setSchedule(prev => prev.filter(s => s.id !== id));
-  };
-
-  const handleSyncD2L = async () => {
-    if (!settings.d2lFeedUrl) return;
-
-    setIsSyncing(true);
-    setSyncMessage('Fetching D2L feed through Node.js backend...');
-
-    const res = await fetchD2LFeed(settings.d2lFeedUrl);
-    setIsSyncing(false);
-
-    if (res.error) {
-      setSyncMessage(`Sync Notice: ${res.error}`);
-    } else {
-      handleImportAssignments(res.assignments);
-      setSyncMessage(`Successfully parsed ${res.assignments.length} deadline(s) from D2L feed!`);
-    }
-  };
-
   const handleResetData = () => {
-    if (window.confirm('Reset to default sample data?')) {
-      setAssignments(INITIAL_ASSIGNMENTS);
-      setAnnouncements(INITIAL_ANNOUNCEMENTS);
-      setQuickLinks(INITIAL_QUICK_LINKS);
+    if (window.confirm('Reset to default clean data?')) {
+      setCourses(INITIAL_COURSES);
+      setTasks(INITIAL_TASKS);
       setSchedule(INITIAL_SCHEDULE);
+      setQuickLinks(INITIAL_QUICK_LINKS);
       setSettings({
         theme: 'light',
-        d2lFeedUrl: '',
-        lastSyncedAt: null,
-        courseColors: DEFAULT_COURSE_COLORS,
         sidebarOrder: DEFAULT_SIDEBAR_ORDER,
       });
       localStorage.clear();
-      setSyncMessage('Data reset to default Waterloo sample mode.');
     }
   };
 
-  const unreadAnnouncementsCount = announcements.filter(a => !a.isRead).length;
+  const pendingTasksCount = tasks.filter(t => !t.isCompleted).length;
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--c5)] flex flex-col transition-colors">
@@ -284,16 +227,13 @@ export function App() {
         activeTab={activeTab}
         settings={settings}
         onToggleTheme={handleToggleTheme}
-        onSyncD2L={handleSyncD2L}
-        isSyncing={isSyncing}
       />
 
       <div className="max-w-[1300px] w-full mx-auto flex-1 flex flex-col md:flex-row items-stretch">
         <Sidebar
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          assignmentsCount={assignments.filter(a => !a.isCompleted).length}
-          announcementsCount={unreadAnnouncementsCount}
+          pendingTasksCount={pendingTasksCount}
           sidebarOrder={settings.sidebarOrder || DEFAULT_SIDEBAR_ORDER}
           onReorderSidebar={handleReorderSidebar}
         />
@@ -302,20 +242,32 @@ export function App() {
           <div className="w-full max-w-[1100px] mx-auto">
             {activeTab === 'dashboard' && (
               <Dashboard
-                quickLinks={quickLinks}
-                announcements={announcements}
-                assignments={assignments}
+                courses={courses}
+                tasks={tasks}
                 schedule={schedule}
-                courseColors={settings.courseColors}
-                onToggleAssignment={handleToggleAssignment}
+                quickLinks={quickLinks}
+                onToggleTask={handleToggleTask}
                 onNavigate={setActiveTab}
+              />
+            )}
+
+            {activeTab === 'courses' && (
+              <Courses
+                courses={courses}
+                tasks={tasks}
+                onAddCourse={handleAddCourse}
+                onUpdateCourseColor={handleUpdateCourseColor}
+                onDeleteCourse={handleDeleteCourse}
+                onAddTask={handleAddTask}
+                onToggleTask={handleToggleTask}
+                onDeleteTask={handleDeleteTask}
               />
             )}
 
             {activeTab === 'schedule' && (
               <Schedule
                 schedule={schedule}
-                courseColors={settings.courseColors}
+                courseColors={courses.reduce((acc, c) => ({ ...acc, [c.code]: c.color }), {})}
                 onAddScheduleItem={handleAddScheduleItem}
                 onDeleteScheduleItem={handleDeleteScheduleItem}
               />
@@ -330,45 +282,18 @@ export function App() {
               />
             )}
 
-            {activeTab === 'announcements' && (
-              <Announcements
-                announcements={announcements}
-                courseColors={settings.courseColors}
-                onToggleReadAnnouncement={handleToggleReadAnnouncement}
-                onMarkAllRead={handleMarkAllAnnouncementsRead}
-              />
-            )}
-
-            {activeTab === 'assignments' && (
-              <Assignments
-                assignments={assignments}
-                courseColors={settings.courseColors}
-                onToggleAssignment={handleToggleAssignment}
-                onAddAssignment={handleAddAssignment}
-                onDeleteAssignment={handleDeleteAssignment}
-              />
-            )}
-
             {activeTab === 'calendar' && (
               <CalendarView
-                assignments={assignments}
-                courseColors={settings.courseColors}
+                tasks={tasks}
+                courses={courses}
               />
             )}
 
             {activeTab === 'settings' && (
               <Settings
                 settings={settings}
-                assignments={assignments}
-                announcements={announcements}
-                schedule={schedule}
                 onUpdateSettings={handleUpdateSettings}
-                onSyncD2L={handleSyncD2L}
-                onImportAssignments={handleImportAssignments}
-                onClearSampleData={handleClearSampleData}
                 onResetData={handleResetData}
-                isSyncing={isSyncing}
-                syncMessage={syncMessage}
               />
             )}
           </div>

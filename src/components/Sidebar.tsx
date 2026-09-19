@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {
   LayoutDashboard,
+  BookOpen,
   CalendarDays,
   ExternalLink,
-  Bell,
   CheckSquare,
   Calendar as CalendarIcon,
   Settings as SettingsIcon,
@@ -15,18 +15,16 @@ import {
 interface SidebarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  assignmentsCount: number;
-  announcementsCount: number;
+  pendingTasksCount: number;
   sidebarOrder: string[];
   onReorderSidebar: (newOrder: string[]) => void;
 }
 
 const ALL_NAV_ITEMS: Record<string, { label: string; icon: React.ElementType }> = {
   dashboard: { label: 'dashboard', icon: LayoutDashboard },
+  courses: { label: 'courses & todo', icon: BookOpen },
   schedule: { label: 'schedule', icon: CalendarDays },
   links: { label: 'quick links', icon: ExternalLink },
-  announcements: { label: 'announcements', icon: Bell },
-  assignments: { label: 'assignments', icon: CheckSquare },
   calendar: { label: 'calendar', icon: CalendarIcon },
   settings: { label: 'settings', icon: SettingsIcon },
 };
@@ -34,14 +32,12 @@ const ALL_NAV_ITEMS: Record<string, { label: string; icon: React.ElementType }> 
 export const Sidebar: React.FC<SidebarProps> = ({
   activeTab,
   setActiveTab,
-  assignmentsCount,
-  announcementsCount,
+  pendingTasksCount,
   sidebarOrder,
   onReorderSidebar,
 }) => {
   const [isReordering, setIsReordering] = useState(false);
 
-  // Ensure all keys exist in order array
   const currentOrder = [
     ...sidebarOrder.filter(id => ALL_NAV_ITEMS[id]),
     ...Object.keys(ALL_NAV_ITEMS).filter(id => !sidebarOrder.includes(id)),
@@ -101,8 +97,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             const isActive = activeTab === id;
 
             let badge = undefined;
-            if (id === 'announcements') badge = announcementsCount;
-            if (id === 'assignments') badge = assignmentsCount;
+            if (id === 'courses') badge = pendingTasksCount;
 
             return (
               <div key={id} className="flex items-center gap-1 group w-full">
