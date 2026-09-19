@@ -1,73 +1,10 @@
 import { Course, TaskItem, QuickLink, ScheduleItem } from '../types';
 
-export const INITIAL_COURSES: Course[] = [
-  { id: 'c-1', code: 'CS 135', name: 'Designing Functional Programs', color: '#3b82f61a', instructor: 'Gregor Richards' },
-  { id: 'c-2', code: 'MATH 135', name: 'Algebra for Honors Mathematics', color: '#10b9811a', instructor: 'Carmen Bruni' },
-  { id: 'c-3', code: 'MATH 137', name: 'Calculus 1 for Honors Mathematics', color: '#8b5cf61a', instructor: 'David Jao' },
-];
+export const INITIAL_COURSES: Course[] = [];
 
-const now = new Date();
-const addDays = (days: number) => {
-  const d = new Date(now);
-  d.setDate(d.getDate() + days);
-  return d.toISOString();
-};
+export const INITIAL_TASKS: TaskItem[] = [];
 
-export const INITIAL_TASKS: TaskItem[] = [
-  {
-    id: 't-1',
-    courseCode: 'CS 135',
-    title: 'Assignment 05 — Binary Search Trees',
-    type: 'assignment',
-    dueDate: addDays(2),
-    isCompleted: false,
-    notes: 'Test check-expect edge cases for empty trees.',
-  },
-  {
-    id: 't-2',
-    courseCode: 'MATH 135',
-    title: 'Crowdmark Assignment 05 — Modular Arithmetic',
-    type: 'assignment',
-    dueDate: addDays(4),
-    isCompleted: false,
-    notes: 'Format proofs clearly for scanning.',
-  },
-  {
-    id: 't-3',
-    courseCode: 'MATH 137',
-    title: 'WebWork Problem Set 6',
-    type: 'quiz',
-    dueDate: addDays(1),
-    isCompleted: true,
-  },
-];
-
-export const INITIAL_SCHEDULE: ScheduleItem[] = [
-  {
-    id: 'sch-1',
-    courseCode: 'CS 135',
-    courseName: 'Designing Functional Programs',
-    title: 'Lecture 001',
-    location: 'MC 2065',
-    startTime: '10:00 AM',
-    endTime: '11:20 AM',
-    daysOfWeek: ['Mon', 'Wed', 'Fri'],
-    instructor: 'Gregor Richards',
-    type: 'lecture',
-  },
-  {
-    id: 'sch-2',
-    courseCode: 'MATH 135',
-    courseName: 'Algebra for Honors Mathematics',
-    title: 'Lecture 002',
-    location: 'MC 4020',
-    startTime: '11:30 AM',
-    endTime: '12:50 PM',
-    daysOfWeek: ['Mon', 'Wed', 'Fri'],
-    instructor: 'Carmen Bruni',
-    type: 'lecture',
-  },
-];
+export const INITIAL_SCHEDULE: ScheduleItem[] = [];
 
 export const INITIAL_QUICK_LINKS: QuickLink[] = [
   {

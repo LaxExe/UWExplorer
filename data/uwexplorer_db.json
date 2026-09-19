@@ -28,8 +28,8 @@
       "courseCode": "CS 135",
       "title": "Assignment 05 — Binary Search Trees",
       "type": "assignment",
-      "dueDate": "2026-09-21T19:24:56.846Z",
-      "isCompleted": false,
+      "dueDate": "2026-09-20T21:50:18.593Z",
+      "isCompleted": true,
       "notes": "Test check-expect edge cases for empty trees."
     },
     {
@@ -37,8 +37,8 @@
       "courseCode": "MATH 135",
       "title": "Crowdmark Assignment 05 — Modular Arithmetic",
       "type": "assignment",
-      "dueDate": "2026-09-23T19:24:56.846Z",
-      "isCompleted": false,
+      "dueDate": "2026-09-22T21:50:18.593Z",
+      "isCompleted": true,
       "notes": "Format proofs clearly for scanning."
     },
     {
@@ -46,42 +46,53 @@
       "courseCode": "MATH 137",
       "title": "WebWork Problem Set 6",
       "type": "quiz",
-      "dueDate": "2026-09-20T19:24:56.846Z",
+      "dueDate": "2026-09-19T21:50:18.593Z",
       "isCompleted": true
     }
   ],
   "schedule": [
     {
-      "id": "sch-1",
-      "courseCode": "CS 135",
-      "courseName": "Designing Functional Programs",
-      "title": "Lecture 001",
-      "location": "MC 2065",
-      "startTime": "10:00 AM",
-      "endTime": "11:20 AM",
+      "id": "sch-3",
+      "courseCode": "MATH 137",
+      "courseName": "Calculus 1 for Honors Mathematics",
+      "title": "Lecture 003",
+      "location": "RCH 101",
+      "startTime": "01:30 PM",
+      "endTime": "02:50 PM",
       "daysOfWeek": [
-        "Mon",
-        "Wed",
-        "Fri"
+        "Tue",
+        "Thu"
       ],
-      "instructor": "Gregor Richards",
+      "instructor": "David Jao",
       "type": "lecture"
     },
     {
-      "id": "sch-2",
-      "courseCode": "MATH 135",
-      "courseName": "Algebra for Honors Mathematics",
-      "title": "Lecture 002",
-      "location": "MC 4020",
-      "startTime": "11:30 AM",
-      "endTime": "12:50 PM",
+      "id": "sch-4",
+      "courseCode": "CS 135",
+      "courseName": "Designing Functional Programs",
+      "title": "Tutorial 101",
+      "location": "MC 3003",
+      "startTime": "03:30 PM",
+      "endTime": "04:20 PM",
       "daysOfWeek": [
-        "Mon",
-        "Wed",
-        "Fri"
+        "Wed"
       ],
-      "instructor": "Carmen Bruni",
-      "type": "lecture"
+      "instructor": "ISG TA",
+      "type": "tutorial"
+    },
+    {
+      "id": "sch-5",
+      "courseCode": "PHYS 121",
+      "courseName": "Mechanics & Waves",
+      "title": "Physics Lab 01",
+      "location": "PHY 310",
+      "startTime": "02:30 PM",
+      "endTime": "05:20 PM",
+      "daysOfWeek": [
+        "Thu"
+      ],
+      "instructor": "Lab Instructor",
+      "type": "lab"
     }
   ],
   "quickLinks": [
@@ -90,15 +101,23 @@
       "name": "WaterlooWorks",
       "category": "career",
       "url": "https://waterlooworks.uwaterloo.ca/",
-      "description": "Co-op job search, interview schedules, and rankings.",
+      "description": "Co-op job search, interview schedules, rankings, and employment services.",
       "iconName": "Briefcase"
+    },
+    {
+      "id": "learn",
+      "name": "LEARN (D2L)",
+      "category": "core",
+      "url": "https://learn.uwaterloo.ca/",
+      "description": "Course materials, assignment submissions, announcements, and grades.",
+      "iconName": "BookOpen"
     },
     {
       "id": "quest",
       "name": "Quest",
       "category": "core",
       "url": "https://quest.uwaterloo.ca/",
-      "description": "Student information system, course enrollment, and transcripts.",
+      "description": "Student information system, course enrollment, transcripts, and tuition fees.",
       "iconName": "GraduationCap"
     },
     {
@@ -110,11 +129,19 @@
       "iconName": "Mail"
     },
     {
+      "id": "portal",
+      "name": "UW Portal",
+      "category": "campus",
+      "url": "https://portal.uwaterloo.ca/",
+      "description": "Campus widgets, food services schedules, GRT transit, and alerts.",
+      "iconName": "LayoutGrid"
+    },
+    {
       "id": "crowdmark",
       "name": "Crowdmark",
       "category": "academic",
       "url": "https://app.crowdmark.com/",
-      "description": "Online grading platform for math and science assignments.",
+      "description": "Online grading platform for math, engineering, and science assignments.",
       "iconName": "FileCheck"
     },
     {
@@ -122,25 +149,61 @@
       "name": "Piazza",
       "category": "academic",
       "url": "https://piazza.com/",
-      "description": "Q&A discussion forum for course content.",
+      "description": "Q&A discussion forum for course content and peer assistance.",
       "iconName": "MessageSquare"
     },
     {
-      "id": "learn",
-      "name": "LEARN (D2L)",
+      "id": "watiam",
+      "name": "WatIAM",
       "category": "core",
-      "url": "https://learn.uwaterloo.ca/",
-      "description": "Course materials portal.",
-      "iconName": "BookOpen"
+      "url": "https://idm.uwaterloo.ca/identity/self-service",
+      "description": "Identity management, password updates, and 2FA configuration.",
+      "iconName": "Key"
+    },
+    {
+      "id": "workday",
+      "name": "Workday",
+      "category": "career",
+      "url": "https://wd3.myworkday.com/uwaterloo",
+      "description": "TA/RA employment, payroll, tax forms, and campus job administration.",
+      "iconName": "DollarSign"
+    },
+    {
+      "id": "wusa",
+      "name": "WUSA",
+      "category": "campus",
+      "url": "https://wusa.ca/",
+      "description": "Waterloo Undergraduate Student Association, health dental plan, and clubs.",
+      "iconName": "Users"
+    },
+    {
+      "id": "library",
+      "name": "UW Library (Omni)",
+      "category": "academic",
+      "url": "https://uwaterloo.ca/library/",
+      "description": "Dana Porter & Davis Centre library catalogs, research papers, and study room bookings.",
+      "iconName": "Library"
     }
   ],
   "settings": {
     "theme": "light",
+    "d2lFeedUrl": "https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?token=act3s2yw0g48a4qw45347",
+    "lastSyncedAt": "2026-09-18T20:03:46.028Z",
+    "customLinks": [],
+    "courseColors": {
+      "CS 135": "#3b82f61a",
+      "MATH 135": "#10b9811a",
+      "MATH 137": "#8b5cf61a",
+      "ENGL 109": "#f59e0b1a",
+      "PHYS 121": "#ef44441a",
+      "LEARN": "#64748b1a"
+    },
     "sidebarOrder": [
       "dashboard",
-      "courses",
       "schedule",
       "links",
+      "announcements",
+      "assignments",
       "calendar",
       "settings"
     ]

@@ -9,7 +9,7 @@ import { CalendarView } from './pages/CalendarView';
 import { Settings } from './pages/Settings';
 
 import { Course, TaskItem, ScheduleItem, QuickLink, UserSettings } from './types';
-import { INITIAL_COURSES, INITIAL_TASKS, INITIAL_SCHEDULE, INITIAL_QUICK_LINKS } from './data/mockData';
+import { INITIAL_QUICK_LINKS } from './data/mockData';
 import { loadLocalData, saveLocalDB } from './services/d2lSync';
 
 const DEFAULT_SIDEBAR_ORDER = ['dashboard', 'courses', 'schedule', 'links', 'calendar', 'settings'];
@@ -35,31 +35,31 @@ export function App() {
     };
   });
 
-  // Persistent courses state
+  // Persistent courses state (Zero demo data default)
   const [courses, setCourses] = useState<Course[]>(() => {
     const saved = localStorage.getItem('uwexplorer_courses');
     if (saved) {
       try { return JSON.parse(saved); } catch (e) {}
     }
-    return INITIAL_COURSES;
+    return [];
   });
 
-  // Persistent tasks state
+  // Persistent tasks state (Zero demo data default)
   const [tasks, setTasks] = useState<TaskItem[]>(() => {
     const saved = localStorage.getItem('uwexplorer_tasks');
     if (saved) {
       try { return JSON.parse(saved); } catch (e) {}
     }
-    return INITIAL_TASKS;
+    return [];
   });
 
-  // Persistent schedule state
+  // Persistent schedule state (Zero demo data default)
   const [schedule, setSchedule] = useState<ScheduleItem[]>(() => {
     const saved = localStorage.getItem('uwexplorer_schedule');
     if (saved) {
       try { return JSON.parse(saved); } catch (e) {}
     }
-    return INITIAL_SCHEDULE;
+    return [];
   });
 
   // Persistent quick links state
@@ -77,10 +77,11 @@ export function App() {
       const diskData = await loadLocalData();
       if (diskData && diskData.db) {
         const db = diskData.db;
-        if (db.courses && db.courses.length > 0) setCourses(db.courses);
-        if (db.tasks && db.tasks.length > 0) setTasks(db.tasks);
-        if (db.schedule && db.schedule.length > 0) setSchedule(db.schedule);
-        if (db.quickLinks && db.quickLinks.length > 0) setQuickLinks(db.quickLinks);
+        if (db.courses) setCourses(db.courses);
+        if (db.tasks) setTasks(db.tasks);
+        if (db.schedule) setSchedule(db.schedule);
+        if (db.quickLinks) setQuickLinks(db.quickLinks);
+        if (db.settings) setSettings(prev => ({ ...prev, ...db.settings }));
       }
     }
     loadDisk();
@@ -147,12 +148,17 @@ export function App() {
     setCourses(prev => [...prev, item]);
   };
 
-  const handleUpdateCourseColor = (courseId: string, color: string) => {
-    setCourses(prev => prev.map(c => (c.id === courseId ? { ...c, color } : c)));
+  const handleUpdateCourse = (courseId: string, updated: Partial<Course>) => {
+    setCourses(prev => prev.map(c => (c.id === courseId ? { ...c, ...updated } : c)));
   };
 
   const handleDeleteCourse = (courseId: string) => {
     setCourses(prev => prev.filter(c => c.id !== courseId));
+    // Also remove associated tasks
+    const targetCourse = courses.find(c => c.id === courseId);
+    if (targetCourse) {
+      setTasks(prev => prev.filter(t => t.courseCode !== targetCourse.code));
+    }
   };
 
   // Task Actions
@@ -206,10 +212,10 @@ export function App() {
   };
 
   const handleResetData = () => {
-    if (window.confirm('Reset to default clean data?')) {
-      setCourses(INITIAL_COURSES);
-      setTasks(INITIAL_TASKS);
-      setSchedule(INITIAL_SCHEDULE);
+    if (window.confirm('Clear all data and start fresh?')) {
+      setCourses([]);
+      setTasks([]);
+      setSchedule([]);
       setQuickLinks(INITIAL_QUICK_LINKS);
       setSettings({
         theme: 'light',
@@ -255,12 +261,10 @@ export function App() {
               <Courses
                 courses={courses}
                 tasks={tasks}
-                onAddCourse={handleAddCourse}
-                onUpdateCourseColor={handleUpdateCourseColor}
-                onDeleteCourse={handleDeleteCourse}
                 onAddTask={handleAddTask}
                 onToggleTask={handleToggleTask}
                 onDeleteTask={handleDeleteTask}
+                onNavigate={setActiveTab}
               />
             )}
 
@@ -292,7 +296,11 @@ export function App() {
             {activeTab === 'settings' && (
               <Settings
                 settings={settings}
+                courses={courses}
                 onUpdateSettings={handleUpdateSettings}
+                onAddCourse={handleAddCourse}
+                onUpdateCourse={handleUpdateCourse}
+                onDeleteCourse={handleDeleteCourse}
                 onResetData={handleResetData}
               />
             )}
