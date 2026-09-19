@@ -124,8 +124,8 @@ export const Schedule: React.FC<ScheduleProps> = ({
         </div>
       </div>
 
-      {/* 8:30 AM - 5:30 PM Timetable View */}
-      <div className="flex flex-col gap-2">
+      {/* 8:30 AM - 5:30 PM Clean Timetable Grid (No Hover Animations) */}
+      <div className="border border-[var(--border)] bg-[var(--bg)] divide-y divide-[var(--border)]">
         {TIME_SLOTS.map((slot) => {
           const slotClasses = getSlotClasses(slot);
           const hasClass = slotClasses.length > 0;
@@ -133,19 +133,21 @@ export const Schedule: React.FC<ScheduleProps> = ({
           return (
             <div
               key={slot.label}
-              className={`uw-card p-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border transition-all ${
-                hasClass ? 'border-[var(--c5)] bg-[var(--bg)]' : 'border-[var(--border)] bg-[var(--c1)]/20'
+              className={`p-3.5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 ${
+                hasClass ? 'bg-[var(--bg)]' : 'bg-[var(--c1)]/30'
               }`}
             >
-              <div className="flex items-center gap-4 min-w-[170px] shrink-0">
-                <div className="w-20 font-mono text-xs font-bold text-[var(--c5)]">
+              {/* Time Slot Column */}
+              <div className="flex items-center gap-3 min-w-[180px] shrink-0 font-mono">
+                <span className="text-xs font-bold text-[var(--c5)] w-16">
                   {slot.label.split(' - ')[0]}
-                </div>
-                <span className="mono-label text-[0.65rem] text-[var(--c3)]">
-                  {slot.label}
+                </span>
+                <span className="text-[0.68rem] text-[var(--c3)]">
+                  ({slot.label})
                 </span>
               </div>
 
+              {/* Class Content or Free Slot */}
               {hasClass ? (
                 <div className="flex-1 flex flex-col gap-2 w-full">
                   {slotClasses.map(item => {
@@ -164,14 +166,14 @@ export const Schedule: React.FC<ScheduleProps> = ({
                           <h4 className="font-sans font-bold text-sm text-[var(--c5)] mt-1">
                             {item.title}
                           </h4>
-                          <div className="flex items-center gap-3 mt-1 font-mono text-xs text-[var(--c4)]">
-                            <span className="flex items-center gap-1">
-                              <MapPin className="w-3 h-3 text-[var(--c3)]" />
+                          <div className="flex items-center gap-4 mt-1 font-mono text-xs text-[var(--c4)]">
+                            <span className="flex items-center gap-1 font-semibold">
+                              <MapPin className="w-3.5 h-3.5 text-[var(--c3)]" />
                               {item.location}
                             </span>
                             {item.instructor && (
                               <span className="flex items-center gap-1 text-[var(--c3)]">
-                                <User className="w-3 h-3" />
+                                <User className="w-3.5 h-3.5" />
                                 {item.instructor}
                               </span>
                             )}
@@ -190,8 +192,8 @@ export const Schedule: React.FC<ScheduleProps> = ({
                   })}
                 </div>
               ) : (
-                <div className="flex-1 py-1.5 px-3 border border-dashed border-[var(--border)] font-mono text-[0.68rem] text-[var(--c3)] italic">
-                  — Free Slot —
+                <div className="flex-1 font-mono text-xs text-[var(--c3)] italic py-1">
+                  — Free —
                 </div>
               )}
             </div>
