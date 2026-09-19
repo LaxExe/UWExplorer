@@ -1,137 +1,147 @@
 import React from 'react';
-import { QuickLink, Announcement, Assignment, ScheduleItem } from '../types';
-import { ArrowUpRight, Bell, CheckSquare, CalendarDays, AlertCircle } from 'lucide-react';
+import { Course, TaskItem, ScheduleItem, QuickLink } from '../types';
+import { BookOpen, CheckSquare, CalendarDays, ArrowUpRight, AlertCircle, Plus } from 'lucide-react';
 
 interface DashboardProps {
-  quickLinks: QuickLink[];
-  announcements: Announcement[];
-  assignments: Assignment[];
+  courses: Course[];
+  tasks: TaskItem[];
   schedule: ScheduleItem[];
-  courseColors: Record<string, string>;
-  onToggleAssignment: (id: string) => void;
+  quickLinks: QuickLink[];
+  onToggleTask: (id: string) => void;
   onNavigate: (tab: string) => void;
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({
-  quickLinks,
-  announcements,
-  assignments,
+  courses,
+  tasks,
   schedule,
-  courseColors,
-  onToggleAssignment,
+  quickLinks,
+  onToggleTask,
   onNavigate,
 }) => {
-  const pendingAssignments = assignments.filter(a => !a.isCompleted);
-  const unreadAnnouncements = announcements.filter(a => !a.isRead);
+  const pendingTasks = tasks.filter(t => !t.isCompleted);
 
-  // Today's classes calculation
+  // Today's classes
   const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const todayStr = days[new Date().getDay()];
   const todayClasses = schedule.filter(s => s.daysOfWeek.includes(todayStr));
 
-  const sortedPending = [...pendingAssignments].sort((a, b) => 
-    new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
+  const sortedPending = [...pendingTasks].sort(
+    (a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
   );
 
-  const upcomingNext = sortedPending.slice(0, 4);
-  const recentAnnouncements = announcements.slice(0, 3);
+  const upcomingNext = sortedPending.slice(0, 5);
 
-  const featuredLinks = quickLinks.filter(l => 
-    ['learn', 'quest', 'outlook', 'crowdmark'].includes(l.id)
+  const featuredLinks = quickLinks.filter(l =>
+    ['waterlooworks', 'quest', 'outlook', 'crowdmark'].includes(l.id)
   );
 
   return (
     <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
-      {/* Hero Banner (No action buttons per request) */}
-      <div className="uw-card p-6">
-        <h2 className="text-2xl font-bold font-sans text-[var(--c5)] tracking-tight">
-          Welcome back.
-        </h2>
-        <p className="font-mono text-xs text-[var(--c4)] mt-1 max-w-xl">
-          Streamlined Learn (D2L) announcements, upcoming deadlines, and quick links to your campus portals.
-        </p>
+      {/* Hero Banner */}
+      <div className="uw-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h2 className="text-2xl font-bold font-sans text-[var(--c5)] tracking-tight">
+            Student Dashboard
+          </h2>
+          <p className="font-mono text-xs text-[var(--c4)] mt-1 max-w-xl">
+            Manual course-by-course task tracker, class schedule, and quick campus links.
+          </p>
+        </div>
+
+        <button
+          onClick={() => onNavigate('courses')}
+          className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)]"
+        >
+          <Plus className="w-4 h-4" />
+          <span>manage courses & tasks</span>
+        </button>
       </div>
 
-      {/* Metrics Row (3 cards in the same row) */}
+      {/* Metrics Row (3 cards) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Card 1: Pending Assignments */}
+        {/* Card 1: Active Courses */}
         <div
-          onClick={() => onNavigate('assignments')}
+          onClick={() => onNavigate('courses')}
           className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
         >
           <div className="flex justify-between items-start">
-            <span className="mono-label font-bold text-[var(--c5)]">pending assignments</span>
+            <span className="mono-label font-bold text-[var(--c5)]">enrolled courses</span>
+            <BookOpen className="w-4 h-4 text-[var(--c3)]" />
+          </div>
+          <div className="mt-3">
+            <span className="text-3xl font-bold font-sans text-[var(--c5)]">
+              {courses.length}
+            </span>
+            <span className="font-mono text-xs text-[var(--c3)] ml-2">active courses</span>
+          </div>
+        </div>
+
+        {/* Card 2: Pending Tasks */}
+        <div
+          onClick={() => onNavigate('courses')}
+          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
+        >
+          <div className="flex justify-between items-start">
+            <span className="mono-label font-bold text-[var(--c5)]">pending tasks</span>
             <CheckSquare className="w-4 h-4 text-[var(--c3)]" />
           </div>
           <div className="mt-3">
             <span className="text-3xl font-bold font-sans text-[var(--c5)]">
-              {pendingAssignments.length}
+              {pendingTasks.length}
             </span>
             <span className="font-mono text-xs text-[var(--c3)] ml-2">tasks due</span>
           </div>
         </div>
 
-        {/* Card 2: Recent Announcements (Displays UNREAD count) */}
+        {/* Card 3: Today's Schedule (Display card) */}
         <div
-          onClick={() => onNavigate('announcements')}
-          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
+          onClick={() => onNavigate('schedule')}
+          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all bg-[var(--c1)]/30"
         >
           <div className="flex justify-between items-start">
-            <span className="mono-label font-bold text-[var(--c5)]">recent announcements</span>
-            <Bell className="w-4 h-4 text-[var(--c3)]" />
-          </div>
-          <div className="mt-3">
-            <span className="text-3xl font-bold font-sans text-[var(--c5)]">
-              {unreadAnnouncements.length}
-            </span>
-            <span className="font-mono text-xs text-[var(--c3)] ml-2">unread updates</span>
-          </div>
-        </div>
-
-        {/* Card 3: Today's Schedule Card (Display card only, no hyperlink) */}
-        <div className="uw-card flex flex-col justify-between">
-          <div className="flex justify-between items-start">
             <span className="mono-label font-bold text-[var(--c5)]">today's schedule</span>
-            <CalendarDays className="w-4 h-4 text-[var(--c3)]" />
+            <CalendarDays className="w-4 h-4 text-[var(--c5)]" />
           </div>
           <div className="mt-3">
             <span className="text-3xl font-bold font-sans text-[var(--c5)]">
               {todayClasses.length}
             </span>
             <span className="font-mono text-xs text-[var(--c3)] ml-2">
-              {todayClasses.length === 1 ? 'class left today' : 'classes left today'}
+              {todayClasses.length === 1 ? 'class today' : 'classes today'}
             </span>
           </div>
         </div>
       </div>
 
-      {/* Main Grid: Upcoming Deadlines & Featured Links */}
+      {/* Main Grid: Upcoming Tasks & Enrolled Courses Summary */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column: Upcoming Deadlines */}
+        {/* Left Column: Upcoming Tasks */}
         <div className="lg:col-span-2 flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <h3 className="font-sans text-base font-semibold text-[var(--c5)] flex items-center gap-2">
               <AlertCircle className="w-4 h-4 text-[var(--c3)]" />
-              Upcoming Deadlines
+              Upcoming Course Tasks
             </h3>
             <button
-              onClick={() => onNavigate('assignments')}
+              onClick={() => onNavigate('courses')}
               className="mono-label text-xs hover:text-[var(--c5)] cursor-pointer"
             >
-              view all ({assignments.length}) →
+              view all ({tasks.length}) →
             </button>
           </div>
 
           <div className="flex flex-col gap-3">
             {upcomingNext.length === 0 ? (
               <div className="uw-card text-center py-8">
-                <p className="font-mono text-xs text-[var(--c3)]">No upcoming assignments!</p>
+                <p className="font-mono text-xs text-[var(--c3)]">No upcoming tasks! Click "+ Manage Courses & Tasks" to create one.</p>
               </div>
             ) : (
               upcomingNext.map(item => {
+                const courseObj = courses.find(c => c.code === item.courseCode);
+                const courseBg = courseObj?.color || 'transparent';
                 const dueDateObj = new Date(item.dueDate);
                 const isOverdue = dueDateObj.getTime() < Date.now() && !item.isCompleted;
-                const courseBg = courseColors[item.courseCode] || 'transparent';
 
                 return (
                   <div
@@ -143,7 +153,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                       <input
                         type="checkbox"
                         checked={item.isCompleted}
-                        onChange={() => onToggleAssignment(item.id)}
+                        onChange={() => onToggleTask(item.id)}
                         className="mt-1 cursor-pointer accent-[var(--c5)]"
                       />
                       <div>
@@ -180,7 +190,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
         </div>
 
-        {/* Right Column: Shortcuts & Announcements */}
+        {/* Right Column: Shortcuts */}
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
@@ -210,47 +220,6 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   <ArrowUpRight className="w-4 h-4 text-[var(--c4)]" />
                 </a>
               ))}
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center justify-between">
-              <h3 className="font-sans text-base font-semibold text-[var(--c5)]">
-                Latest Announcements
-              </h3>
-              <button
-                onClick={() => onNavigate('announcements')}
-                className="mono-label text-xs hover:text-[var(--c5)] cursor-pointer"
-              >
-                view all →
-              </button>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              {recentAnnouncements.map(ann => {
-                const courseBg = courseColors[ann.courseCode] || 'transparent';
-
-                return (
-                  <div
-                    key={ann.id}
-                    className="uw-card p-3.5"
-                    style={{ backgroundColor: courseBg !== 'transparent' ? courseBg : undefined }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="uw-tag">{ann.courseCode}</span>
-                      <span className="mono-label">
-                        {new Date(ann.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                      </span>
-                    </div>
-                    <h4 className="font-sans font-semibold text-xs text-[var(--c5)] mt-2">
-                      {ann.title}
-                    </h4>
-                    <p className="mono-text text-[0.72rem] text-[var(--c3)] line-clamp-2 mt-1">
-                      {ann.content}
-                    </p>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </div>

@@ -8,29 +8,23 @@ export interface QuickLink {
   isCustom?: boolean;
 }
 
-export interface Announcement {
+export interface Course {
   id: string;
-  courseCode: string;
-  courseName: string;
-  title: string;
-  content: string;
-  date: string; // ISO string
-  author?: string;
-  priority?: 'normal' | 'important';
-  isRead?: boolean;
+  code: string; // e.g. "CS 135"
+  name: string; // e.g. "Designing Functional Programs"
+  color: string; // subtle background accent color e.g. "#3b82f61a"
+  instructor?: string;
 }
 
-export interface Assignment {
+export interface TaskItem {
   id: string;
   courseCode: string;
-  courseName: string;
   title: string;
-  type: 'assignment' | 'quiz' | 'exam' | 'project' | 'lab';
-  dueDate: string; // ISO string
-  points?: number | string;
-  locationUrl?: string;
+  type: 'assignment' | 'quiz' | 'exam' | 'project' | 'lab' | 'todo';
+  dueDate: string; // ISO string or date
   isCompleted: boolean;
   notes?: string;
+  locationUrl?: string;
 }
 
 export interface ScheduleItem {
@@ -48,8 +42,5 @@ export interface ScheduleItem {
 
 export interface UserSettings {
   theme: 'light' | 'dark';
-  d2lFeedUrl: string;
-  lastSyncedAt: string | null;
-  courseColors: Record<string, string>;
-  sidebarOrder: string[]; // array of tab IDs e.g. ['dashboard', 'schedule', ...]
+  sidebarOrder: string[];
 }

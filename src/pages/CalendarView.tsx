@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Assignment } from '../types';
+import { TaskItem, Course } from '../types';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
 
 interface CalendarViewProps {
-  assignments: Assignment[];
-  courseColors: Record<string, string>;
+  tasks: TaskItem[];
+  courses: Course[];
 }
 
-export const CalendarView: React.FC<CalendarViewProps> = ({ assignments, courseColors }) => {
+export const CalendarView: React.FC<CalendarViewProps> = ({ tasks, courses }) => {
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [selectedDateStr, setSelectedDateStr] = useState<string>(
     new Date().toISOString().split('T')[0]
@@ -27,16 +27,16 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ assignments, courseC
   const handlePrevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
   const handleNextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
 
-  const assignmentsByDate: Record<string, Assignment[]> = {};
-  assignments.forEach(item => {
+  const tasksByDate: Record<string, TaskItem[]> = {};
+  tasks.forEach(item => {
     const key = new Date(item.dueDate).toISOString().split('T')[0];
-    if (!assignmentsByDate[key]) {
-      assignmentsByDate[key] = [];
+    if (!tasksByDate[key]) {
+      tasksByDate[key] = [];
     }
-    assignmentsByDate[key].push(item);
+    tasksByDate[key].push(item);
   });
 
-  const selectedAssignments = assignmentsByDate[selectedDateStr] || [];
+  const selectedTasks = tasksByDate[selectedDateStr] || [];
 
   return (
     <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
@@ -45,7 +45,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ assignments, courseC
           Semester Deadlines Calendar
         </h2>
         <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-          Visual monthly grid of assignments, quizzes, and exam dates across your courses.
+          Visual monthly grid of assignments, quizzes, and course task dates.
         </p>
       </div>
 
@@ -84,7 +84,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ assignments, courseC
               const dayNum = idx + 1;
               const dateObj = new Date(year, month, dayNum);
               const dateIso = dateObj.toISOString().split('T')[0];
-              const dayItems = assignmentsByDate[dateIso] || [];
+              const dayItems = tasksByDate[dateIso] || [];
               const isSelected = dateIso === selectedDateStr;
               const isToday = new Date().toDateString() === dateObj.toDateString();
 
@@ -113,7 +113,8 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ assignments, courseC
 
                   <div className="flex flex-col gap-0.5 overflow-hidden">
                     {dayItems.slice(0, 2).map((item) => {
-                      const courseBg = courseColors[item.courseCode] || 'var(--bg)';
+                      const courseObj = courses.find(c => c.code === item.courseCode);
+                      const courseBg = courseObj?.color || 'var(--bg)';
                       return (
                         <span
                           key={item.id}
@@ -149,13 +150,14 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ assignments, courseC
           </div>
 
           <div className="flex flex-col gap-3">
-            {selectedAssignments.length === 0 ? (
+            {selectedTasks.length === 0 ? (
               <p className="mono-text text-xs text-[var(--c3)] py-4 text-center">
-                No assignments or exams scheduled for this date.
+                No tasks scheduled for this date.
               </p>
             ) : (
-              selectedAssignments.map((item) => {
-                const courseBg = courseColors[item.courseCode] || 'transparent';
+              selectedTasks.map((item) => {
+                const courseObj = courses.find(c => c.code === item.courseCode);
+                const courseBg = courseObj?.color || 'transparent';
 
                 return (
                   <div
