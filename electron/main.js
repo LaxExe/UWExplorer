@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, shell } from 'electron';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -102,6 +102,15 @@ async function createWindow() {
   const url = isDev ? 'http://localhost:5173' : `http://127.0.0.1:${port}`;
 
   mainWindow.loadURL(url);
+
+  // Open external links in user's default system browser (Chrome/Safari/Arc/etc)
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      shell.openExternal(url);
+      return { action: 'deny' };
+    }
+    return { action: 'allow' };
+  });
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();
