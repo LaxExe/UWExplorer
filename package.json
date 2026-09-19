@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "electron:start": "electron .",
     "electron:build": "npm run build && electron-builder --mac",
-    "app:update": "npm run build && npx electron-builder --mac dir && cp -r dist/mac-arm64/UWexplorer.app /Applications/"
+    "app:update": "npm run build && npx electron-builder --mac dir && rm -rf /Applications/UWexplorer.app && cp -r dist/mac-arm64/UWexplorer.app /Applications/"
   },
   "build": {
     "appId": "com.uwexplorer.app",
