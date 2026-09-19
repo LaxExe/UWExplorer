@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import {
   LayoutDashboard,
-  BookOpen,
+  ListTodo,
   CalendarDays,
   ExternalLink,
-  CheckSquare,
   Calendar as CalendarIcon,
   Settings as SettingsIcon,
   ChevronUp,
@@ -22,7 +21,7 @@ interface SidebarProps {
 
 const ALL_NAV_ITEMS: Record<string, { label: string; icon: React.ElementType }> = {
   dashboard: { label: 'dashboard', icon: LayoutDashboard },
-  courses: { label: 'courses & todo', icon: BookOpen },
+  courses: { label: 'courses & todo', icon: ListTodo },
   schedule: { label: 'schedule', icon: CalendarDays },
   links: { label: 'quick links', icon: ExternalLink },
   calendar: { label: 'calendar', icon: CalendarIcon },
@@ -104,18 +103,22 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <button
                   onClick={() => setActiveTab(id)}
                   className={`uw-button flex-1 justify-between min-h-[40px] px-3.5 ${
-                    isActive ? 'active text-[var(--c5)] font-semibold border-[var(--c3)]' : ''
+                    isActive ? 'active' : ''
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-5 flex justify-center shrink-0">
-                      <Icon className="w-4 h-4 text-[var(--c4)]" />
+                      <Icon className={`w-4 h-4 ${isActive ? 'text-[var(--bg)]' : 'text-[var(--c4)]'}`} />
                     </div>
-                    <span className="text-left font-mono text-xs">{itemConfig.label}</span>
+                    <span className={`text-left font-mono text-xs ${isActive ? 'text-[var(--bg)]' : 'text-[var(--c5)]'}`}>
+                      {itemConfig.label}
+                    </span>
                   </div>
 
                   {badge !== undefined && badge > 0 && (
-                    <span className="uw-tag font-mono text-[0.6rem] py-0 px-1.5 border-[var(--border)] bg-amber-500/10 text-amber-600 font-bold shrink-0">
+                    <span className={`uw-tag font-mono text-[0.6rem] py-0 px-1.5 border-[var(--border)] shrink-0 ${
+                      isActive ? 'bg-[var(--bg)] text-[var(--c5)] font-bold' : 'bg-amber-500/10 text-amber-600 font-bold'
+                    }`}>
                       {badge}
                     </span>
                   )}

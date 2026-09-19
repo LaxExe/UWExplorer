@@ -6,6 +6,7 @@ export interface QuickLink {
   description: string;
   iconName: string;
   isCustom?: boolean;
+  isPinned?: boolean;
 }
 
 export interface Course {

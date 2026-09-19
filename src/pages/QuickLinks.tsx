@@ -17,6 +17,8 @@ import {
   Library,
   Trash2,
   Edit2,
+  Pin,
+  PinOff,
 } from 'lucide-react';
 
 interface QuickLinksProps {
@@ -58,6 +60,8 @@ export const QuickLinks: React.FC<QuickLinksProps> = ({
   const [category, setCategory] = useState<QuickLink['category']>('custom');
   const [description, setDescription] = useState('');
 
+  const [isPinned, setIsPinned] = useState<boolean>(true);
+
   const categories = ['all', 'core', 'career', 'academic', 'campus', 'custom'];
 
   const filteredLinks = links.filter((link) => {
@@ -73,6 +77,7 @@ export const QuickLinks: React.FC<QuickLinksProps> = ({
     setUrl('');
     setCategory('custom');
     setDescription('');
+    setIsPinned(true);
     setIsAddModalOpen(true);
   };
 
@@ -82,6 +87,7 @@ export const QuickLinks: React.FC<QuickLinksProps> = ({
     setUrl(link.url);
     setCategory(link.category);
     setDescription(link.description);
+    setIsPinned(link.isPinned !== false);
   };
 
   const handleSaveLink = (e: React.FormEvent) => {
@@ -99,6 +105,7 @@ export const QuickLinks: React.FC<QuickLinksProps> = ({
         url: formattedUrl,
         category,
         description,
+        isPinned,
       });
       setEditingLink(null);
     } else {
@@ -109,6 +116,7 @@ export const QuickLinks: React.FC<QuickLinksProps> = ({
         description: description || 'Student shortcut.',
         iconName: 'ExternalLink',
         isCustom: true,
+        isPinned,
       });
       setIsAddModalOpen(false);
     }
@@ -179,6 +187,21 @@ export const QuickLinks: React.FC<QuickLinksProps> = ({
                   </div>
                   <div className="flex items-center gap-1.5">
                     <span className="uw-tag">{link.category}</span>
+                    <button
+                      onClick={() => onUpdateLink(link.id, { isPinned: !link.isPinned })}
+                      className={`transition-colors p-1 ${
+                        link.isPinned !== false
+                          ? 'text-amber-500 hover:text-amber-600'
+                          : 'text-[var(--c3)] hover:text-[var(--c5)]'
+                      }`}
+                      title={link.isPinned !== false ? 'Unpin from Dashboard' : 'Pin to Dashboard'}
+                    >
+                      {link.isPinned !== false ? (
+                        <Pin className="w-3.5 h-3.5 fill-amber-500/20" />
+                      ) : (
+                        <PinOff className="w-3.5 h-3.5" />
+                      )}
+                    </button>
                     <button
                       onClick={() => handleOpenEdit(link)}
                       className="text-[var(--c3)] hover:text-[var(--c5)] transition-colors p-1"
@@ -277,6 +300,19 @@ export const QuickLinks: React.FC<QuickLinksProps> = ({
                   onChange={(e) => setDescription(e.target.value)}
                   className="w-full bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
                 />
+              </div>
+
+              <div className="flex items-center gap-2 pt-1">
+                <input
+                  type="checkbox"
+                  id="pinCheckbox"
+                  checked={isPinned}
+                  onChange={(e) => setIsPinned(e.target.checked)}
+                  className="cursor-pointer accent-[var(--c5)]"
+                />
+                <label htmlFor="pinCheckbox" className="mono-text text-xs text-[var(--c5)] cursor-pointer select-none">
+                  Pin shortcut to Dashboard
+                </label>
               </div>
 
               <div className="flex items-center justify-end gap-3 mt-2">
