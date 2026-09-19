@@ -2,12 +2,29 @@
   "name": "uwexplorer",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
+  "main": "electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "tsc -b",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron:start": "electron .",
+    "electron:build": "npm run build && electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.uwexplorer.app",
+    "productName": "UWexplorer",
+    "mac": {
+      "category": "public.app-category.education",
+      "target": ["dmg", "zip"]
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "scripts/**/*",
+      "data/**/*",
+      "package.json"
+    ]
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
@@ -19,6 +36,8 @@
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
+    "electron": "^44.4.3",
+    "electron-builder": "^26.15.3",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.2.2",
