@@ -67,6 +67,28 @@ export const Schedule: React.FC<ScheduleProps> = ({
     setIsModalOpen(false);
   };
 
+  // Hourly timetable slots: 8:30 AM - 5:30 PM
+  const TIME_SLOTS = [
+    { label: '8:30 AM - 9:30 AM', hourStart: 8, minStart: 30 },
+    { label: '9:30 AM - 10:30 AM', hourStart: 9, minStart: 30 },
+    { label: '10:30 AM - 11:30 AM', hourStart: 10, minStart: 30 },
+    { label: '11:30 AM - 12:30 PM', hourStart: 11, minStart: 30 },
+    { label: '12:30 PM - 1:30 PM', hourStart: 12, minStart: 30 },
+    { label: '1:30 PM - 2:30 PM', hourStart: 13, minStart: 30 },
+    { label: '2:30 PM - 3:30 PM', hourStart: 14, minStart: 30 },
+    { label: '3:30 PM - 4:30 PM', hourStart: 15, minStart: 30 },
+    { label: '4:30 PM - 5:30 PM', hourStart: 16, minStart: 30 },
+  ];
+
+  // Helper to match class items to time slots
+  const getSlotClasses = (slot: typeof TIME_SLOTS[0]) => {
+    return filteredItems.filter(item => {
+      const itemTimeLower = item.startTime.toLowerCase();
+      const slotHourStr = slot.hourStart > 12 ? (slot.hourStart - 12).toString() : slot.hourStart.toString();
+      return itemTimeLower.includes(slotHourStr) || itemTimeLower.includes(`${slot.hourStart}:`);
+    });
+  };
+
   return (
     <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
       {/* Header */}
@@ -87,9 +109,9 @@ export const Schedule: React.FC<ScheduleProps> = ({
       </div>
 
       {/* Day Selector */}
-      <div className="uw-card p-4 flex items-center justify-between gap-2 overflow-x-auto">
+      <div className="uw-card p-3 flex items-center justify-between gap-2 overflow-x-auto">
         <div className="flex items-center gap-2">
-          <CalendarDays className="w-4 h-4 text-[var(--c3)] mr-2 shrink-0" />
+          <CalendarDays className="w-4 h-4 text-[var(--c3)] mr-1 shrink-0" />
           {daysList.map(day => (
             <button
               key={day}
@@ -100,84 +122,81 @@ export const Schedule: React.FC<ScheduleProps> = ({
             </button>
           ))}
         </div>
-
-        <span className="mono-label text-[0.68rem] shrink-0">
-          showing {selectedDay}'s timeline ({filteredItems.length} classes)
-        </span>
       </div>
 
-      {/* Class Timeline */}
-      <div className="flex flex-col gap-4">
-        {filteredItems.length === 0 ? (
-          <div className="uw-card text-center py-12">
-            <p className="font-mono text-xs text-[var(--c3)]">
-              No classes or lectures scheduled for {selectedDay}. Enjoy your day off!
-            </p>
-          </div>
-        ) : (
-          filteredItems.map(item => {
-            const courseColor = courseColors[item.courseCode] || 'transparent';
+      {/* 8:30 AM - 5:30 PM Timetable View */}
+      <div className="flex flex-col gap-2">
+        {TIME_SLOTS.map((slot) => {
+          const slotClasses = getSlotClasses(slot);
+          const hasClass = slotClasses.length > 0;
 
-            return (
-              <div
-                key={item.id}
-                className="uw-card p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
-                style={{ backgroundColor: courseColor !== 'transparent' ? courseColor : undefined }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 border border-[var(--border)] bg-[var(--bg)] flex flex-col items-center justify-center shrink-0">
-                    <span className="font-mono font-bold text-xs text-[var(--c5)]">
-                      {item.courseCode.split(' ')[0]}
-                    </span>
-                    <span className="font-mono text-[0.62rem] text-[var(--c3)]">
-                      {item.courseCode.split(' ')[1] || ''}
-                    </span>
-                  </div>
-
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="uw-tag font-bold">{item.courseCode}</span>
-                      <span className="uw-tag">{item.type}</span>
-                    </div>
-
-                    <h3 className="font-sans font-bold text-base text-[var(--c5)] mt-1">
-                      {item.title} — {item.courseName}
-                    </h3>
-
-                    <div className="flex items-center gap-4 mt-2 font-mono text-xs text-[var(--c4)] flex-wrap">
-                      <span className="flex items-center gap-1 font-semibold text-[var(--c5)]">
-                        <MapPin className="w-3.5 h-3.5 text-[var(--c3)]" />
-                        {item.location}
-                      </span>
-
-                      {item.instructor && (
-                        <span className="flex items-center gap-1 text-[var(--c3)]">
-                          <User className="w-3.5 h-3.5" />
-                          {item.instructor}
-                        </span>
-                      )}
-                    </div>
-                  </div>
+          return (
+            <div
+              key={slot.label}
+              className={`uw-card p-3 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border transition-all ${
+                hasClass ? 'border-[var(--c5)] bg-[var(--bg)]' : 'border-[var(--border)] bg-[var(--c1)]/20'
+              }`}
+            >
+              <div className="flex items-center gap-4 min-w-[170px] shrink-0">
+                <div className="w-20 font-mono text-xs font-bold text-[var(--c5)]">
+                  {slot.label.split(' - ')[0]}
                 </div>
-
-                <div className="flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto pt-3 md:pt-0 border-t md:border-t-0 border-[var(--border)] gap-2">
-                  <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[var(--c5)]">
-                    <Clock className="w-3.5 h-3.5 text-[var(--c3)]" />
-                    <span>{item.startTime} - {item.endTime}</span>
-                  </div>
-
-                  <button
-                    onClick={() => onDeleteScheduleItem(item.id)}
-                    className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors"
-                    title="Delete schedule item"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
+                <span className="mono-label text-[0.65rem] text-[var(--c3)]">
+                  {slot.label}
+                </span>
               </div>
-            );
-          })
-        )}
+
+              {hasClass ? (
+                <div className="flex-1 flex flex-col gap-2 w-full">
+                  {slotClasses.map(item => {
+                    const courseColor = courseColors[item.courseCode] || 'transparent';
+                    return (
+                      <div
+                        key={item.id}
+                        className="p-3 border border-[var(--border)] flex items-center justify-between gap-3"
+                        style={{ backgroundColor: courseColor !== 'transparent' ? courseColor : undefined }}
+                      >
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="uw-tag font-bold">{item.courseCode}</span>
+                            <span className="uw-tag">{item.type}</span>
+                          </div>
+                          <h4 className="font-sans font-bold text-sm text-[var(--c5)] mt-1">
+                            {item.title}
+                          </h4>
+                          <div className="flex items-center gap-3 mt-1 font-mono text-xs text-[var(--c4)]">
+                            <span className="flex items-center gap-1">
+                              <MapPin className="w-3 h-3 text-[var(--c3)]" />
+                              {item.location}
+                            </span>
+                            {item.instructor && (
+                              <span className="flex items-center gap-1 text-[var(--c3)]">
+                                <User className="w-3 h-3" />
+                                {item.instructor}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={() => onDeleteScheduleItem(item.id)}
+                          className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors shrink-0"
+                          title="Delete class slot"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="flex-1 py-1.5 px-3 border border-dashed border-[var(--border)] font-mono text-[0.68rem] text-[var(--c3)] italic">
+                  — Free Slot —
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* Modal for Adding Class */}
