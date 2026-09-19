@@ -36,28 +36,6 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
   return (
     <div className="flex flex-col gap-4 max-w-[1100px] mx-auto w-full">
-      {/* Hero Banner with Antigravity Accent Line */}
-      <div className="uw-card p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-l-2 border-l-[var(--c5)]">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="mono-label text-[0.65rem] uppercase tracking-widest text-[var(--c3)]">overview</span>
-            <span className="text-[var(--border)]">•</span>
-            <span className="mono-label text-[0.65rem] text-[var(--c3)]">uwexplorer</span>
-          </div>
-          <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight mt-0.5">
-            Student Dashboard
-          </h2>
-        </div>
-
-        <button
-          onClick={() => onNavigate('courses')}
-          className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)] h-8 text-xs px-3"
-        >
-          <Plus className="w-3.5 h-3.5" />
-          <span>manage courses & tasks</span>
-        </button>
-      </div>
-
       {/* Metrics Row (3 compact cards) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Card 1: Calendar View Card */}

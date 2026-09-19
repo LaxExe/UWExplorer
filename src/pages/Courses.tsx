@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Course, TaskItem } from '../types';
-import { Plus, Trash2, Filter, Search, CheckCircle2, Circle } from 'lucide-react';
+import { Plus, Trash2, Filter, Search, CheckCircle2, Circle, Clock } from 'lucide-react';
 
 interface CoursesProps {
   courses: Course[];
@@ -74,9 +74,6 @@ export const Courses: React.FC<CoursesProps> = ({
           <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
             Course Tracker & To-Do List
           </h2>
-          <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-            Click any course card to filter tasks. (Course setup & colors managed in Settings).
-          </p>
         </div>
 
         <button
@@ -167,6 +164,7 @@ export const Courses: React.FC<CoursesProps> = ({
             onClick={() => setTaskStatusFilter('pending')}
             className={`uw-button text-xs ${taskStatusFilter === 'pending' ? 'active font-bold border-[var(--c3)]' : ''}`}
           >
+            <Clock className="w-3.5 h-3.5 text-amber-500" />
             <span>pending tasks</span>
           </button>
           <button
