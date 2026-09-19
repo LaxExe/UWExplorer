@@ -1,53 +1,32 @@
 import React, { useState } from 'react';
 import { Course, TaskItem } from '../types';
-import { Plus, CheckSquare, Trash2, Palette, Filter, Search, Calendar } from 'lucide-react';
+import { Plus, Trash2, Filter, Search, CheckCircle2, Circle } from 'lucide-react';
 
 interface CoursesProps {
   courses: Course[];
   tasks: TaskItem[];
-  onAddCourse: (course: Omit<Course, 'id'>) => void;
-  onUpdateCourseColor: (courseId: string, color: string) => void;
-  onDeleteCourse: (courseId: string) => void;
   onAddTask: (task: Omit<TaskItem, 'id'>) => void;
   onToggleTask: (taskId: string) => void;
   onDeleteTask: (taskId: string) => void;
+  onNavigate: (tab: string) => void;
 }
-
-const PRESET_COLORS = [
-  { name: 'Blue', hex: '#3b82f61a' },
-  { name: 'Green', hex: '#10b9811a' },
-  { name: 'Purple', hex: '#8b5cf61a' },
-  { name: 'Amber', hex: '#f59e0b1a' },
-  { name: 'Red', hex: '#ef44441a' },
-  { name: 'Rose', hex: '#f43f5e1a' },
-  { name: 'Cyan', hex: '#06b6d41a' },
-  { name: 'Slate', hex: '#64748b1a' },
-];
 
 export const Courses: React.FC<CoursesProps> = ({
   courses,
   tasks,
-  onAddCourse,
-  onUpdateCourseColor,
-  onDeleteCourse,
   onAddTask,
   onToggleTask,
   onDeleteTask,
+  onNavigate,
 }) => {
   const [selectedCourseCode, setSelectedCourseCode] = useState<string>('ALL');
+  const [taskStatusFilter, setTaskStatusFilter] = useState<'pending' | 'done'>('pending');
   const [searchQuery, setSearchQuery] = useState<string>('');
   
-  // Modals
-  const [isCourseModalOpen, setIsCourseModalOpen] = useState(false);
+  // Modal
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
-  // New Course Form State
-  const [newCode, setNewCode] = useState('');
-  const [newName, setNewName] = useState('');
-  const [newColor, setNewColor] = useState('#3b82f61a');
-  const [newInstructor, setNewInstructor] = useState('');
-
-  // New Task Form State
+  // Form State
   const [taskCourseCode, setTaskCourseCode] = useState('');
   const [taskTitle, setTaskTitle] = useState('');
   const [taskType, setTaskType] = useState<TaskItem['type']>('assignment');
@@ -55,23 +34,6 @@ export const Courses: React.FC<CoursesProps> = ({
   const [taskNotes, setTaskNotes] = useState('');
 
   const nowTime = Date.now();
-
-  const handleCreateCourse = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newCode) return;
-
-    onAddCourse({
-      code: newCode.toUpperCase().trim(),
-      name: newName || `${newCode.toUpperCase()} Course`,
-      color: newColor,
-      instructor: newInstructor,
-    });
-
-    setNewCode('');
-    setNewName('');
-    setNewInstructor('');
-    setIsCourseModalOpen(false);
-  };
 
   const handleCreateTask = (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,10 +55,11 @@ export const Courses: React.FC<CoursesProps> = ({
 
   const filteredTasks = tasks.filter(t => {
     const matchesCourse = selectedCourseCode === 'ALL' || t.courseCode === selectedCourseCode;
+    const matchesStatus = taskStatusFilter === 'pending' ? !t.isCompleted : t.isCompleted;
     const matchesSearch =
       t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       t.courseCode.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCourse && matchesSearch;
+    return matchesCourse && matchesStatus && matchesSearch;
   });
 
   const sortedTasks = [...filteredTasks].sort(
@@ -112,99 +75,110 @@ export const Courses: React.FC<CoursesProps> = ({
             Course Tracker & To-Do List
           </h2>
           <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-            Organize assignments, tasks, and deadlines course-by-course with custom subtle accent colors.
+            Click any course card to filter tasks. (Course setup & colors managed in Settings).
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setIsCourseModalOpen(true)}
-            className="uw-button"
-          >
-            <Plus className="w-4 h-4" />
-            <span>add course</span>
-          </button>
-          <button
-            onClick={() => {
-              if (courses.length > 0) setTaskCourseCode(courses[0].code);
-              setIsTaskModalOpen(true);
-            }}
-            className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)]"
-          >
-            <Plus className="w-4 h-4" />
-            <span>add task / todo</span>
-          </button>
-        </div>
+        <button
+          onClick={() => {
+            if (courses.length > 0) setTaskCourseCode(courses[0].code);
+            setIsTaskModalOpen(true);
+          }}
+          className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)]"
+        >
+          <Plus className="w-4 h-4" />
+          <span>add task / todo</span>
+        </button>
       </div>
 
-      {/* Courses Cards Row */}
+      {/* Course Cards Row (Clicking card filters tasks for that course) */}
       <div className="flex flex-col gap-3">
-        <span className="mono-label">my courses ({courses.length})</span>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {courses.map(course => {
-            const coursePendingTasks = tasks.filter(t => t.courseCode === course.code && !t.isCompleted);
+        <div className="flex items-center justify-between">
+          <span className="mono-label">my courses ({courses.length})</span>
+          <button
+            onClick={() => onNavigate('settings')}
+            className="mono-label text-[0.68rem] text-[var(--c3)] hover:text-[var(--c5)] cursor-pointer"
+          >
+            + add/edit courses in settings &rarr;
+          </button>
+        </div>
 
-            return (
-              <div
-                key={course.id}
-                className="uw-card p-4 flex flex-col justify-between border-[var(--border)] relative"
-                style={{ backgroundColor: course.color }}
-              >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="uw-tag font-bold text-[var(--c5)]">{course.code}</span>
-                    <div className="flex items-center gap-1">
-                      {PRESET_COLORS.slice(0, 4).map(preset => (
-                        <button
-                          key={preset.hex}
-                          onClick={() => onUpdateCourseColor(course.id, preset.hex)}
-                          className={`w-3.5 h-3.5 border ${course.color === preset.hex ? 'border-[var(--c5)] scale-110' : 'border-[var(--border)]'}`}
-                          style={{ backgroundColor: preset.hex }}
-                          title={preset.name}
-                        />
-                      ))}
-                      <button
-                        onClick={() => onDeleteCourse(course.id)}
-                        className="text-[var(--c3)] hover:text-rose-500 p-1 ml-1"
-                        title="Delete course"
-                      >
-                        <Trash2 className="w-3.5 h-3.5" />
-                      </button>
+        {courses.length === 0 ? (
+          <div className="uw-card text-center py-8">
+            <p className="mono-text text-xs text-[var(--c3)]">
+              No courses added yet. Go to <button onClick={() => onNavigate('settings')} className="underline font-bold text-[var(--c5)]">Settings</button> to add your courses!
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {courses.map(course => {
+              const pendingCount = tasks.filter(t => t.courseCode === course.code && !t.isCompleted).length;
+              const isSelected = selectedCourseCode === course.code;
+
+              return (
+                <div
+                  key={course.id}
+                  onClick={() => setSelectedCourseCode(isSelected ? 'ALL' : course.code)}
+                  className={`uw-card p-4 flex flex-col justify-between border cursor-pointer transition-all ${
+                    isSelected ? 'ring-2 ring-[var(--c5)] border-[var(--c5)]' : 'border-[var(--border)] hover:border-[var(--c3)]'
+                  }`}
+                  style={{ backgroundColor: course.color }}
+                >
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className="uw-tag font-bold text-[var(--c5)]">{course.code}</span>
+                      {isSelected && (
+                        <span className="uw-tag bg-[var(--c5)] text-[var(--bg)] font-bold">
+                          active filter
+                        </span>
+                      )}
                     </div>
+
+                    <h3 className="font-sans font-bold text-sm text-[var(--c5)] mt-2">
+                      {course.name}
+                    </h3>
+                    {course.instructor && (
+                      <p className="mono-text text-[0.68rem] text-[var(--c3)] mt-0.5">
+                        {course.instructor}
+                      </p>
+                    )}
                   </div>
 
-                  <h3 className="font-sans font-bold text-sm text-[var(--c5)] mt-2">
-                    {course.name}
-                  </h3>
-                  {course.instructor && (
-                    <p className="mono-text text-[0.68rem] text-[var(--c3)] mt-0.5">
-                      {course.instructor}
-                    </p>
-                  )}
+                  <div className="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between">
+                    <span className="mono-text text-xs text-[var(--c5)] font-semibold">
+                      {pendingCount} undone task{pendingCount === 1 ? '' : 's'}
+                    </span>
+                    <span className="mono-label text-[0.65rem] text-[var(--c3)]">
+                      {isSelected ? 'show all' : 'filter course'}
+                    </span>
+                  </div>
                 </div>
-
-                <div className="mt-4 pt-3 border-t border-[var(--border)] flex items-center justify-between">
-                  <span className="mono-text text-xs text-[var(--c4)]">
-                    {coursePendingTasks.length} pending task(s)
-                  </span>
-                  <button
-                    onClick={() => {
-                      setTaskCourseCode(course.code);
-                      setIsTaskModalOpen(true);
-                    }}
-                    className="uw-button text-[0.65rem] py-0.5 px-2 h-auto"
-                  >
-                    + task
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
-      {/* Task Filter & Search */}
+      {/* Task Filter & Search Bar with Pending vs Done Tabs */}
       <div className="uw-card p-4 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4 mt-2">
+        {/* Status Toggle: Pending vs Done */}
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setTaskStatusFilter('pending')}
+            className={`uw-button text-xs ${taskStatusFilter === 'pending' ? 'active font-bold border-[var(--c3)]' : ''}`}
+          >
+            <span>pending tasks</span>
+          </button>
+          <button
+            onClick={() => setTaskStatusFilter('done')}
+            className={`uw-button text-xs ${taskStatusFilter === 'done' ? 'active font-bold border-[var(--c3)]' : ''}`}
+          >
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+            <span>done tab</span>
+          </button>
+        </div>
+
+        {/* Search */}
         <div className="relative flex-1">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--c3)]" />
           <input
@@ -216,6 +190,7 @@ export const Courses: React.FC<CoursesProps> = ({
           />
         </div>
 
+        {/* Course Filter Pills */}
         <div className="flex items-center gap-1 overflow-x-auto pb-1 md:pb-0">
           <Filter className="w-4 h-4 text-[var(--c3)] mr-1 shrink-0" />
           {['ALL', ...courses.map(c => c.code)].map(code => (
@@ -235,7 +210,9 @@ export const Courses: React.FC<CoursesProps> = ({
         {sortedTasks.length === 0 ? (
           <div className="uw-card text-center py-12">
             <p className="font-mono text-xs text-[var(--c3)]">
-              No tasks found for course "{selectedCourseCode}". Click "+ Add Task" to create one!
+              {taskStatusFilter === 'pending'
+                ? `No pending tasks for "${selectedCourseCode}". You're all caught up!`
+                : `No completed tasks in the Done tab for "${selectedCourseCode}".`}
             </p>
           </div>
         ) : (
@@ -249,17 +226,23 @@ export const Courses: React.FC<CoursesProps> = ({
               <div
                 key={task.id}
                 className={`uw-card p-4 flex items-start justify-between gap-4 transition-all ${
-                  task.isCompleted ? 'opacity-60 bg-[var(--c1)]/20' : ''
+                  task.isCompleted ? 'opacity-70 bg-[var(--c1)]/30' : ''
                 }`}
                 style={{ backgroundColor: courseBg !== 'transparent' && !task.isCompleted ? courseBg : undefined }}
               >
-                <div className="flex items-start gap-3 flex-1">
-                  <input
-                    type="checkbox"
-                    checked={task.isCompleted}
-                    onChange={() => onToggleTask(task.id)}
-                    className="mt-1 cursor-pointer accent-[var(--c5)] w-4 h-4"
-                  />
+                <div className="flex items-start gap-3.5 flex-1">
+                  <button
+                    onClick={() => onToggleTask(task.id)}
+                    className="mt-0.5 text-[var(--c3)] hover:text-[var(--c5)] transition-colors p-0.5"
+                    title={task.isCompleted ? 'Mark as undone' : 'Mark as done'}
+                  >
+                    {task.isCompleted ? (
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    ) : (
+                      <Circle className="w-4 h-4 text-[var(--c3)]" />
+                    )}
+                  </button>
+
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="uw-tag font-bold text-[var(--c5)]">{task.courseCode}</span>
@@ -267,6 +250,11 @@ export const Courses: React.FC<CoursesProps> = ({
                       {isOverdue && (
                         <span className="uw-tag text-rose-500 border-rose-500/30 bg-rose-500/10 font-bold">
                           overdue
+                        </span>
+                      )}
+                      {task.isCompleted && (
+                        <span className="uw-tag text-emerald-600 border-emerald-500/30 bg-emerald-500/10 font-bold">
+                          done
                         </span>
                       )}
                     </div>
@@ -305,83 +293,6 @@ export const Courses: React.FC<CoursesProps> = ({
         )}
       </div>
 
-      {/* Modal: Add Course */}
-      {isCourseModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="uw-card bg-[var(--bg)] w-full max-w-md p-6 border-[var(--c4)]">
-            <h3 className="font-sans text-lg font-bold text-[var(--c5)]">Add Course</h3>
-
-            <form onSubmit={handleCreateCourse} className="flex flex-col gap-4 mt-4">
-              <div>
-                <label className="mono-label block mb-1">Course Code *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. CS 135"
-                  value={newCode}
-                  onChange={(e) => setNewCode(e.target.value)}
-                  className="w-full bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
-                />
-              </div>
-
-              <div>
-                <label className="mono-label block mb-1">Course Title</label>
-                <input
-                  type="text"
-                  placeholder="e.g. Designing Functional Programs"
-                  value={newName}
-                  onChange={(e) => setNewName(e.target.value)}
-                  className="w-full bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
-                />
-              </div>
-
-              <div>
-                <label className="mono-label block mb-1">Subtle Accent Color</label>
-                <div className="flex items-center gap-1.5 flex-wrap">
-                  {PRESET_COLORS.map(preset => (
-                    <button
-                      type="button"
-                      key={preset.hex}
-                      onClick={() => setNewColor(preset.hex)}
-                      className={`w-7 h-7 border transition-all ${newColor === preset.hex ? 'border-[var(--c5)] scale-110' : 'border-[var(--border)]'}`}
-                      style={{ backgroundColor: preset.hex }}
-                      title={preset.name}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="mono-label block mb-1">Instructor</label>
-                <input
-                  type="text"
-                  placeholder="e.g. Prof. Gregor Richards"
-                  value={newInstructor}
-                  onChange={(e) => setNewInstructor(e.target.value)}
-                  className="w-full bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
-                />
-              </div>
-
-              <div className="flex items-center justify-end gap-3 mt-2">
-                <button
-                  type="button"
-                  onClick={() => setIsCourseModalOpen(false)}
-                  className="uw-button"
-                >
-                  cancel
-                </button>
-                <button
-                  type="submit"
-                  className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)]"
-                >
-                  add course
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
       {/* Modal: Add Task */}
       {isTaskModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
@@ -391,14 +302,26 @@ export const Courses: React.FC<CoursesProps> = ({
             <form onSubmit={handleCreateTask} className="flex flex-col gap-4 mt-4">
               <div>
                 <label className="mono-label block mb-1">Course Code *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. CS 135"
-                  value={taskCourseCode}
-                  onChange={(e) => setTaskCourseCode(e.target.value)}
-                  className="w-full bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
-                />
+                {courses.length > 0 ? (
+                  <select
+                    value={taskCourseCode}
+                    onChange={(e) => setTaskCourseCode(e.target.value)}
+                    className="w-full bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
+                  >
+                    {courses.map(c => (
+                      <option key={c.id} value={c.code}>{c.code} — {c.name}</option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. CS 135"
+                    value={taskCourseCode}
+                    onChange={(e) => setTaskCourseCode(e.target.value)}
+                    className="w-full bg-[var(--bg)] border border-[var(--border)] px-3 py-2 font-mono text-xs text-[var(--c5)] focus:outline-none focus:border-[var(--c3)]"
+                  />
+                )}
               </div>
 
               <div>
