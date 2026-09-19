@@ -136,8 +136,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ tasks, courses }) =>
 
         <div className="uw-card p-5 flex flex-col gap-4">
           <div className="border-b border-[var(--border)] pb-3">
-            <span className="mono-label">selected date agenda</span>
-            <h3 className="font-sans font-bold text-base text-[var(--c5)] mt-1">
+            <h3 className="font-sans font-bold text-base text-[var(--c5)]">
               {new Date(selectedDateStr + 'T00:00:00').toLocaleDateString('en-US', {
                 weekday: 'long',
                 month: 'short',

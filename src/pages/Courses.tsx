@@ -92,12 +92,6 @@ export const Courses: React.FC<CoursesProps> = ({
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <span className="mono-label">my courses ({courses.length})</span>
-          <button
-            onClick={() => onNavigate('settings')}
-            className="mono-label text-[0.68rem] text-[var(--c3)] hover:text-[var(--c5)] cursor-pointer"
-          >
-            + add/edit courses in settings &rarr;
-          </button>
         </div>
 
         {courses.length === 0 ? (
