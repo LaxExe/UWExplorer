@@ -1,6 +1,6 @@
 import React from 'react';
 import { Course, TaskItem, ScheduleItem, QuickLink } from '../types';
-import { BookOpen, CheckSquare, CalendarDays, Calendar as CalendarIcon, ArrowUpRight, AlertCircle, Plus } from 'lucide-react';
+import { BookOpen, CheckSquare, CalendarDays, Calendar as CalendarIcon, ArrowUpRight, AlertCircle, Plus, Pin } from 'lucide-react';
 
 interface DashboardProps {
   courses: Course[];
@@ -32,9 +32,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
   const upcomingNext = sortedPending.slice(0, 5);
 
-  const featuredLinks = quickLinks.filter(l =>
-    ['waterlooworks', 'quest', 'outlook', 'crowdmark'].includes(l.id)
-  );
+  const featuredLinks = quickLinks.filter(l => l.isPinned !== false);
 
   return (
     <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
@@ -194,32 +192,39 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <h3 className="font-sans text-base font-semibold text-[var(--c5)]">
-                Quick Shortcuts
+              <h3 className="font-sans text-base font-semibold text-[var(--c5)] flex items-center gap-2">
+                <Pin className="w-4 h-4 text-[var(--c3)]" />
+                Pinned Shortcuts
               </h3>
               <button
                 onClick={() => onNavigate('links')}
                 className="mono-label text-xs hover:text-[var(--c5)] cursor-pointer"
               >
-                all links →
+                manage links →
               </button>
             </div>
 
             <div className="flex flex-col gap-2">
-              {featuredLinks.map(link => (
-                <a
-                  key={link.id}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="uw-button w-full justify-between py-2.5 h-auto text-left"
-                >
-                  <span className="font-sans font-semibold text-xs text-[var(--c5)]">
-                    {link.name}
-                  </span>
-                  <ArrowUpRight className="w-4 h-4 text-[var(--c4)]" />
-                </a>
-              ))}
+              {featuredLinks.length === 0 ? (
+                <div className="uw-card text-center py-4">
+                  <p className="font-mono text-xs text-[var(--c3)]">No pinned links. Pin links in Quick Links tab!</p>
+                </div>
+              ) : (
+                featuredLinks.map(link => (
+                  <a
+                    key={link.id}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="uw-button w-full justify-between py-2.5 h-auto text-left"
+                  >
+                    <span className="font-sans font-semibold text-xs text-[var(--c5)]">
+                      {link.name}
+                    </span>
+                    <ArrowUpRight className="w-4 h-4 text-[var(--c4)]" />
+                  </a>
+                ))
+              )}
             </div>
           </div>
         </div>

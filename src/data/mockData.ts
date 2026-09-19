@@ -14,6 +14,7 @@ export const INITIAL_QUICK_LINKS: QuickLink[] = [
     url: 'https://waterlooworks.uwaterloo.ca/',
     description: 'Co-op job search, interview schedules, and rankings.',
     iconName: 'Briefcase',
+    isPinned: true,
   },
   {
     id: 'quest',
@@ -22,6 +23,7 @@ export const INITIAL_QUICK_LINKS: QuickLink[] = [
     url: 'https://quest.uwaterloo.ca/',
     description: 'Student information system, course enrollment, and transcripts.',
     iconName: 'GraduationCap',
+    isPinned: true,
   },
   {
     id: 'outlook',
@@ -30,6 +32,7 @@ export const INITIAL_QUICK_LINKS: QuickLink[] = [
     url: 'https://outlook.office.com/mail/',
     description: 'Official student email inbox (@uwaterloo.ca).',
     iconName: 'Mail',
+    isPinned: true,
   },
   {
     id: 'crowdmark',
@@ -38,6 +41,7 @@ export const INITIAL_QUICK_LINKS: QuickLink[] = [
     url: 'https://app.crowdmark.com/',
     description: 'Online grading platform for math and science assignments.',
     iconName: 'FileCheck',
+    isPinned: true,
   },
   {
     id: 'piazza',
@@ -54,5 +58,6 @@ export const INITIAL_QUICK_LINKS: QuickLink[] = [
     url: 'https://learn.uwaterloo.ca/',
     description: 'Course materials portal.',
     iconName: 'BookOpen',
+    isPinned: true,
   },
 ];
