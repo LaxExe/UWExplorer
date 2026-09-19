@@ -17,7 +17,8 @@
       "category": "career",
       "url": "https://waterlooworks.uwaterloo.ca/",
       "description": "Co-op job search, interview schedules, rankings, and employment services.",
-      "iconName": "Briefcase"
+      "iconName": "Briefcase",
+      "isPinned": false
     },
     {
       "id": "learn",
@@ -25,7 +26,8 @@
       "category": "core",
       "url": "https://learn.uwaterloo.ca/",
       "description": "Course materials, assignment submissions, announcements, and grades.",
-      "iconName": "BookOpen"
+      "iconName": "BookOpen",
+      "isPinned": false
     },
     {
       "id": "quest",
@@ -33,7 +35,8 @@
       "category": "core",
       "url": "https://quest.uwaterloo.ca/",
       "description": "Student information system, course enrollment, transcripts, and tuition fees.",
-      "iconName": "GraduationCap"
+      "iconName": "GraduationCap",
+      "isPinned": false
     },
     {
       "id": "outlook",
@@ -49,7 +52,8 @@
       "category": "campus",
       "url": "https://portal.uwaterloo.ca/",
       "description": "Campus widgets, food services schedules, GRT transit, and alerts.",
-      "iconName": "LayoutGrid"
+      "iconName": "LayoutGrid",
+      "isPinned": false
     },
     {
       "id": "crowdmark",
@@ -57,7 +61,8 @@
       "category": "academic",
       "url": "https://app.crowdmark.com/",
       "description": "Online grading platform for math, engineering, and science assignments.",
-      "iconName": "FileCheck"
+      "iconName": "FileCheck",
+      "isPinned": false
     },
     {
       "id": "piazza",
@@ -65,7 +70,8 @@
       "category": "academic",
       "url": "https://piazza.com/",
       "description": "Q&A discussion forum for course content and peer assistance.",
-      "iconName": "MessageSquare"
+      "iconName": "MessageSquare",
+      "isPinned": false
     },
     {
       "id": "watiam",
@@ -73,7 +79,8 @@
       "category": "core",
       "url": "https://idm.uwaterloo.ca/identity/self-service",
       "description": "Identity management, password updates, and 2FA configuration.",
-      "iconName": "Key"
+      "iconName": "Key",
+      "isPinned": false
     },
     {
       "id": "workday",
@@ -81,7 +88,8 @@
       "category": "career",
       "url": "https://wd3.myworkday.com/uwaterloo",
       "description": "TA/RA employment, payroll, tax forms, and campus job administration.",
-      "iconName": "DollarSign"
+      "iconName": "DollarSign",
+      "isPinned": false
     },
     {
       "id": "wusa",
@@ -89,7 +97,8 @@
       "category": "campus",
       "url": "https://wusa.ca/",
       "description": "Waterloo Undergraduate Student Association, health dental plan, and clubs.",
-      "iconName": "Users"
+      "iconName": "Users",
+      "isPinned": false
     },
     {
       "id": "library",
@@ -97,7 +106,8 @@
       "category": "academic",
       "url": "https://uwaterloo.ca/library/",
       "description": "Dana Porter & Davis Centre library catalogs, research papers, and study room bookings.",
-      "iconName": "Library"
+      "iconName": "Library",
+      "isPinned": false
     }
   ],
   "settings": {

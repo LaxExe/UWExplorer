@@ -17,6 +17,7 @@
     "productName": "UWexplorer",
     "mac": {
       "category": "public.app-category.education",
+      "icon": "public/icon.png",
       "target": ["dmg", "zip"]
     },
     "files": [
