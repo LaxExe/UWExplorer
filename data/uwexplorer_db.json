@@ -1,100 +1,15 @@
 {
   "courses": [
     {
-      "id": "c-1",
-      "code": "CS 135",
-      "name": "Designing Functional Programs",
-      "color": "#3b82f61a",
-      "instructor": "Gregor Richards"
-    },
-    {
-      "id": "c-2",
-      "code": "MATH 135",
-      "name": "Algebra for Honors Mathematics",
-      "color": "#10b9811a",
-      "instructor": "Carmen Bruni"
-    },
-    {
-      "id": "c-3",
-      "code": "MATH 137",
-      "name": "Calculus 1 for Honors Mathematics",
-      "color": "#8b5cf61a",
-      "instructor": "David Jao"
+      "code": "ECE 150",
+      "name": "Programming ",
+      "color": "#f43f5e1a",
+      "instructor": "",
+      "id": "c-1789848817898"
     }
   ],
-  "tasks": [
-    {
-      "id": "t-1",
-      "courseCode": "CS 135",
-      "title": "Assignment 05 — Binary Search Trees",
-      "type": "assignment",
-      "dueDate": "2026-09-20T21:50:18.593Z",
-      "isCompleted": true,
-      "notes": "Test check-expect edge cases for empty trees."
-    },
-    {
-      "id": "t-2",
-      "courseCode": "MATH 135",
-      "title": "Crowdmark Assignment 05 — Modular Arithmetic",
-      "type": "assignment",
-      "dueDate": "2026-09-22T21:50:18.593Z",
-      "isCompleted": true,
-      "notes": "Format proofs clearly for scanning."
-    },
-    {
-      "id": "t-3",
-      "courseCode": "MATH 137",
-      "title": "WebWork Problem Set 6",
-      "type": "quiz",
-      "dueDate": "2026-09-19T21:50:18.593Z",
-      "isCompleted": true
-    }
-  ],
-  "schedule": [
-    {
-      "id": "sch-3",
-      "courseCode": "MATH 137",
-      "courseName": "Calculus 1 for Honors Mathematics",
-      "title": "Lecture 003",
-      "location": "RCH 101",
-      "startTime": "01:30 PM",
-      "endTime": "02:50 PM",
-      "daysOfWeek": [
-        "Tue",
-        "Thu"
-      ],
-      "instructor": "David Jao",
-      "type": "lecture"
-    },
-    {
-      "id": "sch-4",
-      "courseCode": "CS 135",
-      "courseName": "Designing Functional Programs",
-      "title": "Tutorial 101",
-      "location": "MC 3003",
-      "startTime": "03:30 PM",
-      "endTime": "04:20 PM",
-      "daysOfWeek": [
-        "Wed"
-      ],
-      "instructor": "ISG TA",
-      "type": "tutorial"
-    },
-    {
-      "id": "sch-5",
-      "courseCode": "PHYS 121",
-      "courseName": "Mechanics & Waves",
-      "title": "Physics Lab 01",
-      "location": "PHY 310",
-      "startTime": "02:30 PM",
-      "endTime": "05:20 PM",
-      "daysOfWeek": [
-        "Thu"
-      ],
-      "instructor": "Lab Instructor",
-      "type": "lab"
-    }
-  ],
+  "tasks": [],
+  "schedule": [],
   "quickLinks": [
     {
       "id": "waterlooworks",
@@ -122,7 +37,7 @@
     },
     {
       "id": "outlook",
-      "name": "UWaterloo Mail (Outlook)",
+      "name": "Outlook",
       "category": "core",
       "url": "https://outlook.office.com/mail/",
       "description": "Official student email inbox (@uwaterloo.ca).",
@@ -188,7 +103,7 @@
   "settings": {
     "theme": "light",
     "d2lFeedUrl": "https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?token=act3s2yw0g48a4qw45347",
-    "lastSyncedAt": "2026-09-18T20:03:46.028Z",
+    "lastSyncedAt": null,
     "customLinks": [],
     "courseColors": {
       "CS 135": "#3b82f61a",
@@ -201,10 +116,9 @@
     "sidebarOrder": [
       "dashboard",
       "schedule",
-      "links",
-      "announcements",
-      "assignments",
       "calendar",
+      "courses",
+      "links",
       "settings"
     ]
   }
