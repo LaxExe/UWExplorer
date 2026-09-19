@@ -199,13 +199,13 @@ export const Settings: React.FC<SettingsProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={() => onUpdateSettings({ theme: 'light' })}
-              className={`uw-button ${settings.theme === 'light' ? 'active font-semibold border-[var(--c3)]' : ''}`}
+              className={`uw-button ${settings.theme === 'light' ? 'active' : ''}`}
             >
               light mode
             </button>
             <button
               onClick={() => onUpdateSettings({ theme: 'dark' })}
-              className={`uw-button ${settings.theme === 'dark' ? 'active font-semibold border-[var(--c3)]' : ''}`}
+              className={`uw-button ${settings.theme === 'dark' ? 'active' : ''}`}
             >
               dark mode
             </button>

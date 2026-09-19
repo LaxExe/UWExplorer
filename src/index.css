@@ -86,14 +86,15 @@ body {
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  transition: color 0.18s ease, border-color 0.18s ease;
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
 }
 
 .uw-button::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--c1);
+  background: var(--c2);
+  opacity: 0.25;
   transform: translateX(-100%);
   transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 0;
@@ -101,12 +102,22 @@ body {
 
 .uw-button:hover {
   color: var(--c5);
-  border-color: var(--c3);
+  border-color: var(--c5);
 }
 
-.uw-button:hover::before,
-.uw-button.active::before {
+.uw-button:hover::before {
   transform: translateX(0);
+}
+
+.uw-button.active {
+  background: var(--c5) !important;
+  color: var(--bg) !important;
+  border-color: var(--c5) !important;
+  font-weight: 600;
+}
+
+.uw-button.active::before {
+  display: none;
 }
 
 .uw-button > * {
