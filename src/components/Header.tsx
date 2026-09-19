@@ -26,18 +26,19 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="w-full border-b border-[var(--border)] bg-[var(--bg)] transition-colors">
-      <div className="max-w-[1300px] mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 border border-[var(--border)] flex items-center justify-center bg-[var(--c1)]">
-            <Compass className="w-4 h-4 text-[var(--c5)]" />
+    <header className="w-full border-b border-[var(--border)] bg-[var(--bg)] transition-colors select-none [app-region:drag]">
+      <div className="max-w-[1300px] mx-auto px-6 py-3 flex items-center justify-between min-h-[52px]">
+        {/* Left spacing for macOS traffic light buttons (close/min/maximize) */}
+        <div className="flex items-center gap-3 pl-16 md:pl-20 [app-region:no-drag]">
+          <div className="w-7 h-7 border border-[var(--border)] flex items-center justify-center bg-[var(--c1)]">
+            <Compass className="w-3.5 h-3.5 text-[var(--c5)]" />
           </div>
-          <h1 className="text-lg font-bold font-sans text-[var(--c5)] tracking-tight">
+          <h1 className="text-base font-bold font-sans text-[var(--c5)] tracking-tight">
             {getTitle()}
           </h1>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 [app-region:no-drag]">
           <button
             onClick={onToggleTheme}
             className="uw-button"
