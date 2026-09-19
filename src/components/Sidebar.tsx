@@ -63,31 +63,34 @@ export const Sidebar: React.FC<SidebarProps> = ({
   };
 
   return (
-    <aside className="w-full md:w-60 border-b md:border-b-0 md:border-r border-[var(--border)] bg-[var(--bg)] min-h-0 md:min-h-[calc(100vh-65px)] p-4 flex flex-col justify-between shrink-0">
+    <aside className="w-full md:w-52 border-b md:border-b-0 md:border-r border-[var(--border)] bg-[var(--bg)] min-h-0 md:min-h-[calc(100vh-50px)] p-3 flex flex-col justify-between shrink-0">
       <div className="flex flex-col gap-1">
-        <div className="px-3 py-2 mb-2 border-b border-[var(--border)] flex items-center justify-between">
-          <span className="font-sans font-bold text-sm text-[var(--c5)] tracking-wider">
-            UWEXPLORER
-          </span>
+        <div className="px-2.5 py-1.5 mb-2 border-b border-[var(--border)] flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-3 bg-[var(--c5)]" />
+            <span className="font-mono text-xs font-bold text-[var(--c5)] tracking-wider">
+              UWEXPLORER
+            </span>
+          </div>
 
           <button
             onClick={() => setIsReordering(!isReordering)}
-            className={`text-[var(--c3)] hover:text-[var(--c5)] p-1 rounded transition-colors ${
+            className={`text-[var(--c3)] hover:text-[var(--c5)] p-1 transition-colors ${
               isReordering ? 'text-[var(--c5)] bg-[var(--c1)]' : ''
             }`}
             title="Rearrange sidebar tab order"
           >
-            <ArrowUpDown className="w-3.5 h-3.5" />
+            <ArrowUpDown className="w-3 h-3" />
           </button>
         </div>
 
         {isReordering && (
-          <div className="px-3 py-1 mb-2 bg-[var(--c1)]/50 border border-[var(--border)] font-mono text-[0.68rem] text-[var(--c3)]">
-            Use arrows to reorder tabs:
+          <div className="px-2 py-1 mb-2 bg-[var(--c1)]/50 border border-[var(--border)] font-mono text-[0.65rem] text-[var(--c3)]">
+            Reorder tabs:
           </div>
         )}
 
-        <nav className="flex flex-col gap-1.5">
+        <nav className="flex flex-col gap-1">
           {currentOrder.map((id, index) => {
             const itemConfig = ALL_NAV_ITEMS[id];
             if (!itemConfig) return null;
@@ -102,15 +105,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <div key={id} className="flex items-center gap-1 group w-full">
                 <button
                   onClick={() => setActiveTab(id)}
-                  className={`uw-button flex-1 justify-between min-h-[40px] px-3.5 ${
+                  className={`uw-button flex-1 justify-between min-h-[34px] px-2.5 ${
                     isActive ? 'active' : ''
                   }`}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="w-5 flex justify-center shrink-0">
-                      <Icon className={`w-4 h-4 ${isActive ? 'text-[var(--bg)]' : 'text-[var(--c4)]'}`} />
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-4 flex justify-center shrink-0">
+                      <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[var(--bg)]' : 'text-[var(--c4)]'}`} />
                     </div>
-                    <span className={`text-left font-mono text-xs ${isActive ? 'text-[var(--bg)]' : 'text-[var(--c5)]'}`}>
+                    <span className={`text-left font-mono text-[0.7rem] ${isActive ? 'text-[var(--bg)] font-semibold' : 'text-[var(--c5)]'}`}>
                       {itemConfig.label}
                     </span>
                   </div>

@@ -35,77 +35,79 @@ export const Dashboard: React.FC<DashboardProps> = ({
   const featuredLinks = quickLinks.filter(l => l.isPinned !== false);
 
   return (
-    <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
-      {/* Hero Banner */}
-      <div className="uw-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div className="flex flex-col gap-4 max-w-[1100px] mx-auto w-full">
+      {/* Hero Banner with Antigravity Accent Line */}
+      <div className="uw-card p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-l-2 border-l-[var(--c5)]">
         <div>
-          <h2 className="text-2xl font-bold font-sans text-[var(--c5)] tracking-tight">
+          <div className="flex items-center gap-2">
+            <span className="mono-label text-[0.65rem] uppercase tracking-widest text-[var(--c3)]">overview</span>
+            <span className="text-[var(--border)]">•</span>
+            <span className="mono-label text-[0.65rem] text-[var(--c3)]">uwexplorer</span>
+          </div>
+          <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight mt-0.5">
             Student Dashboard
           </h2>
-          <p className="font-mono text-xs text-[var(--c4)] mt-1 max-w-xl">
-            Manual course-by-course task tracker, class schedule, and quick campus links.
-          </p>
         </div>
 
         <button
           onClick={() => onNavigate('courses')}
-          className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)]"
+          className="uw-button bg-[var(--c1)] text-[var(--c5)] font-semibold border-[var(--c3)] h-8 text-xs px-3"
         >
-          <Plus className="w-4 h-4" />
+          <Plus className="w-3.5 h-3.5" />
           <span>manage courses & tasks</span>
         </button>
       </div>
 
-      {/* Metrics Row (3 cards) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* Metrics Row (3 compact cards) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Card 1: Calendar View Card */}
         <div
           onClick={() => onNavigate('calendar')}
-          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
+          className="uw-card p-3.5 flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
         >
           <div className="flex justify-between items-start">
             <span className="mono-label font-bold text-[var(--c5)]">calendar</span>
-            <CalendarIcon className="w-4 h-4 text-[var(--c3)]" />
+            <CalendarIcon className="w-3.5 h-3.5 text-[var(--c3)]" />
           </div>
-          <div className="mt-3">
-            <span className="text-3xl font-bold font-sans text-[var(--c5)]">
+          <div className="mt-2 flex items-baseline gap-2">
+            <span className="text-2xl font-bold font-sans text-[var(--c5)]">
               {pendingTasks.length}
             </span>
-            <span className="font-mono text-xs text-[var(--c3)] ml-2">upcoming deadlines</span>
+            <span className="font-mono text-[0.68rem] text-[var(--c3)]">upcoming deadlines</span>
           </div>
         </div>
 
         {/* Card 2: Pending Tasks */}
         <div
           onClick={() => onNavigate('courses')}
-          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
+          className="uw-card p-3.5 flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
         >
           <div className="flex justify-between items-start">
             <span className="mono-label font-bold text-[var(--c5)]">pending tasks</span>
-            <CheckSquare className="w-4 h-4 text-[var(--c3)]" />
+            <CheckSquare className="w-3.5 h-3.5 text-[var(--c3)]" />
           </div>
-          <div className="mt-3">
-            <span className="text-3xl font-bold font-sans text-[var(--c5)]">
+          <div className="mt-2 flex items-baseline gap-2">
+            <span className="text-2xl font-bold font-sans text-[var(--c5)]">
               {pendingTasks.length}
             </span>
-            <span className="font-mono text-xs text-[var(--c3)] ml-2">tasks due</span>
+            <span className="font-mono text-[0.68rem] text-[var(--c3)]">tasks due</span>
           </div>
         </div>
 
         {/* Card 3: Today's Schedule (Display card) */}
         <div
           onClick={() => onNavigate('schedule')}
-          className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all bg-[var(--c1)]/30"
+          className="uw-card p-3.5 flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all bg-[var(--c1)]/30"
         >
           <div className="flex justify-between items-start">
             <span className="mono-label font-bold text-[var(--c5)]">today's schedule</span>
-            <CalendarDays className="w-4 h-4 text-[var(--c5)]" />
+            <CalendarDays className="w-3.5 h-3.5 text-[var(--c5)]" />
           </div>
-          <div className="mt-3">
-            <span className="text-3xl font-bold font-sans text-[var(--c5)]">
+          <div className="mt-2 flex items-baseline gap-2">
+            <span className="text-2xl font-bold font-sans text-[var(--c5)]">
               {todayClasses.length}
             </span>
-            <span className="font-mono text-xs text-[var(--c3)] ml-2">
+            <span className="font-mono text-[0.68rem] text-[var(--c3)]">
               {todayClasses.length === 1 ? 'class today' : 'classes today'}
             </span>
           </div>
