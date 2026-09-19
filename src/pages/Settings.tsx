@@ -86,9 +86,6 @@ export const Settings: React.FC<SettingsProps> = ({
         <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
           Settings & Course Manager
         </h2>
-        <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-          Add and edit your enrolled courses, customize course colors, and manage local data.
-        </p>
       </div>
 
       {/* Course Management Section */}

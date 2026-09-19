@@ -44,9 +44,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ tasks, courses }) =>
         <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
           Semester Deadlines Calendar
         </h2>
-        <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-          Visual monthly grid of assignments, quizzes, and course task dates.
-        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

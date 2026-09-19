@@ -75,9 +75,6 @@ export const Schedule: React.FC<ScheduleProps> = ({
           <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
             Class & Course Schedule
           </h2>
-          <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-            Today's lectures, labs, and tutorials with room locations and times.
-          </p>
         </div>
 
         <button

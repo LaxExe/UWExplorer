@@ -130,9 +130,6 @@ export const QuickLinks: React.FC<QuickLinksProps> = ({
           <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
             Campus Services & Quick Links
           </h2>
-          <p className="mono-text text-xs text-[var(--c3)] mt-0.5">
-            Manage and edit links to WaterlooWorks, Quest, Outlook, LEARN, and your custom shortcuts.
-          </p>
         </div>
 
         <button
