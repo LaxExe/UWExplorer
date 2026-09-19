@@ -1,6 +1,6 @@
 import React from 'react';
 import { Course, TaskItem, ScheduleItem, QuickLink } from '../types';
-import { BookOpen, CheckSquare, CalendarDays, ArrowUpRight, AlertCircle, Plus } from 'lucide-react';
+import { BookOpen, CheckSquare, CalendarDays, Calendar as CalendarIcon, ArrowUpRight, AlertCircle, Plus } from 'lucide-react';
 
 interface DashboardProps {
   courses: Course[];
@@ -60,20 +60,20 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
       {/* Metrics Row (3 cards) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Card 1: Active Courses */}
+        {/* Card 1: Calendar View Card */}
         <div
-          onClick={() => onNavigate('courses')}
+          onClick={() => onNavigate('calendar')}
           className="uw-card flex flex-col justify-between cursor-pointer hover:border-[var(--c3)] transition-all"
         >
           <div className="flex justify-between items-start">
-            <span className="mono-label font-bold text-[var(--c5)]">enrolled courses</span>
-            <BookOpen className="w-4 h-4 text-[var(--c3)]" />
+            <span className="mono-label font-bold text-[var(--c5)]">calendar</span>
+            <CalendarIcon className="w-4 h-4 text-[var(--c3)]" />
           </div>
           <div className="mt-3">
             <span className="text-3xl font-bold font-sans text-[var(--c5)]">
-              {courses.length}
+              {pendingTasks.length}
             </span>
-            <span className="font-mono text-xs text-[var(--c3)] ml-2">active courses</span>
+            <span className="font-mono text-xs text-[var(--c3)] ml-2">upcoming deadlines</span>
           </div>
         </div>
 
