@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { createServer } from 'http';
-import { loadDB, saveDB, loadConfig } from '../scripts/sync-d2l.js';
+import { loadDB, saveDB, loadConfig, setDataDir } from '../scripts/sync-d2l.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -122,6 +122,9 @@ async function createWindow() {
 }
 
 app.whenReady().then(() => {
+  const userDataDir = path.join(app.getPath('userData'), 'data');
+  setDataDir(userDataDir);
+
   const menuTemplate = [
     {
       label: app.name,

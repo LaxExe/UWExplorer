@@ -39,6 +39,7 @@ export interface ScheduleItem {
   daysOfWeek: string[];
   instructor?: string;
   type: 'lecture' | 'lab' | 'tutorial' | 'office_hours';
+  isPinned?: boolean;
 }
 
 export interface UserSettings {
