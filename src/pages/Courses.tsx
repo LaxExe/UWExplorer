@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Course, TaskItem } from '../types';
-import { Plus, Trash2, Filter, Search, CheckCircle2, Circle, Clock } from 'lucide-react';
+import { Plus, Trash2, Search, CheckCircle2, Circle, Clock } from 'lucide-react';
 
 interface CoursesProps {
   courses: Course[];
@@ -182,19 +182,7 @@ export const Courses: React.FC<CoursesProps> = ({
           />
         </div>
 
-        {/* Course Filter Pills */}
-        <div className="flex items-center gap-1 overflow-x-auto pb-1 md:pb-0">
-          <Filter className="w-4 h-4 text-[var(--c3)] mr-1 shrink-0" />
-          {['ALL', ...courses.map(c => c.code)].map(code => (
-            <button
-              key={code}
-              onClick={() => setSelectedCourseCode(code)}
-              className={`uw-button text-xs ${selectedCourseCode === code ? 'active font-semibold border-[var(--c3)]' : ''}`}
-            >
-              <span>{code}</span>
-            </button>
-          ))}
-        </div>
+
       </div>
 
       {/* Task Checklist Stream */}

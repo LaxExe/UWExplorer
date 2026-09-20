@@ -1,15 +1,233 @@
 {
   "courses": [
     {
+      "code": "COMMST 192",
+      "name": "Eng Comm COMPE/ELE/MGTE",
+      "color": "#3b82f61a",
+      "instructor": "Kate Wells",
+      "id": "c-commst192"
+    },
+    {
+      "code": "ECE 105",
+      "name": "Classical Mechanics",
+      "color": "#ef44441a",
+      "instructor": "Simran Pattar",
+      "id": "c-ece105"
+    },
+    {
       "code": "ECE 150",
-      "name": "Programming ",
-      "color": "#f43f5e1a",
-      "instructor": "",
-      "id": "c-1789848817898"
+      "name": "Fundamentals of Programming",
+      "color": "#10b9811a",
+      "instructor": "Jeff Zarnett",
+      "id": "c-ece150"
+    },
+    {
+      "code": "ECE 190",
+      "name": "Eng Profession & Practice",
+      "color": "#8b5cf61a",
+      "instructor": "Dan Davison",
+      "id": "c-ece190"
+    },
+    {
+      "code": "ECE 198",
+      "name": "Project Studio",
+      "color": "#f59e0b1a",
+      "instructor": "Simar Saini",
+      "id": "c-ece198"
+    },
+    {
+      "code": "GENE 119",
+      "name": "First-Year Engineering Seminar",
+      "color": "#ec48991a",
+      "instructor": "Dave Harris, Sarah Meunier",
+      "id": "c-gene119"
+    },
+    {
+      "code": "MATH 115",
+      "name": "Linear Algebra (Eng)",
+      "color": "#06b6d41a",
+      "instructor": "Jordan Hamilton",
+      "id": "c-math115"
+    },
+    {
+      "code": "MATH 117",
+      "name": "Calculus 1 (Eng)",
+      "color": "#84cc161a",
+      "instructor": "Ali Haghighatgooasiabar",
+      "id": "c-math117"
     }
   ],
   "tasks": [],
-  "schedule": [],
+  "schedule": [
+    {
+      "id": "sch-commst192-lec",
+      "courseCode": "COMMST 192",
+      "courseName": "Eng Comm COMPE/ELE/MGTE",
+      "title": "Lecture",
+      "location": "E5 4106",
+      "startTime": "1:00 PM",
+      "endTime": "2:20 PM",
+      "daysOfWeek": ["Tue", "Thu"],
+      "instructor": "Kate Wells",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-ece105-lec",
+      "courseCode": "ECE 105",
+      "courseName": "Classical Mechanics",
+      "title": "Lecture",
+      "location": "PSE 5353",
+      "startTime": "3:30 PM",
+      "endTime": "4:20 PM",
+      "daysOfWeek": ["Mon", "Tue", "Thu"],
+      "instructor": "Simran Pattar",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-ece105-tut",
+      "courseCode": "ECE 105",
+      "courseName": "Classical Mechanics",
+      "title": "Tutorial",
+      "location": "QNC 1506",
+      "startTime": "8:30 AM",
+      "endTime": "10:20 AM",
+      "daysOfWeek": ["Fri"],
+      "instructor": "To be Announced",
+      "type": "tutorial"
+    },
+    {
+      "id": "sch-ece150-lec",
+      "courseCode": "ECE 150",
+      "courseName": "Fundamentals of Programming",
+      "title": "Lecture",
+      "location": "PSE 5353",
+      "startTime": "1:30 PM",
+      "endTime": "2:20 PM",
+      "daysOfWeek": ["Mon", "Wed", "Fri"],
+      "instructor": "Jeff Zarnett",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-ece150-tut",
+      "courseCode": "ECE 150",
+      "courseName": "Fundamentals of Programming",
+      "title": "Tutorial",
+      "location": "PSE 5353",
+      "startTime": "4:30 PM",
+      "endTime": "5:20 PM",
+      "daysOfWeek": ["Thu"],
+      "instructor": "To be Announced",
+      "type": "tutorial"
+    },
+    {
+      "id": "sch-ece150-lab",
+      "courseCode": "ECE 150",
+      "courseName": "Fundamentals of Programming",
+      "title": "Lab",
+      "location": "PSE 5353",
+      "startTime": "8:30 AM",
+      "endTime": "10:20 AM",
+      "daysOfWeek": ["Wed"],
+      "instructor": "To be Announced",
+      "type": "lab"
+    },
+    {
+      "id": "sch-ece190-lec-1",
+      "courseCode": "ECE 190",
+      "courseName": "Eng Profession & Practice",
+      "title": "Lecture",
+      "location": "PSE 5353",
+      "startTime": "2:30 PM",
+      "endTime": "3:20 PM",
+      "daysOfWeek": ["Tue", "Thu"],
+      "instructor": "Dan Davison",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-ece190-lec-2",
+      "courseCode": "ECE 190",
+      "courseName": "Eng Profession & Practice",
+      "title": "Lecture",
+      "location": "PSE 5353",
+      "startTime": "4:30 PM",
+      "endTime": "5:20 PM",
+      "daysOfWeek": ["Wed"],
+      "instructor": "Dan Davison",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-ece198-lab",
+      "courseCode": "ECE 198",
+      "courseName": "Project Studio",
+      "title": "Lab",
+      "location": "PSE 1427 / E2 1792",
+      "startTime": "10:30 AM",
+      "endTime": "12:20 PM",
+      "daysOfWeek": ["Wed"],
+      "instructor": "Simar Saini",
+      "type": "lab"
+    },
+    {
+      "id": "sch-gene119-sem",
+      "courseCode": "GENE 119",
+      "courseName": "First-Year Engineering Seminar",
+      "title": "Seminar",
+      "location": "STC 0050",
+      "startTime": "10:30 AM",
+      "endTime": "11:20 AM",
+      "daysOfWeek": ["Mon"],
+      "instructor": "Dave Harris, Sarah Meunier",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-math115-tut",
+      "courseCode": "MATH 115",
+      "courseName": "Linear Algebra (Eng)",
+      "title": "Tutorial",
+      "location": "RCH 306",
+      "startTime": "10:30 AM",
+      "endTime": "12:20 PM",
+      "daysOfWeek": ["Tue"],
+      "instructor": "To be Announced",
+      "type": "tutorial"
+    },
+    {
+      "id": "sch-math115-lec",
+      "courseCode": "MATH 115",
+      "courseName": "Linear Algebra (Eng)",
+      "title": "Lecture",
+      "location": "PSE 5353",
+      "startTime": "2:30 PM",
+      "endTime": "3:20 PM",
+      "daysOfWeek": ["Mon", "Wed", "Fri"],
+      "instructor": "Jordan Hamilton",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-math117-lec",
+      "courseCode": "MATH 117",
+      "courseName": "Calculus 1 (Eng)",
+      "title": "Lecture",
+      "location": "PSE 5353",
+      "startTime": "12:30 PM",
+      "endTime": "1:20 PM",
+      "daysOfWeek": ["Mon", "Wed", "Fri"],
+      "instructor": "Ali Haghighatgooasiabar",
+      "type": "lecture"
+    },
+    {
+      "id": "sch-math117-tut",
+      "courseCode": "MATH 117",
+      "courseName": "Calculus 1 (Eng)",
+      "title": "Tutorial",
+      "location": "DWE 3517",
+      "startTime": "8:30 AM",
+      "endTime": "10:20 AM",
+      "daysOfWeek": ["Mon"],
+      "instructor": "To be Announced",
+      "type": "tutorial"
+    }
+  ],
   "quickLinks": [
     {
       "id": "waterlooworks",
@@ -116,12 +334,14 @@
     "lastSyncedAt": null,
     "customLinks": [],
     "courseColors": {
-      "CS 135": "#3b82f61a",
-      "MATH 135": "#10b9811a",
-      "MATH 137": "#8b5cf61a",
-      "ENGL 109": "#f59e0b1a",
-      "PHYS 121": "#ef44441a",
-      "LEARN": "#64748b1a"
+      "COMMST 192": "#3b82f61a",
+      "ECE 105": "#ef44441a",
+      "ECE 150": "#10b9811a",
+      "ECE 190": "#8b5cf61a",
+      "ECE 198": "#f59e0b1a",
+      "GENE 119": "#ec48991a",
+      "MATH 115": "#06b6d41a",
+      "MATH 117": "#84cc161a"
     },
     "sidebarOrder": [
       "dashboard",

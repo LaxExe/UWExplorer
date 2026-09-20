@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { ScheduleItem } from '../types';
-import { Calendar, Clock, MapPin, Plus, User, Trash2, CalendarDays } from 'lucide-react';
+import { Calendar, Clock, MapPin, Plus, User, Trash2, CalendarDays, Pin } from 'lucide-react';
 
 interface ScheduleProps {
   schedule: ScheduleItem[];
   courseColors: Record<string, string>;
   onAddScheduleItem: (item: Omit<ScheduleItem, 'id'>) => void;
+  onTogglePinScheduleItem: (id: string) => void;
   onDeleteScheduleItem: (id: string) => void;
 }
 
@@ -13,6 +14,7 @@ export const Schedule: React.FC<ScheduleProps> = ({
   schedule,
   courseColors,
   onAddScheduleItem,
+  onTogglePinScheduleItem,
   onDeleteScheduleItem,
 }) => {
   const [selectedDay, setSelectedDay] = useState<string>(() => {
@@ -34,8 +36,6 @@ export const Schedule: React.FC<ScheduleProps> = ({
   const [type, setType] = useState<ScheduleItem['type']>('lecture');
 
   const daysList = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
-  const filteredItems = schedule.filter(item => item.daysOfWeek.includes(selectedDay));
 
   const handleToggleDay = (day: string) => {
     if (daysOfWeek.includes(day)) {
@@ -67,27 +67,36 @@ export const Schedule: React.FC<ScheduleProps> = ({
     setIsModalOpen(false);
   };
 
-  // Hourly timetable slots: 8:30 AM - 5:30 PM
-  const TIME_SLOTS = [
-    { label: '8:30 AM - 9:30 AM', hourStart: 8, minStart: 30 },
-    { label: '9:30 AM - 10:30 AM', hourStart: 9, minStart: 30 },
-    { label: '10:30 AM - 11:30 AM', hourStart: 10, minStart: 30 },
-    { label: '11:30 AM - 12:30 PM', hourStart: 11, minStart: 30 },
-    { label: '12:30 PM - 1:30 PM', hourStart: 12, minStart: 30 },
-    { label: '1:30 PM - 2:30 PM', hourStart: 13, minStart: 30 },
-    { label: '2:30 PM - 3:30 PM', hourStart: 14, minStart: 30 },
-    { label: '3:30 PM - 4:30 PM', hourStart: 15, minStart: 30 },
-    { label: '4:30 PM - 5:30 PM', hourStart: 16, minStart: 30 },
-  ];
-
-  // Helper to match class items to time slots
-  const getSlotClasses = (slot: typeof TIME_SLOTS[0]) => {
-    return filteredItems.filter(item => {
-      const itemTimeLower = item.startTime.toLowerCase();
-      const slotHourStr = slot.hourStart > 12 ? (slot.hourStart - 12).toString() : slot.hourStart.toString();
-      return itemTimeLower.includes(slotHourStr) || itemTimeLower.includes(`${slot.hourStart}:`);
-    });
+  const parseTimeToMinutes = (timeStr: string): number => {
+    if (!timeStr) return 0;
+    const match = timeStr.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)?$/i);
+    if (!match) return 0;
+    let hours = parseInt(match[1], 10);
+    const minutes = parseInt(match[2], 10);
+    const period = match[3]?.toUpperCase();
+    if (period === 'PM' && hours < 12) hours += 12;
+    if (period === 'AM' && hours === 12) hours = 0;
+    return hours * 60 + minutes;
   };
+
+  const filteredItems = schedule
+    .filter(item => item.daysOfWeek.includes(selectedDay))
+    .sort((a, b) => parseTimeToMinutes(a.startTime) - parseTimeToMinutes(b.startTime));
+
+  // Formatted date string for header
+  const todayFormattedDate = new Date().toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+  const DAY_START_MINUTES = 510; // 8:30 AM in minutes (8*60 + 30)
+
+  // Morning break calculation before first class
+  const firstClassStartMins = filteredItems.length > 0 ? parseTimeToMinutes(filteredItems[0].startTime) : 0;
+  const morningBreakMins = firstClassStartMins > DAY_START_MINUTES ? firstClassStartMins - DAY_START_MINUTES : 0;
+  const morningBreakGapPx = morningBreakMins > 0 ? Math.min(100, Math.max(16, Math.round(morningBreakMins * 1.1))) : 0;
 
   return (
     <div className="flex flex-col gap-6 max-w-[1100px] mx-auto w-full">
@@ -97,6 +106,10 @@ export const Schedule: React.FC<ScheduleProps> = ({
           <h2 className="text-xl font-bold font-sans text-[var(--c5)] tracking-tight">
             Class & Course Schedule
           </h2>
+          <p className="font-mono text-xs text-[var(--c3)] mt-0.5 flex items-center gap-1.5">
+            <Calendar className="w-3.5 h-3.5 text-[var(--c3)]" />
+            <span>{todayFormattedDate}</span>
+          </p>
         </div>
 
         <button
@@ -124,8 +137,24 @@ export const Schedule: React.FC<ScheduleProps> = ({
         </div>
       </div>
 
-      {/* Clean Today's Classes List (No lines in-between, no free slot labels) */}
-      <div className="flex flex-col gap-3">
+      {/* Today's Classes Stream with Proportionate Heights & Break Gaps */}
+      <div className="flex flex-col">
+        {/* Morning break from 8:30 AM before first class */}
+        {morningBreakMins >= 15 && (
+          <div
+            style={{ height: `${morningBreakGapPx}px` }}
+            className="flex items-center justify-center relative my-0.5 mb-2"
+          >
+            <div className="w-full flex items-center justify-center gap-2">
+              <div className="h-[1px] flex-1 bg-[var(--border)] opacity-40"></div>
+              <span className="mono-text text-[0.65rem] text-[var(--c3)] tracking-wider px-2 py-0.5 bg-[var(--bg)] border border-[var(--border)] rounded">
+                8:30 AM free break ({morningBreakMins >= 60 ? `${Math.floor(morningBreakMins / 60)}h ${morningBreakMins % 60 ? (morningBreakMins % 60) + 'm' : ''}` : `${morningBreakMins} mins`})
+              </span>
+              <div className="h-[1px] flex-1 bg-[var(--border)] opacity-40"></div>
+            </div>
+          </div>
+        )}
+
         {filteredItems.length === 0 ? (
           <div className="uw-card text-center py-12">
             <p className="font-mono text-xs text-[var(--c3)]">
@@ -133,66 +162,121 @@ export const Schedule: React.FC<ScheduleProps> = ({
             </p>
           </div>
         ) : (
-          filteredItems.map(item => {
+          filteredItems.map((item, idx) => {
             const courseColor = courseColors[item.courseCode] || 'transparent';
+            const startMins = parseTimeToMinutes(item.startTime);
+            const endMins = parseTimeToMinutes(item.endTime);
+            const durationMins = Math.max(30, endMins - startMins);
+
+            // Height scaling: ~1.2px per minute (e.g. 50-min class = ~60px min-height, 110-min lab = ~132px min-height)
+            const minHeightPx = Math.round(durationMins * 1.3);
+
+            // Calculate gap break to next class if any
+            let breakMins = 0;
+            if (idx < filteredItems.length - 1) {
+              const nextStartMins = parseTimeToMinutes(filteredItems[idx + 1].startTime);
+              breakMins = Math.max(0, nextStartMins - endMins);
+            }
+
+            // Gap spacing in pixels for breaks (~1px per minute break, capped for UI aesthetics)
+            const breakGapPx = breakMins > 0 ? Math.min(120, Math.max(16, Math.round(breakMins * 1.1))) : 12;
 
             return (
-              <div
-                key={item.id}
-                className="uw-card p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
-                style={{ backgroundColor: courseColor !== 'transparent' ? courseColor : undefined }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 border border-[var(--border)] bg-[var(--bg)] flex flex-col items-center justify-center shrink-0">
-                    <span className="font-mono font-bold text-xs text-[var(--c5)]">
-                      {item.courseCode.split(' ')[0]}
-                    </span>
-                    <span className="font-mono text-[0.62rem] text-[var(--c3)]">
-                      {item.courseCode.split(' ')[1] || ''}
-                    </span>
-                  </div>
-
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="uw-tag font-bold">{item.courseCode}</span>
-                      <span className="uw-tag">{item.type}</span>
-                    </div>
-
-                    <h3 className="font-sans font-bold text-base text-[var(--c5)] mt-1">
-                      {item.title}
-                    </h3>
-
-                    <div className="flex items-center gap-4 mt-1 font-mono text-xs text-[var(--c4)] flex-wrap">
-                      <span className="flex items-center gap-1 font-semibold text-[var(--c5)]">
-                        <MapPin className="w-3.5 h-3.5 text-[var(--c3)]" />
-                        {item.location}
+              <React.Fragment key={item.id}>
+                <div
+                  className="uw-card p-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-all"
+                  style={{
+                    backgroundColor: courseColor !== 'transparent' ? courseColor : undefined,
+                    minHeight: `${minHeightPx}px`,
+                  }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 border border-[var(--border)] bg-[var(--bg)] flex flex-col items-center justify-center shrink-0">
+                      <span className="font-mono font-bold text-xs text-[var(--c5)]">
+                        {item.courseCode.split(' ')[0]}
                       </span>
+                      <span className="font-mono text-[0.62rem] text-[var(--c3)]">
+                        {item.courseCode.split(' ')[1] || ''}
+                      </span>
+                    </div>
 
-                      {item.instructor && (
-                        <span className="flex items-center gap-1 text-[var(--c3)]">
-                          <User className="w-3.5 h-3.5" />
-                          {item.instructor}
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="uw-tag font-bold">{item.courseCode}</span>
+                        <span className="uw-tag">{item.type}</span>
+                        <span className="mono-text text-[0.68rem] text-[var(--c3)]">
+                          {durationMins} mins
                         </span>
-                      )}
+                      </div>
+
+                      <h3 className="font-sans font-bold text-base text-[var(--c5)] mt-1">
+                        {item.title}
+                      </h3>
+
+                      <div className="flex items-center gap-4 mt-1 font-mono text-xs text-[var(--c4)] flex-wrap">
+                        <span className="flex items-center gap-1 font-semibold text-[var(--c5)]">
+                          <MapPin className="w-3.5 h-3.5 text-[var(--c3)]" />
+                          {item.location}
+                        </span>
+
+                        {item.instructor && (
+                          <span className="flex items-center gap-1 text-[var(--c3)]">
+                            <User className="w-3.5 h-3.5" />
+                            {item.instructor}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex items-center justify-between w-full md:w-auto gap-4">
-                  <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[var(--c5)]">
-                    <Clock className="w-3.5 h-3.5 text-[var(--c3)]" />
-                    <span>{item.startTime} - {item.endTime}</span>
+                  <div className="flex items-center justify-between w-full md:w-auto gap-4">
+                    <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-[var(--c5)]">
+                      <Clock className="w-3.5 h-3.5 text-[var(--c3)]" />
+                      <span>{item.startTime} - {item.endTime}</span>
+                    </div>
+
+                    <button
+                      onClick={() => onTogglePinScheduleItem(item.id)}
+                      className={`p-1 transition-colors shrink-0 ${
+                        item.isPinned
+                          ? 'text-[var(--c5)] fill-current'
+                          : 'text-[var(--c3)] hover:text-[var(--c5)]'
+                      }`}
+                      title={item.isPinned ? 'Unpin from Calendar notification' : 'Pin to Calendar notification'}
+                    >
+                      <Pin className="w-4 h-4" />
+                    </button>
+
+                    <button
+                      onClick={() => onDeleteScheduleItem(item.id)}
+                      className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors shrink-0"
+                      title="Delete class"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
                   </div>
-
-                  <button
-                    onClick={() => onDeleteScheduleItem(item.id)}
-                    className="text-[var(--c3)] hover:text-rose-500 p-1 transition-colors shrink-0"
-                    title="Delete class"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
                 </div>
-              </div>
+
+                {/* Gap Spacing / Break Indicator between classes */}
+                {idx < filteredItems.length - 1 && (
+                  <div
+                    style={{ height: `${breakGapPx}px` }}
+                    className="flex items-center justify-center relative my-0.5"
+                  >
+                    {breakMins >= 15 && (
+                      <div className="w-full flex items-center justify-center gap-2">
+                        <div className="h-[1px] flex-1 bg-[var(--border)] opacity-40"></div>
+                        <span className="mono-text text-[0.65rem] text-[var(--c3)] tracking-wider px-2 py-0.5 bg-[var(--bg)] border border-[var(--border)] rounded">
+                          {breakMins >= 60
+                            ? `free break (${Math.floor(breakMins / 60)}h ${breakMins % 60 ? (breakMins % 60) + 'm' : ''})`
+                            : `free break (${breakMins} mins)`}
+                        </span>
+                        <div className="h-[1px] flex-1 bg-[var(--border)] opacity-40"></div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </React.Fragment>
             );
           })
         )}

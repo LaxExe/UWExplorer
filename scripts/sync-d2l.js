@@ -7,17 +7,32 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
-const dataDir = path.join(projectRoot, 'data');
-const icsFilePath = path.join(dataDir, 'd2l_calendar.ics');
-const dbFilePath = path.join(dataDir, 'uwexplorer_db.json');
-const configFilePath = path.join(dataDir, 'config.json');
+const projectDataDir = path.join(projectRoot, 'data');
+let customDataDir = null;
 
-// Ensure data directory exists
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir, { recursive: true });
+export function setDataDir(customPath) {
+  if (customPath) {
+    customDataDir = customPath;
+    if (!fs.existsSync(customDataDir)) {
+      fs.mkdirSync(customDataDir, { recursive: true });
+    }
+  }
+}
+
+function getDataPaths() {
+  const targetDir = customDataDir || projectDataDir;
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+  }
+  return {
+    icsFilePath: path.join(targetDir, 'd2l_calendar.ics'),
+    dbFilePath: path.join(targetDir, 'uwexplorer_db.json'),
+    configFilePath: path.join(targetDir, 'config.json'),
+  };
 }
 
 export function loadConfig() {
+  const { configFilePath } = getDataPaths();
   if (fs.existsSync(configFilePath)) {
     try {
       return JSON.parse(fs.readFileSync(configFilePath, 'utf8'));
@@ -27,26 +42,42 @@ export function loadConfig() {
 }
 
 export function saveConfig(cfg) {
+  const { configFilePath } = getDataPaths();
   fs.writeFileSync(configFilePath, JSON.stringify(cfg, null, 2), 'utf8');
 }
 
 export function loadDB() {
+  const { dbFilePath } = getDataPaths();
+  const projDbPath = path.join(projectDataDir, 'uwexplorer_db.json');
+
+  let db = null;
   if (fs.existsSync(dbFilePath)) {
     try {
-      return JSON.parse(fs.readFileSync(dbFilePath, 'utf8'));
+      db = JSON.parse(fs.readFileSync(dbFilePath, 'utf8'));
     } catch (e) {}
   }
-  return {
-    itemStates: {}, // id -> { isCompleted, isRead, notes, courseCode, title }
-    courseColors: {},
-    customTodos: [],
-    customLinks: [],
+
+  // If persistent file doesn't exist or is empty, seed from project template
+  if (!db || ((!db.courses || db.courses.length === 0) && (!db.schedule || db.schedule.length === 0))) {
+    if (fs.existsSync(projDbPath)) {
+      try {
+        db = JSON.parse(fs.readFileSync(projDbPath, 'utf8'));
+        saveDB(db); // Save seed copy into user data path
+      } catch (e) {}
+    }
+  }
+
+  return db || {
+    courses: [],
+    tasks: [],
     schedule: [],
-    lastSyncedAt: null
+    quickLinks: [],
+    settings: {}
   };
 }
 
 export function saveDB(db) {
+  const { dbFilePath } = getDataPaths();
   fs.writeFileSync(dbFilePath, JSON.stringify(db, null, 2), 'utf8');
 }
 

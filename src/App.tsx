@@ -189,6 +189,12 @@ export function App() {
     setSchedule(prev => [...prev, item]);
   };
 
+  const handleTogglePinScheduleItem = (id: string) => {
+    setSchedule(prev =>
+      prev.map(s => (s.id === id ? { ...s, isPinned: !s.isPinned } : s))
+    );
+  };
+
   const handleDeleteScheduleItem = (id: string) => {
     setSchedule(prev => prev.filter(s => s.id !== id));
   };
@@ -273,6 +279,7 @@ export function App() {
                 schedule={schedule}
                 courseColors={courses.reduce((acc, c) => ({ ...acc, [c.code]: c.color }), {})}
                 onAddScheduleItem={handleAddScheduleItem}
+                onTogglePinScheduleItem={handleTogglePinScheduleItem}
                 onDeleteScheduleItem={handleDeleteScheduleItem}
               />
             )}
@@ -290,6 +297,7 @@ export function App() {
               <CalendarView
                 tasks={tasks}
                 courses={courses}
+                schedule={schedule}
               />
             )}
 
