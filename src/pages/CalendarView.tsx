@@ -52,19 +52,26 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ tasks, courses, sche
 
   const parseTimeToMinutes = (timeStr: string): number => {
     if (!timeStr) return 0;
-    const match = timeStr.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)?$/i);
+    const cleanStr = timeStr.trim().toUpperCase();
+    const match = cleanStr.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)?$/);
     if (!match) return 0;
     let hours = parseInt(match[1], 10);
     const minutes = parseInt(match[2], 10);
-    const period = match[3]?.toUpperCase();
-    if (period === 'PM' && hours < 12) hours += 12;
-    if (period === 'AM' && hours === 12) hours = 0;
+    const period = match[3];
+
+    if (period === 'PM' && hours < 12) {
+      hours += 12;
+    } else if (period === 'AM' && hours === 12) {
+      hours = 0;
+    }
     return hours * 60 + minutes;
   };
 
-  // Helper: get schedule items for a specific date (sorted chronologically top to bottom)
+  // Helper: get schedule items for a specific date (strictly sorted chronologically top to bottom)
   const getScheduleForDate = (dateIso: string) => {
-    const dObj = new Date(dateIso + 'T00:00:00');
+    const parts = dateIso.split('-');
+    if (parts.length !== 3) return [];
+    const dObj = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
     const dayName = daysOfWeekMap[dObj.getDay()];
     return schedule
       .filter(s => s.daysOfWeek.includes(dayName))
