@@ -1,4 +1,4 @@
-# UWexplorer 🧭
+# UWexplorer 
 
 > A clean, minimalist dashboard & campus hub for University of Waterloo students. Track D2L Learn announcements, assignments, and due date deadlines alongside quick links to **WaterlooWorks**, Quest, Outlook, and UW services.
 
