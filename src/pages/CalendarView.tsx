@@ -11,9 +11,16 @@ interface CalendarViewProps {
 export const CalendarView: React.FC<CalendarViewProps> = ({ tasks, courses, schedule }) => {
   const courseColors: Record<string, string> = courses.reduce((acc, c) => ({ ...acc, [c.code]: c.color }), {});
 
+  const formatLocalIsoDate = (d: Date): string => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  };
+
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [selectedDateStr, setSelectedDateStr] = useState<string>(
-    new Date().toISOString().split('T')[0]
+    formatLocalIsoDate(new Date())
   );
 
   const year = currentDate.getFullYear();
@@ -43,7 +50,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ tasks, courses, sche
   // Map tasks by date
   const tasksByDate: Record<string, TaskItem[]> = {};
   tasks.forEach(item => {
-    const key = new Date(item.dueDate).toISOString().split('T')[0];
+    const key = formatLocalIsoDate(new Date(item.dueDate));
     if (!tasksByDate[key]) {
       tasksByDate[key] = [];
     }
@@ -124,7 +131,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ tasks, courses, sche
             {Array.from({ length: daysInMonth }).map((_, idx) => {
               const dayNum = idx + 1;
               const dateObj = new Date(year, month, dayNum);
-              const dateIso = dateObj.toISOString().split('T')[0];
+              const dateIso = formatLocalIsoDate(dateObj);
               const dayTasks = tasksByDate[dateIso] || [];
               const dayClasses = getScheduleForDate(dateIso);
               const pinnedClasses = dayClasses.filter(c => c.isPinned);
