@@ -1,81 +1,126 @@
-# UWexplorer 
+# UWExplorer — Campus Dashboard for Waterloo Students
 
-> A clean, minimalist dashboard & campus hub for University of Waterloo students. Track D2L Learn announcements, assignments, and due date deadlines alongside quick links to **WaterlooWorks**, Quest, Outlook, and UW services.
+UWExplorer is a clean, minimalist desktop and web dashboard for University of Waterloo students. It pulls your D2L Learn calendar feed, turns it into a course-by-course to-do list and schedule, and keeps WaterlooWorks, Quest, Outlook and other campus links one click away. Everything is stored locally on your machine.
 
----
-
-## ⚙️ Configuration File Setup (`data/config.json`)
-
-UWexplorer includes a central configuration file located at **`data/config.json`** to manage your feed URLs, theme preferences, course colors, and sidebar order.
-
-### `data/config.json` Schema
-```json
-{
-  "d2lFeedUrl": "https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?...",
-  "theme": "light",
-  "autoSyncIntervalMinutes": 15,
-  "courseColors": {
-    "CS 135": "#3b82f61a",
-    "MATH 135": "#10b9811a",
-    "MATH 137": "#8b5cf61a",
-    "ENGL 109": "#f59e0b1a",
-    "PHYS 121": "#ef44441a",
-    "LEARN": "#64748b1a"
-  },
-  "sidebarOrder": [
-    "dashboard",
-    "schedule",
-    "links",
-    "announcements",
-    "assignments",
-    "calendar",
-    "settings"
-  ]
-}
-```
+**Author:** [Lakshman on GitHub](https://github.com/LaxExe) | **Website:** [lakshman-codes.github.io](https://lakshman-codes.github.io) | **Related:** [HireMe](https://hireme-henna.vercel.app/)
 
 ---
 
-## 🚀 Quick Start & Setup Guide
+## Key Features
 
-### 1. Clone & Install
+- **Dashboard**: One screen for upcoming deadlines, announcements and quick links.
+- **Courses and To-Do**: Assignments grouped by course, with read/unread and completion tracking.
+- **Schedule and Calendar**: Weekly schedule plus a month calendar built from your D2L feed.
+- **Quick Links**: Pinned and categorized links to WaterlooWorks, Quest, Outlook and anything else you add.
+- **D2L Auto-Sync**: Downloads your `.ics` calendar feed on an interval (default 15 minutes) and updates the app.
+- **Custom Deadlines**: Add your own tasks next to the ones D2L provides.
+- **Per-Course Colors and Sidebar Order**: Reorder tabs and color-code courses from Settings.
+- **Native Mac App**: Packaged with Electron as a `.dmg` and `.zip`, with a local data server built in.
+- **Local-First**: No account and no cloud. Your data lives in JSON files on disk.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| UI | React 18, TypeScript |
+| Build | Vite 5 |
+| Styling | Tailwind CSS 3, Lucide icons |
+| Desktop | Electron, electron-builder (macOS) |
+| Sync | Node script that downloads and parses the D2L `.ics` feed |
+
+---
+
+## How to Build and Run
+
+### Prerequisites
+- **Node.js** 20+
+- A D2L Learn calendar feed URL
+
+### 1. Clone and install
 ```bash
 git clone https://github.com/LaxExe/UWExplorer.git
 cd UWExplorer
 npm install
 ```
 
-### 2. Configure Your D2L Calendar Feed
-1. Log in to **[learn.uwaterloo.ca](https://learn.uwaterloo.ca/)** &rarr; **Calendar** &rarr; **Subscribe**.
-2. Copy your unique **Calendar Feed URL** (`.ics` / webcal link).
-3. Paste it into `data/config.json` under `"d2lFeedUrl"` (or via the in-app Settings UI).
+### 2. Configure your D2L feed
+1. Sign in to [learn.uwaterloo.ca](https://learn.uwaterloo.ca/), open **Calendar**, and choose **Subscribe**.
+2. Copy your personal calendar feed URL.
+3. Copy `data/config.example.json` to `data/config.json` and paste the URL into `d2lFeedUrl`, or paste it into the in-app Settings page.
 
-*(Recommended for zero 403 errors: Subscribe to your D2L calendar link inside **UWaterloo Outlook Calendar** (`outlook.office.com`) &rarr; Publish calendar &rarr; paste the Outlook `.ics` link into `data/config.json`!)*
+If D2L returns 403 errors, subscribe to the feed in your UWaterloo Outlook calendar, publish it, and use the Outlook `.ics` link instead.
 
-### 3. Start the Web App & Auto-Sync Server
+Treat your feed URL like a password. It contains a private token, so never commit it.
+
+### 3. Run the web app
 ```bash
 npm run dev
 ```
+Open [http://localhost:5173](http://localhost:5173).
 
-Open `http://localhost:5173` in your browser.
+### 4. Run as a desktop app
+```bash
+npm run build
+npm run electron:start
+```
 
-### 4. Background Downloader Engine (CLI)
-To manually pull down the latest `.ics` file directly to your disk at any time:
+### 5. Package for macOS
+```bash
+npm run electron:build
+```
+
+### Manual sync from the command line
 ```bash
 node scripts/sync-d2l.js
 ```
 
 ---
 
-## 🗄️ On-Disk File Storage System
+## Configuration (`data/config.json`)
 
-All your data lives locally on your computer in `/Users/lakshman/Small Projects/UWexplorer/data/`:
-- **`data/d2l_calendar.ics`**: Saved raw `.ics` feed downloaded from D2L/Outlook.
-- **`data/uwexplorer_db.json`**: Saved student metadata (read/unread status, task completion, course colors, schedule, custom deadlines).
-- **`data/config.json`**: Saved configuration settings.
+```json
+{
+  "d2lFeedUrl": "https://learn.uwaterloo.ca/d2l/le/calendar/feed/user/feed.ics?token=...",
+  "theme": "light",
+  "autoSyncIntervalMinutes": 15,
+  "courseColors": { "CS 135": "#3b82f61a", "MATH 135": "#10b9811a" },
+  "sidebarOrder": ["dashboard", "courses", "schedule", "links", "calendar", "settings"]
+}
+```
+
+## Local Data Files
+
+| File | Purpose |
+|---|---|
+| `data/d2l_calendar.ics` | Raw calendar feed downloaded from D2L or Outlook |
+| `data/uwexplorer_db.json` | Task completion, read status, custom deadlines and schedule |
+| `data/config.json` | Your settings |
 
 ---
 
-## License
+## Architecture
 
-MIT License © 2026 LaxExe
+```
+UWExplorer/
+├── electron/
+│   └── main.js            # Electron shell and local data server (/api/local-data)
+├── scripts/
+│   └── sync-d2l.js        # D2L feed downloader, config and DB loaders
+├── data/                  # Local storage (config, calendar feed, database)
+└── src/
+    ├── App.tsx
+    ├── components/        # Header, Sidebar
+    ├── pages/             # Dashboard, Courses, Schedule, CalendarView, QuickLinks, Settings
+    ├── services/
+    │   └── d2lSync.ts     # Feed parsing and sync
+    ├── data/mockData.ts
+    └── types/index.ts
+```
+
+---
+
+## About the Author
+
+Built by Lakshman, a first-year Computer Engineering student at the University of Waterloo looking to build more experience. See more at [lakshman-codes.github.io](https://lakshman-codes.github.io).
