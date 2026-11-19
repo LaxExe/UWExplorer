@@ -44,3 +44,5 @@ dist-ssr/
 tsconfig.tsbuildinfo
 
 data/config.json
+data/d2l_calendar.ics
+data/uwexplorer_db.json
